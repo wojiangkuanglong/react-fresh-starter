@@ -44,7 +44,7 @@
 
 ### :space_invader: Tech Stack
 
-<details>
+<details open>
   <summary>Technologies Used</summary>
   <ul>
     <li><a href="https://reactjs.org/">React</a>:A JavaScript library for building user interfaces</li>
@@ -59,7 +59,7 @@
   </ul>
 </details>
 
-<details>
+<details open>
   <summary>Tools for Development</summary>
   <ul>
      <li><a href="https://eslint.org/">ESLint</a>:A pluggable linter for JavaScript and TypeScript</li>
