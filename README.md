@@ -47,28 +47,28 @@
 <details open>
   <summary>Technologies Used</summary>
   <ul>
-    <li><a href="https://reactjs.org/">React</a>:A JavaScript library for building user interfaces</li>
-    <li><a href="https://www.typescriptlang.org/">TypeScript</a>:A typed superset of JavaScript</li>
-    <li><a href="https://pnpm.io/">pnpm</a>Fast, disk space-efficient package manager</li>
-    <li><a href="https://tailwindcss.com/">tailwindcss</a>:Utility-first CSS framework</li>
-    <li><a href="https://zustand-demo.pmnd.rs/">Zustand</a>:A small, fast, and scaleable state management for React</li>
-    <li><a href="https://tanstack.com/query/latest">React Query</a>:Data fetching and caching library for React</li>
-    <li><a href="https://ui.shadcn.com/">shadcn/ui</a>:UI components library</li>
-    <li><a href="https://mswjs.io/">msw</a>:Mocking HTTP requests during development and testing</li>
-    <li><a href="https://github.com/acacode/swagger-typescript-api">swagger-typescript-api</a>:Generate TypeScript client for any API defined by OpenAPI Specification</li>
+    <li><a href="https://reactjs.org/">React</a>: A JavaScript library for building user interfaces</li>
+    <li><a href="https://www.typescriptlang.org/">TypeScript</a>: A typed superset of JavaScript</li>
+    <li><a href="https://pnpm.io/">pnpm</a>: Fast, disk space-efficient package manager</li>
+    <li><a href="https://tailwindcss.com/">tailwindcss</a>: Utility-first CSS framework</li>
+    <li><a href="https://zustand-demo.pmnd.rs/">Zustand</a>: A small, fast, and scaleable state management for React</li>
+    <li><a href="https://tanstack.com/query/latest">React Query</a>: Data fetching and caching library for React</li>
+    <li><a href="https://ui.shadcn.com/">shadcn/ui</a>: UI components library</li>
+    <li><a href="https://mswjs.io/">msw</a>: Mocking HTTP requests during development and testing</li>
+    <li><a href="https://github.com/acacode/swagger-typescript-api">swagger-typescript-api</a>: Generate TypeScript client for any API defined by OpenAPI Specification</li>
   </ul>
 </details>
 
 <details open>
   <summary>Tools for Development</summary>
   <ul>
-     <li><a href="https://eslint.org/">ESLint</a>:A pluggable linter for JavaScript and TypeScript</li>
-    <li><a href="https://prettier.io/">Prettier</a>:Opinionated code formatter</li>
-    <li><a href="https://commitlint.js.org/#/">CommitLint</a>:Linting for conventional commit messages</li>
-    <li><a href="https://typicode.github.io/husky/#/">Husky</a>:Git hooks made easy</li>
-    <li><a href="https://github.com/okonet/lint-staged">Lint-Staged</a>:Run linters on pre-committed files</li>
-    <li><a href="https://github.com/webpro/knip">knip</a>:Find unused files, dependencies and exports in your JavaScript and TypeScript projects</li>
-    <li><a href="https://ls-lint.org/">ls-lint</a>:An extremely fast file and directory name linter</li>
+     <li><a href="https://eslint.org/">ESLint</a>: A pluggable linter for JavaScript and TypeScript</li>
+    <li><a href="https://prettier.io/">Prettier</a>: Opinionated code formatter</li>
+    <li><a href="https://commitlint.js.org/#/">CommitLint</a>: Linting for conventional commit messages</li>
+    <li><a href="https://typicode.github.io/husky/#/">Husky</a>: Git hooks made easy</li>
+    <li><a href="https://github.com/okonet/lint-staged">Lint-Staged</a>: Run linters on pre-committed files</li>
+    <li><a href="https://github.com/webpro/knip">knip</a>: Find unused files, dependencies and exports in your JavaScript and TypeScript projects</li>
+    <li><a href="https://ls-lint.org/">ls-lint</a>: An extremely fast file and directory name linter</li>
   </ul>
 </details>
 
@@ -165,3 +165,4 @@ To deploy this project run
 
 - [] i18n
 - [] storybook
+- [] test
