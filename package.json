@@ -1,0 +1,108 @@
+{
+  "name": "react-template",
+  "description": "react项目启动模板",
+  "private": false,
+  "version": "1.0.0",
+  "main": "src/main.tsx",
+  "type": "module",
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "dev": "vite --host 0.0.0.0",
+    "start": "vite --host 0.0.0.0",
+    "prebuild": "pnpm run knip && tsc",
+    "build": "vite build",
+    "preview": "pnpm run build && vite preview",
+    "lint": "eslint src --ext ts,tsx --cache",
+    "lint:fix": "pnpm run lint --fix",
+    "lint:ls": "ls-lint",
+    "prettier": "prettier src --check --cache",
+    "prettier:fix": "pnpm run prettier --write",
+    "format": "pnpm run /:fix$/",
+    "lint-staged": "lint-staged",
+    "prepare": "husky",
+    "type-check": "tsc --noEmit",
+    "taze": "pnpm dlx taze",
+    "knip": "knip",
+    "release": "standard-version",
+    "generate": "plop",
+    "prune": "rimraf node_modules pnpm-lock.yaml dist node_modules && pnpm run prune",
+    "api": "swagger-typescript-api -p ./swagger.json -o ./src/services -r --axios --modular --clean-output",
+    "mock": "msw-auto-mock ./swagger.json --output ./src/__mocks__/msw.ts -c 200, && pnpm mock-ts-ignore",
+    "mock-ts-ignore": "tsx ./scripts/mswTypeCheckIgnore.mts"
+  },
+  "engines": {
+    "node": ">=18",
+    "pnpm": ">=8"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.9.0",
+    "@tanstack/react-query-devtools": "^5.9.0",
+    "axios": "^1.6.7",
+    "click-to-react-component": "^1.1.0",
+    "clsx": "^2.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-error-boundary": "^4.0.9",
+    "react-router-dom": "^6.21.3",
+    "tailwind-merge": "^2.2.1",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^18.6.0",
+    "@commitlint/config-conventional": "^18.6.0",
+    "@faker-js/faker": "^8.4.0",
+    "@fvilers/disable-react-devtools": "^1.3.0",
+    "@ls-lint/ls-lint": "^2.2.2",
+    "@tanstack/eslint-plugin-query": "^5.8.4",
+    "@total-typescript/ts-reset": "^0.5.1",
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "@types/node": "^20.11.7",
+    "@types/react": "^18.2.9",
+    "@types/react-dom": "^18.2.9",
+    "@typescript-eslint/eslint-plugin": "^6.9.1",
+    "@typescript-eslint/parser": "^6.9.1",
+    "@vitejs/plugin-react-swc": "^3.5.0",
+    "autoprefixer": "^10.4.17",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^9.0.6",
+    "knip": "^4.2.1",
+    "lint-staged": "^15.2.0",
+    "msw": "^2.1.5",
+    "msw-auto-mock": "^0.18.0",
+    "plop": "^4.0.1",
+    "postcss": "^8.4.33",
+    "prettier": "^3.2.4",
+    "rimraf": "^5.0.5",
+    "rollup-plugin-visualizer": "^5.9.3",
+    "standard-version": "^9.5.0",
+    "swagger-typescript-api": "^13.0.3",
+    "tailwindcss": "^3.4.1",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.9",
+    "vite-plugin-svgr": "^4.2.0"
+  },
+  "msw": {
+    "workerDirectory": [
+      "./public",
+      "public"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

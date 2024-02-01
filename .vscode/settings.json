@@ -1,0 +1,49 @@
+{
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "editor.formatOnSave": true,
+  "[javascript]": {
+    "editor.formatOnSave": false
+  },
+  "[javascriptreact]": {
+    "editor.formatOnSave": false
+  },
+  "[typescript]": {
+    "editor.formatOnSave": false
+  },
+  "[typescriptreact]": {
+    "editor.formatOnSave": false
+  },
+  "eslint.validate": [],
+  "editor.tabSize": 2,
+  "todo-tree.highlights.customHighlight": {
+    "ALERT": {
+      "icon": "alert",
+      "type": "line",
+      "foreground": "#FF0000"
+    },
+    "FIXME": {
+      "icon": "alert",
+      "type": "line",
+      "foreground": "#ff4d4f"
+    },
+    "IMP": {
+      "icon": "stop",
+      "type": "line",
+      "foreground": "#2cfa00"
+    },
+    "Q": {
+      "icon": "unverified",
+      "type": "line",
+      "foreground": "#1890ff"
+    },
+    "TODO": {
+      "icon": "check",
+      "type": "line",
+      "foreground": "#FF8C00"
+    }
+  },
+  "todo-tree.regex.regex": "((//|#|<!--|;|/\\*)\\s@?($TAGS):|^\\s*- \\[ \\])",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  }
+}

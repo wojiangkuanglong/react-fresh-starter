@@ -1,0 +1,14 @@
+ls:
+  src:
+    .ts: camelCase
+    .tsx: PascalCase | regex:^(index|main|app|utils|const)$ | regex:^use(\w+)$
+    .d.ts: camelCase | regex:^vite-env$
+  src/components/ui:
+    .tsx: camelCase
+  src/services:
+    .ts: PascalCase | regex:^(http-client|data-contracts)$
+
+ignore:
+  - .git
+  - node_modules
+
