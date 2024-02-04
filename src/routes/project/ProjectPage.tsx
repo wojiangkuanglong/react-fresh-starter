@@ -1,37 +1,81 @@
+import * as React from 'react';
+
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { LoadingSpinner } from '@/components/ui/loading';
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
 
-import { useGetProjects } from './api/useProjects';
+import { useDeleteProject, useGetProjects } from './api/useProjects';
+import { ProjectModal } from './components/ProjectModal';
 
 const ProjectPage = () => {
   const { isLoading, data } = useGetProjects();
-  console.warn('🚀 ~ ProjectPage ~ data:', data, isLoading);
+  const [query, setQuery] = React.useState('');
+
+  const { mutateAsync: delProject } = useDeleteProject();
   return (
     <div>
+      <div className="flex align-middle">
+        <Input
+          placeholder="Filter project name..."
+          className="mb-3 mr-3 w-[300px]"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
+        <ProjectModal />
+      </div>
+
       <Table>
-        <TableCaption>A list of your recent invoices.</TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead className="w-[100px]">Invoice</TableHead>
-            <TableHead>Status</TableHead>
-            <TableHead>Method</TableHead>
-            <TableHead className="text-right">Amount</TableHead>
+            <TableHead>name</TableHead>
+            <TableHead className="w-[100px]">id</TableHead>
+            <TableHead>description</TableHead>
+            <TableHead>tags</TableHead>
+            <TableHead className="text-right">action</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          <TableRow>
-            <TableCell className="font-medium">INV001</TableCell>
-            <TableCell>Paid</TableCell>
-            <TableCell>Credit Card</TableCell>
-            <TableCell className="text-right">$250.00</TableCell>
-          </TableRow>
+          {isLoading ? (
+            <TableRow className="flex">
+              <TableCell colSpan={5}>
+                <LoadingSpinner />
+              </TableCell>
+            </TableRow>
+          ) : (
+            data
+              ?.filter((item) => item.name?.includes(query))
+              ?.map((item) => (
+                <TableRow key={item.id}>
+                  <TableCell className="font-medium">{item.name}</TableCell>
+                  <TableCell>{item.id}</TableCell>
+                  <TableCell>{item.description}</TableCell>
+                  <TableCell>
+                    {item.tags.map((item, index) => (
+                      <Badge key={`${item}${index}`} className="mr-1">
+                        {item}
+                      </Badge>
+                    ))}
+                  </TableCell>
+                  <TableCell className="text-right">
+                    <Button size="sm" className="mr-3">
+                      Edit
+                    </Button>
+                    <Button size="sm" variant="destructive" onClick={() => delProject(item.id)}>
+                      Delete
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ))
+          )}
         </TableBody>
       </Table>
     </div>
