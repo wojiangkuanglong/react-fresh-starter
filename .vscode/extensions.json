@@ -7,7 +7,8 @@
     "natqe.reload",
     "mattpocock.ts-error-translator",
     "usernamehw.errorlens",
-    "gruntfuggly.todo-tree"
+    "gruntfuggly.todo-tree",
+    "bradlc.vscode-tailwindcss"
   ],
   "unwantedRecommendations": []
 }
