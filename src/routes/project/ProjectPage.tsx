@@ -13,7 +13,12 @@ import {
   TableRow,
 } from '@/components/ui/table';
 
-import { useDeleteProject, useGetProjects } from './api/useProjects';
+import {
+  useAddProject,
+  useDeleteProject,
+  useGetProjects,
+  useUpdateProject,
+} from './api/useProjects';
 import { ProjectModal } from './components/ProjectModal';
 
 const ProjectPage = () => {
@@ -21,6 +26,8 @@ const ProjectPage = () => {
   const [query, setQuery] = React.useState('');
 
   const { mutateAsync: delProject } = useDeleteProject();
+  const { mutateAsync: addProject } = useAddProject();
+  const { mutateAsync: updateProject } = useUpdateProject();
   return (
     <div>
       <div className="flex align-middle">
@@ -30,7 +37,19 @@ const ProjectPage = () => {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
-        <ProjectModal type="add" />
+        <ProjectModal
+          type="add"
+          onSubmit={(value) =>
+            addProject({
+              name: value || '',
+              job: '',
+              year: 0,
+              description: '',
+              tags: [''],
+              teamSize: '',
+            })
+          }
+        />
       </div>
 
       <Table>
@@ -54,20 +73,38 @@ const ProjectPage = () => {
             data
               ?.filter((item) => item.name?.includes(query))
               ?.map((item) => (
-                <TableRow key={item.id}>
+                <TableRow key={item?.id}>
                   <TableCell className="font-medium">{item.name}</TableCell>
-                  <TableCell>{item.id}</TableCell>
-                  <TableCell>{item.description}</TableCell>
+                  <TableCell>{item?.id}</TableCell>
+                  <TableCell>{item?.description}</TableCell>
                   <TableCell>
-                    {item.tags.map((item, index) => (
+                    {item.tags?.map((item, index) => (
                       <Badge key={`${item}${index}`} className="mr-1">
                         {item}
                       </Badge>
                     ))}
                   </TableCell>
                   <TableCell className="text-right">
-                    <ProjectModal type="edit" defaultValue={item.name} />
-                    <Button size="sm" variant="destructive" onClick={() => delProject(item.id)}>
+                    <ProjectModal
+                      type="edit"
+                      defaultValue={item.name}
+                      onSubmit={(value) => {
+                        updateProject({
+                          id: item.id,
+                          name: value || '',
+                          job: '',
+                          year: 0,
+                          description: '',
+                          tags: [''],
+                          teamSize: '',
+                        });
+                      }}
+                    />
+                    <Button
+                      className="ml-3"
+                      variant="destructive"
+                      onClick={() => delProject(item.id)}
+                    >
                       Delete
                     </Button>
                   </TableCell>
