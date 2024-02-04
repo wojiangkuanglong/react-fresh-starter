@@ -7,20 +7,30 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
     "plugin:@tanstack/eslint-plugin-query/recommended",
-    "prettier"
+    "prettier",
+    "plugin:tailwindcss/recommended",
   ],
   "settings": {
     "react": {
-      "version": "detect"
-    }
+      "version": "detect",
+    },
+    "tailwindcss": {
+      "callees": ["cn", "cva"],
+      "config": "tailwind.config.ts",
+    },
   },
-  "parser": "@typescript-eslint/parser",
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "parser": "@typescript-eslint/parser",
+    },
+  ],
   "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module",
     "ecmaFeatures": {
-      "jsx": true
-    }
+      "jsx": true,
+    },
   },
   "plugins": [
     "react",
@@ -28,7 +38,8 @@
     "import",
     "react-hooks",
     "prettier",
-    "@tanstack/query"
+    "@tanstack/query",
+    "tailwindcss",
   ],
   "rules": {
     "import/no-duplicates": "error",
@@ -44,24 +55,28 @@
     "import/no-useless-path-segments": [
       "error",
       {
-        "noUselessIndex": true
-      }
+        "noUselessIndex": true,
+      },
     ],
 
     "@typescript-eslint/no-explicit-any": "warn",
     "@typescript-eslint/no-unused-vars": "error",
 
+    "react/prop-types": [2, { "ignore": ["className"] }],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "error",
 
-    "no-console": "warn",
+    "no-console": ["error", { "allow": ["warn", "error"] }],
+
+    "tailwindcss/no-custom-classname": "off",
+    "tailwindcss/classnames-order": "error",
 
     "prettier/prettier": [
       "warn",
       {
         "endOfLine": "lf",
-        "singleQuote": true
-      }
-    ]
-  }
+        "singleQuote": true,
+      },
+    ],
+  },
 }

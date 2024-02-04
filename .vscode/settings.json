@@ -45,5 +45,6 @@
   "todo-tree.regex.regex": "((//|#|<!--|;|/\\*)\\s@?($TAGS):|^\\s*- \\[ \\])",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
-  }
+  },
+  "css.lint.unknownAtRules": "ignore"
 }
