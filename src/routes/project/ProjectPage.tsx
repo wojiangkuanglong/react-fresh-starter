@@ -30,7 +30,7 @@ const ProjectPage = () => {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
-        <ProjectModal />
+        <ProjectModal type="add" />
       </div>
 
       <Table>
@@ -66,9 +66,7 @@ const ProjectPage = () => {
                     ))}
                   </TableCell>
                   <TableCell className="text-right">
-                    <Button size="sm" className="mr-3">
-                      Edit
-                    </Button>
+                    <ProjectModal type="edit" defaultValue={item.name} />
                     <Button size="sm" variant="destructive" onClick={() => delProject(item.id)}>
                       Delete
                     </Button>

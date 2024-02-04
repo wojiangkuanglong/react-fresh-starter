@@ -9,24 +9,28 @@ import {
 } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 
-export function ProjectModal() {
+type Props = {
+  type: 'add' | 'edit';
+  defaultValue?: string;
+};
+
+export function ProjectModal(props: Props) {
+  const { type, defaultValue = '' } = props;
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline">+ Add Project</Button>
+        <Button size="sm" variant="outline">
+          {type === 'add' ? 'Add Project' : 'Edit Project'}
+        </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Create Project</DialogTitle>
+          <DialogTitle>{type === 'add' ? 'Add Project' : 'Edit Project'}</DialogTitle>
         </DialogHeader>
         <div className="grid gap-4 py-4">
           <div className="grid grid-cols-4 items-center gap-4">
             name
-            <Input id="name" defaultValue="" className="col-span-3" />
-          </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            description
-            <Input id="description" defaultValue="" className="col-span-3" />
+            <Input id="name" defaultValue={defaultValue} className="col-span-3" />
           </div>
         </div>
         <DialogFooter>
