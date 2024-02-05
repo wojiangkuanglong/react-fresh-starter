@@ -23,7 +23,15 @@ export function ProjectModal(props: Props) {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState(defaultValue);
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog
+      open={open}
+      onOpenChange={(visible) => {
+        if (!visible) {
+          setValue(defaultValue);
+        }
+        setOpen(visible);
+      }}
+    >
       <DialogTrigger asChild>
         <Button variant="outline">{type === 'add' ? 'Add' : 'Edit'}</Button>
       </DialogTrigger>
