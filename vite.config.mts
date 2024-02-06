@@ -33,7 +33,6 @@ export default defineConfig(({ mode }) => {
       global: true,
       watch: false,
       environment: 'jsdom',
-      setupFiles: './src/setup.ts',
     },
     server: {
       strictPort: true,

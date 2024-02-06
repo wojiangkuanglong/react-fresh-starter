@@ -33,7 +33,12 @@ export function ProjectModal(props: Props) {
       }}
     >
       <DialogTrigger asChild>
-        <Button variant="outline">{type === 'add' ? 'Add' : 'Edit'}</Button>
+        <Button
+          data-testid={type === 'add' ? 'add-project-btn' : 'edit-project-btn'}
+          variant="outline"
+        >
+          {type === 'add' ? 'Add' : 'Edit'}
+        </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
