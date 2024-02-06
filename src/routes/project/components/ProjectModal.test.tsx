@@ -1,5 +1,6 @@
-import { render } from '@testing-library/react';
 import { expect, test } from 'vitest';
+
+import { render } from '@/utils/test';
 
 import { ProjectModal } from './ProjectModal';
 

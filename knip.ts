@@ -8,6 +8,7 @@ const config: KnipConfig = {
     'src/components/ui/**/*.tsx',
     'src/services/**/*.ts',
     'src/__mocks__/**/*.ts',
+    'src/utils/test.ts',
   ],
   ignoreBinaries: ['only-allow'],
   ignoreDependencies: [],
