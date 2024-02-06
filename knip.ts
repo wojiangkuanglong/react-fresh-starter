@@ -12,7 +12,7 @@ const config: KnipConfig = {
   ignoreBinaries: ['only-allow'],
   ignoreDependencies: [],
   rules: {
-    devDependencies: 'off',
+    devDependencies: 'warn',
   },
 };
 
