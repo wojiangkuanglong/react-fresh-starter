@@ -63,7 +63,9 @@
 <details open>
   <summary>Tools for Development</summary>
   <ul>
-     <li><a href="https://eslint.org/">ESLint</a>: A pluggable linter for JavaScript and TypeScript</li>
+  <li><a href="https://vitest.dev/">vitest</a>: Next generation testing framework powered by Vite</li>
+  <li><a href="https://github.com/testing-library/react-testing-library">react-testing-library</a>: Simple and complete React DOM testing utilities that encourage good testing practices</li>
+     <li><a href="https://eslint.org/">React Testing Library</a>: A pluggable linter for JavaScript and TypeScript</li>
     <li><a href="https://prettier.io/">Prettier</a>: Opinionated code formatter</li>
     <li><a href="https://commitlint.js.org/#/">CommitLint</a>: Linting for conventional commit messages</li>
     <li><a href="https://typicode.github.io/husky/#/">Husky</a>: Git hooks made easy</li>
