@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 import react from '@vitejs/plugin-react-swc';
 import { resolve } from 'path';
 import { visualizer } from 'rollup-plugin-visualizer';
@@ -27,6 +28,12 @@ export default defineConfig(({ mode }) => {
           },
         },
       },
+    },
+    test: {
+      global: true,
+      watch: false,
+      environment: 'jsdom',
+      setupFiles: './src/setup.ts',
     },
     server: {
       strictPort: true,

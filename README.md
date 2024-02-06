@@ -56,6 +56,7 @@
     <li><a href="https://ui.shadcn.com/">shadcn/ui</a>: UI components library</li>
     <li><a href="https://mswjs.io/">msw</a>: Mocking HTTP requests during development and testing</li>
     <li><a href="https://github.com/acacode/swagger-typescript-api">swagger-typescript-api</a>: Generate TypeScript client for any API defined by OpenAPI Specification</li>
+     <li><a href="https://storybook.js.org/">Storybook</a>: frontend workshop for building UI components and pages in isolation</li>
   </ul>
 </details>
 
@@ -165,4 +166,4 @@ To deploy this project run
 
 - [] i18n
 - [x] storybook
-- [] test
+- [x] test

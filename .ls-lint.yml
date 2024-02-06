@@ -2,6 +2,7 @@ ls:
   src:
     .ts: camelCase
     .stories.ts: PascalCase
+    .test.ts: PascalCase
     .tsx: PascalCase | regex:^(index|main|app|utils|const)$ | regex:^use(\w+)$
     .d.ts: camelCase | regex:^vite-env$
   src/components/ui:
