@@ -1,8 +1,10 @@
+import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 
 import { cn } from '@/utils/tailwindcss';
 
 export function Nav({ className, ...props }: React.HTMLAttributes<HTMLElement>) {
+  const { t } = useTranslation();
   return (
     <nav className={cn('flex items-center space-x-4 lg:space-x-6', className)} {...props}>
       <NavLink
@@ -13,7 +15,7 @@ export function Nav({ className, ...props }: React.HTMLAttributes<HTMLElement>) 
           })
         }
       >
-        Project
+        {t('nav.project')}
       </NavLink>
       <NavLink
         to="/test"
@@ -23,7 +25,7 @@ export function Nav({ className, ...props }: React.HTMLAttributes<HTMLElement>) 
           })
         }
       >
-        Test
+        {t('nav.test')}
       </NavLink>
     </nav>
   );
