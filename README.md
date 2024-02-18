@@ -2,6 +2,8 @@
 
   <h1>React Fresh Starter</h1>
 
+<span>English | <a href="./README.zh_CN.md">中文</a></span>
+
   <p>
     This is a continuously updated React project starter template designed to streamline the process of initiating new projects. It provides a foundation with essential configurations and best practices, allowing you to focus on building your application without the hassle of setting up the basics.
   </p>
@@ -57,8 +59,7 @@
     <li><a href="https://mswjs.io/">msw</a>: Mocking HTTP requests during development and testing</li>
     <li><a href="https://github.com/acacode/swagger-typescript-api">swagger-typescript-api</a>: Generate TypeScript client for any API defined by OpenAPI Specification</li>
      <li><a href="https://storybook.js.org/">Storybook</a>: frontend workshop for building UI components and pages in isolation</li>
-     <li><a href="https://react.i18next.com/">
-react-i18next</a>: Internationalization for react done right. Using the i18next i18n ecosystem.</li>
+     <li><a href="https://react.i18next.com/">react-i18next</a>: Internationalization for react done right. Using the i18next i18n ecosystem.</li>
   </ul>
 </details>
 
@@ -67,7 +68,7 @@ react-i18next</a>: Internationalization for react done right. Using the i18next 
   <ul>
   <li><a href="https://vitest.dev/">vitest</a>: Next generation testing framework powered by Vite</li>
   <li><a href="https://github.com/testing-library/react-testing-library">react-testing-library</a>: Simple and complete React DOM testing utilities that encourage good testing practices</li>
-     <li><a href="https://eslint.org/">React Testing Library</a>: A pluggable linter for JavaScript and TypeScript</li>
+     <li><a href="https://testing-library.com/docs/react-testing-library/intro">React Testing Library</a>: A pluggable linter for JavaScript and TypeScript</li>
     <li><a href="https://prettier.io/">Prettier</a>: Opinionated code formatter</li>
     <li><a href="https://commitlint.js.org/#/">CommitLint</a>: Linting for conventional commit messages</li>
     <li><a href="https://typicode.github.io/husky/#/">Husky</a>: Git hooks made easy</li>
