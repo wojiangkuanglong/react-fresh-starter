@@ -46,7 +46,7 @@
     "import/no-self-import": "error",
     "import/no-relative-packages": "error",
     "import/no-relative-parent-imports": "error",
-    "import/consistent-type-specifier-style": ["error", "prefer-inline"],
+    "import/consistent-type-specifier-style": ["error", "prefer-top-level"],
     "import/no-empty-named-blocks": "error",
     "import/no-extraneous-dependencies": "error",
     "import/no-import-module-exports": "error",
