@@ -9,8 +9,8 @@
  * ---------------------------------------------------------------
  */
 
-import { AuthUserType } from './data-contracts';
-import { ContentType, HttpClient, RequestParams } from './http-client';
+import type { AuthUserType } from './data-contracts';
+import { ContentType, HttpClient, type RequestParams } from './http-client';
 
 export class Auth<SecurityDataType = unknown> extends HttpClient<SecurityDataType> {
   /**

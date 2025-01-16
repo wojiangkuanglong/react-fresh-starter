@@ -1,14 +1,9 @@
 {
   "recommendations": [
-    "editorconfig.editorconfig",
-    "dbaeumer.vscode-eslint",
-    "christian-kohler.npm-intellisense",
-    "esbenp.prettier-vscode",
+    "EditorConfig.EditorConfig",
     "natqe.reload",
-    "mattpocock.ts-error-translator",
-    "usernamehw.errorlens",
-    "gruntfuggly.todo-tree",
-    "bradlc.vscode-tailwindcss"
+    "bradlc.vscode-tailwindcss",
+    "biomejs.biome-vscode"
   ],
   "unwantedRecommendations": []
 }

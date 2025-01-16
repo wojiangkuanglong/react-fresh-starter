@@ -9,8 +9,8 @@
  * ---------------------------------------------------------------
  */
 
-import { ExtractedProjectType, ProjectType, ProjectUpdateType } from './data-contracts';
-import { ContentType, HttpClient, RequestParams } from './http-client';
+import type { ExtractedProjectType, ProjectType, ProjectUpdateType } from './data-contracts';
+import { ContentType, HttpClient, type RequestParams } from './http-client';
 
 export class Projects<SecurityDataType = unknown> extends HttpClient<SecurityDataType> {
   /**

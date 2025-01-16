@@ -7,6 +7,10 @@ const queryConfig: DefaultOptions = {
     retry: false,
     refetchOnReconnect: false,
     staleTime: 10 * 1000,
+    networkMode: 'always',
+  },
+  mutations: {
+    networkMode: 'always',
   },
 };
 

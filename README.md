@@ -56,7 +56,6 @@
     <li><a href="https://zustand-demo.pmnd.rs/">Zustand</a>: A small, fast, and scaleable state management for React</li>
     <li><a href="https://tanstack.com/query/latest">React Query</a>: Data fetching and caching library for React</li>
     <li><a href="https://ui.shadcn.com/">shadcn/ui</a>: UI components library</li>
-    <li><a href="https://mswjs.io/">msw</a>: Mocking HTTP requests during development and testing</li>
     <li><a href="https://github.com/acacode/swagger-typescript-api">swagger-typescript-api</a>: Generate TypeScript client for any API defined by OpenAPI Specification</li>
      <li><a href="https://storybook.js.org/">Storybook</a>: frontend workshop for building UI components and pages in isolation</li>
      <li><a href="https://react.i18next.com/">react-i18next</a>: Internationalization for react done right. Using the i18next i18n ecosystem.</li>
@@ -66,15 +65,13 @@
 <details open>
   <summary>Tools for Development</summary>
   <ul>
+  <li><a href="https://github.com/biomejs/biome">biome</a>：A toolchain for web projects, aimed to provide functionalities to maintain them. Biome offers formatter and linter, usable via CLI and LSP.</li>
   <li><a href="https://vitest.dev/">vitest</a>: Next generation testing framework powered by Vite</li>
   <li><a href="https://github.com/testing-library/react-testing-library">react-testing-library</a>: Simple and complete React DOM testing utilities that encourage good testing practices</li>
-     <li><a href="https://testing-library.com/docs/react-testing-library/intro">React Testing Library</a>: A pluggable linter for JavaScript and TypeScript</li>
-    <li><a href="https://prettier.io/">Prettier</a>: Opinionated code formatter</li>
     <li><a href="https://commitlint.js.org/#/">CommitLint</a>: Linting for conventional commit messages</li>
     <li><a href="https://typicode.github.io/husky/#/">Husky</a>: Git hooks made easy</li>
     <li><a href="https://github.com/okonet/lint-staged">Lint-Staged</a>: Run linters on pre-committed files</li>
     <li><a href="https://github.com/webpro/knip">knip</a>: Find unused files, dependencies and exports in your JavaScript and TypeScript projects</li>
-    <li><a href="https://ls-lint.org/">ls-lint</a>: An extremely fast file and directory name linter</li>
   </ul>
 </details>
 
@@ -109,7 +106,7 @@ Go to the project directory
 Install dependencies
 
 ```bash
-  # node ^18.x.x，pnpm ^8.x.x
+  # node ^22.x.x，pnpm ^9.x.x
   pnpm install
 ```
 
@@ -131,14 +128,9 @@ Other
 # Check for unused files, export, and manage dependencies
 pnpm knip
 
-# Generate components based on plop templates
-pnpm generate
-
 # Automatically generate API based on swagger.json, default location is src/services
 pnpm api
 
-# Automatically generate Mock data based on swagger.json, default location is src/__mocks__
-pnpm mock
 ```
 
 ### :wave: Collaboration Debugging

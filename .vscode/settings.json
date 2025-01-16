@@ -2,19 +2,17 @@
   "typescript.tsdk": "node_modules/typescript/lib",
   "editor.formatOnSave": true,
   "[javascript]": {
-    "editor.formatOnSave": false
+    "editor.defaultFormatter": "biomejs.biome"
   },
   "[javascriptreact]": {
-    "editor.formatOnSave": false
+    "editor.defaultFormatter": "biomejs.biome"
   },
   "[typescript]": {
-    "editor.formatOnSave": false
+    "editor.defaultFormatter": "biomejs.biome"
   },
   "[typescriptreact]": {
-    "editor.formatOnSave": false
+    "editor.defaultFormatter": "biomejs.biome"
   },
-  "eslint.validate": [],
-  "editor.tabSize": 2,
   "todo-tree.highlights.customHighlight": {
     "ALERT": {
       "icon": "alert",
@@ -44,7 +42,9 @@
   },
   "todo-tree.regex.regex": "((//|#|<!--|;|/\\*)\\s@?($TAGS):|^\\s*- \\[ \\])",
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
+    "quickfix.biome": "explicit",
   },
-  "css.lint.unknownAtRules": "ignore"
+  "commentTranslate.hover.enabled": true,
+  "commentTranslate.targetLanguage": "zh-CN",
+  "workbench.activityBar.orientation": "vertical"
 }

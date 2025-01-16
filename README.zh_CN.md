@@ -56,7 +56,6 @@
     <li><a href="https://zustand-demo.pmnd.rs/">Zustand</a>：React 的小型、快速和可扩展的状态管理器</li>
     <li><a href="https://tanstack.com/query/latest">React Query</a>：用于 React 的数据获取和缓存库</li>
     <li><a href="https://ui.shadcn.com/">shadcn/ui</a>：UI 组件库</li>
-    <li><a href="https://mswjs.io/">msw</a>：在开发和测试期间模拟 HTTP 请求</li>
     <li><a href="https://github.com/acacode/swagger-typescript-api">swagger-typescript-api</a>：根据 OpenAPI 规范为任何 API 生成 TypeScript 代码</li>
      <li><a href="https://storybook.js.org/">Storybook</a>：用于在隔离环境中构建 UI 组件和页面</li>
      <li><a href="https://react.i18next.com/">react-i18next</a>：使用 i18next 国际化生态系统。</li>
@@ -66,15 +65,13 @@
 <details open>
   <summary>开发工具</summary>
   <ul>
+  <li><a href="https://github.com/biomejs/biome">biome</a>：Web 项目开发的一体化工具链</li>
   <li><a href="https://vitest.dev/">vitest</a>：由 Vite 提供支持的下一代测试框架</li>
   <li><a href="https://github.com/testing-library/react-testing-library">react-testing-library</a>：简单且完整的 React DOM 测试实用工具，鼓励良好的测试实践</li>
-     <li><a href="https://testing-library.com/docs/react-testing-library/intro">React Testing Library</a>：用于 JavaScript 和 TypeScript 的可插拔的代码检查工具</li>
-    <li><a href="https://prettier.io/">Prettier</a>：代码格式化工具</li>
     <li><a href="https://commitlint.js.org/#/">CommitLint</a>：用于常规提交消息的代码检查工具</li>
     <li><a href="https://typicode.github.io/husky/#/">Husky</a>：简化 Git 钩子的工具</li>
     <li><a href="https://github.com/okonet/lint-staged">Lint-Staged</a>：对预提交文件运行代码检查工具</li>
     <li><a href="https://github.com/webpro/knip">knip</a>：在 JavaScript 和 TypeScript 项目中查找未使用的文件、依赖项和导出</li>
-    <li><a href="https://ls-lint.org/">ls-lint</a>：非常快的文件和目录名称检查工具</li>
   </ul>
 </details>
 
@@ -109,7 +106,7 @@
 安装依赖
 
 ```bash
-  # node ^18.x.x，pnpm ^8.x.x
+  # node ^22.x.x，pnpm ^9.x.x
   pnpm install
 ```
 
@@ -131,14 +128,9 @@
 # 检查未使用的文件、导出和管理依赖项
 pnpm knip
 
-# 基于 plop 模板生成组件
-pnpm generate
-
 # 自动根据 swagger.json 生成 API，默认位置为 src/services
 pnpm api
 
-# 自动根据 swagger.json 生成模拟数据，默认位置为 src/__mocks__
-pnpm mock
 ```
 
 ### :wave: 协作调试

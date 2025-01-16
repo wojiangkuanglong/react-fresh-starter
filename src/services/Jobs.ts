@@ -9,8 +9,8 @@
  * ---------------------------------------------------------------
  */
 
-import { JobType, JobUpdateType } from './data-contracts';
-import { ContentType, HttpClient, RequestParams } from './http-client';
+import type { JobType, JobUpdateType } from './data-contracts';
+import { ContentType, HttpClient, type RequestParams } from './http-client';
 
 export class Jobs<SecurityDataType = unknown> extends HttpClient<SecurityDataType> {
   /**

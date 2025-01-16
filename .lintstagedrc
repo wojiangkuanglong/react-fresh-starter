@@ -1,4 +1,3 @@
 {
-  "*.{ts,tsx,less}": ["pnpm run lint:ls"],
-  "*.{ts,tsx}": ["pnpm run format"]
+  "*.{ts,tsx}": ["pnpm check"]
 }

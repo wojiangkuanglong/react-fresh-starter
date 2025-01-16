@@ -1,6 +1,3 @@
 {
-  "nav": {
-    "project": "Project",
-    "test": "Test"
-  }
+  "test": "test"
 }

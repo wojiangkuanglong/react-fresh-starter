@@ -29,34 +29,11 @@ if (import.meta.env.PROD) {
 }
 
 const container = document.getElementById('root');
-const root = createRoot(container!);
+const root = createRoot(container as HTMLElement);
 
-if (import.meta.env.DEV) {
-  if (import.meta.env.VITE_MOCK === 'true') {
-    import('@/__mocks__/msw')
-      .then(({ startWorker }) => {
-        startWorker();
-      })
-      .then(() =>
-        root.render(
-          <StrictMode>
-            <App />
-            <ClickToComponent />
-          </StrictMode>,
-        ),
-      );
-  } else {
-    root.render(
-      <StrictMode>
-        <App />
-        <ClickToComponent />
-      </StrictMode>,
-    );
-  }
-} else {
-  root.render(
-    <StrictMode>
-      <App />
-    </StrictMode>,
-  );
-}
+root.render(
+  <StrictMode>
+    <ClickToComponent />
+    <App />
+  </StrictMode>,
+);
