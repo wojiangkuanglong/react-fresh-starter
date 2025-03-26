@@ -9,13 +9,13 @@ import { updateUser } from './updateUser.ts';
 
 export function user() {
   return {
-    createUsersWithListInput,
     getUserByName,
     updateUser,
     deleteUser,
+    createUser,
+    createUsersWithListInput,
     loginUser,
     logoutUser,
     createUsersWithArrayInput,
-    createUser,
   };
 }

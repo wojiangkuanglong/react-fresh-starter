@@ -4,5 +4,5 @@ import { getOrderById } from './getOrderById.ts';
 import { placeOrder } from './placeOrder.ts';
 
 export function store() {
-  return { getInventory, placeOrder, getOrderById, deleteOrder };
+  return { getInventory, getOrderById, deleteOrder, placeOrder };
 }
