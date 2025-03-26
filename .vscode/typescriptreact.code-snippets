@@ -1,0 +1,35 @@
+{
+  "importReact": {
+    "prefix": ["imr"],
+    "body": ["import * as React from 'react';"]
+  },
+  "useState": {
+    "prefix": ["usf", "usestate"],
+    "body": [
+      "const [${1}, set${1/(^[a-zA-Z])(.*)/${1:/upcase}${2}/}] = React.useState(${2:initialState})$0"
+    ]
+  },
+  "useEffect": {
+    "prefix": ["uef", "useeffect"],
+    "body": ["React.useEffect(() => {", "  $2", "}, [${1:deps}])$0"]
+  },
+  "useRef": {
+    "prefix": ["uref", "useref"],
+    "body": ["const ${1:ref} = React.useRef($2)$0"]
+  },
+  "useCallback": {
+    "prefix": ["ucf", "usecallback"],
+    "body": ["const ${1:callback} = React.useCallback(() => {", " $3", "}, [${2:deps}])$0"]
+  },
+  "useMemo": {
+    "prefix": ["umf", "umemo", "usememo"],
+    "body": ["const ${1:value} = React.useMemo(() => $3, [${2:deps}])$0"]
+  },
+  "zustand create store": {
+    "prefix": "zstconst",
+    "body": [
+      "const ${2:state} = use${1:State}store((state) => state.${2:state})"
+    ],
+    "description": "Declare Zustand Store as const"
+  }
+}
