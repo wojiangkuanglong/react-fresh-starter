@@ -5,6 +5,8 @@ const config: KnipConfig = {
   project: ['src/**/*.ts', 'src/**/*.tsx'],
   ignore: [
     '**/*.d.ts',
+    'src/shared/lib/client.ts',
+    'src/shared/services/**/*.ts'
   ],
   ignoreBinaries: ['only-allow'],
   rules: {

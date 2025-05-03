@@ -42,7 +42,7 @@
   },
   "todo-tree.regex.regex": "((//|#|<!--|;|/\\*)\\s@?($TAGS):|^\\s*- \\[ \\])",
   "editor.codeActionsOnSave": {
-    "quickfix.biome": "explicit",
+    "quickfix.biome": "explicit"
   },
   "commentTranslate.hover.enabled": true,
   "commentTranslate.targetLanguage": "zh-CN",
