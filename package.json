@@ -25,11 +25,12 @@
     "knip": "knip",
     "release": "standard-version && git push --follow-tags origin publish",
     "clean": "pnpm store prune && rimraf node_modules pnpm-lock.yaml dist",
-    "scan": "pnpm dev & pnpm dlx react-scan@latest http://localhost:5173"
+    "scan": "pnpm dev & pnpm dlx react-scan@latest http://localhost:5173",
+    "api": "kubb generate"
   },
   "engines": {
     "node": ">=22",
-    "pnpm": ">=9"
+    "pnpm": ">=10"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.9.0",
@@ -42,6 +43,7 @@
     "i18next": "^24.2.3",
     "i18next-browser-languagedetector": "^8.0.4",
     "i18next-http-backend": "^3.0.2",
+    "immer": "^10.1.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-error-boundary": "^4.1.2",
@@ -85,7 +87,6 @@
     "standard-version": "^9.5.0",
     "tailwindcss": "^3.4.9",
     "typescript": "^5.8.2",
-    "unplugin-kubb": "^2.0.2",
     "vite": "^6.2.3",
     "vite-plugin-svgr": "^4.3.0",
     "vitest": "^2.1.9"

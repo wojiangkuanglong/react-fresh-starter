@@ -159,34 +159,28 @@ export type { CreateUsersWithListInputMutationKey } from './react-query/user/use
 export type { GetUserByNameQueryKey } from './react-query/user/useGetUserByName.ts';
 export type { LoginUserQueryKey } from './react-query/user/useLoginUser.ts';
 export type { LogoutUserQueryKey } from './react-query/user/useLogoutUser.ts';
-export { getAddPetUrl, addPet } from './api/pet/addPet.ts';
-export { getDeletePetUrl, deletePet } from './api/pet/deletePet.ts';
-export { getFindPetsByStatusUrl, findPetsByStatus } from './api/pet/findPetsByStatus.ts';
-export { getFindPetsByTagsUrl, findPetsByTags } from './api/pet/findPetsByTags.ts';
-export { getGetPetByIdUrl, getPetById } from './api/pet/getPetById.ts';
+export { addPet } from './api/pet/addPet.ts';
+export { deletePet } from './api/pet/deletePet.ts';
+export { findPetsByStatus } from './api/pet/findPetsByStatus.ts';
+export { findPetsByTags } from './api/pet/findPetsByTags.ts';
+export { getPetById } from './api/pet/getPetById.ts';
 export { pet } from './api/pet/pet.ts';
-export { getUpdatePetUrl, updatePet } from './api/pet/updatePet.ts';
-export { getUpdatePetWithFormUrl, updatePetWithForm } from './api/pet/updatePetWithForm.ts';
-export { getUploadFileUrl, uploadFile } from './api/pet/uploadFile.ts';
-export { getDeleteOrderUrl, deleteOrder } from './api/store/deleteOrder.ts';
-export { getGetInventoryUrl, getInventory } from './api/store/getInventory.ts';
-export { getGetOrderByIdUrl, getOrderById } from './api/store/getOrderById.ts';
-export { getPlaceOrderUrl, placeOrder } from './api/store/placeOrder.ts';
+export { updatePet } from './api/pet/updatePet.ts';
+export { updatePetWithForm } from './api/pet/updatePetWithForm.ts';
+export { uploadFile } from './api/pet/uploadFile.ts';
+export { deleteOrder } from './api/store/deleteOrder.ts';
+export { getInventory } from './api/store/getInventory.ts';
+export { getOrderById } from './api/store/getOrderById.ts';
+export { placeOrder } from './api/store/placeOrder.ts';
 export { store } from './api/store/store.ts';
-export { getCreateUserUrl, createUser } from './api/user/createUser.ts';
-export {
-  getCreateUsersWithArrayInputUrl,
-  createUsersWithArrayInput,
-} from './api/user/createUsersWithArrayInput.ts';
-export {
-  getCreateUsersWithListInputUrl,
-  createUsersWithListInput,
-} from './api/user/createUsersWithListInput.ts';
-export { getDeleteUserUrl, deleteUser } from './api/user/deleteUser.ts';
-export { getGetUserByNameUrl, getUserByName } from './api/user/getUserByName.ts';
-export { getLoginUserUrl, loginUser } from './api/user/loginUser.ts';
-export { getLogoutUserUrl, logoutUser } from './api/user/logoutUser.ts';
-export { getUpdateUserUrl, updateUser } from './api/user/updateUser.ts';
+export { createUser } from './api/user/createUser.ts';
+export { createUsersWithArrayInput } from './api/user/createUsersWithArrayInput.ts';
+export { createUsersWithListInput } from './api/user/createUsersWithListInput.ts';
+export { deleteUser } from './api/user/deleteUser.ts';
+export { getUserByName } from './api/user/getUserByName.ts';
+export { loginUser } from './api/user/loginUser.ts';
+export { logoutUser } from './api/user/logoutUser.ts';
+export { updateUser } from './api/user/updateUser.ts';
 export { user } from './api/user/user.ts';
 export { orderStatusEnum } from './model/Order.ts';
 export { petStatusEnum } from './model/Pet.ts';
