@@ -37,11 +37,9 @@ export function useCreateUsersWithArrayInput<TContext>(
     };
   } = {},
 ) {
-  const {
-    mutation: { client: queryClient, ...mutationOptions } = {},
-    client: config = {},
-  } = options ?? {};
-  const mutationKey = mutationOptions?.mutationKey ?? createUsersWithArrayInputMutationKey();
+  const { mutation = {}, client: config = {} } = options ?? {};
+  const { client: queryClient, ...mutationOptions } = mutation;
+  const mutationKey = mutationOptions.mutationKey ?? createUsersWithArrayInputMutationKey();
 
   return useMutation<
     CreateUsersWithArrayInputMutationResponse,
