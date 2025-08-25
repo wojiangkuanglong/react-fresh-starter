@@ -1,5 +1,5 @@
-import { useGetUserByName } from '@/shared/services/react-query/user/useGetUserByName';
 import { Modal, Spin } from 'antd';
+import { useGetUserByName } from '@/shared/services/react-query/user/useGetUserByName';
 import { useDemoModalStore } from '../model/useDemoModalStore';
 
 /** 测试 Demo 弹窗 */

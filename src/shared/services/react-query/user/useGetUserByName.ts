@@ -22,8 +22,9 @@ import type {
 
 export const getUserByNameQueryKey = ({
   username,
-}: { username: GetUserByNamePathParams['username'] }) =>
-  [{ url: '/user/:username', params: { username: username } }] as const;
+}: {
+  username: GetUserByNamePathParams['username'];
+}) => [{ url: '/user/:username', params: { username: username } }] as const;
 
 export type GetUserByNameQueryKey = ReturnType<typeof getUserByNameQueryKey>;
 

@@ -1,8 +1,8 @@
+import { Button } from 'antd';
+import { useTranslation } from 'react-i18next';
 import { cn } from '@/shared/utils/tailwindcss';
 import { useDemoModalStore } from '@/widgets/DemoModal/model/useDemoModalStore';
 import { DemoModal } from '@/widgets/DemoModal/ui/DemoModal';
-import { Button } from 'antd';
-import { useTranslation } from 'react-i18next';
 
 export const Home = () => {
   const { i18n, t } = useTranslation();

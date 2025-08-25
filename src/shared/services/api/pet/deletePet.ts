@@ -3,8 +3,8 @@
  * Do not edit manually.
  */
 
-import fetch from '@/shared/lib/client';
 import type { RequestConfig, ResponseErrorConfig } from '@/shared/lib/client';
+import fetch from '@/shared/lib/client';
 import type {
   DeletePet400,
   DeletePet404,
