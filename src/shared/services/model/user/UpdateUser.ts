@@ -28,7 +28,7 @@ export type UpdateUser404 = unknown;
  */
 export type UpdateUserMutationRequest = User;
 
-export type UpdateUserMutationResponse = unknown;
+export type UpdateUserMutationResponse = any;
 
 export type UpdateUserMutation = {
   Response: any;

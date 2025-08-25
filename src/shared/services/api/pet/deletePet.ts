@@ -3,7 +3,7 @@
  * Do not edit manually.
  */
 
-import client from '@/shared/lib/client';
+import fetch from '@/shared/lib/client';
 import type { RequestConfig, ResponseErrorConfig } from '@/shared/lib/client';
 import type {
   DeletePet400,
@@ -14,7 +14,8 @@ import type {
 } from '../../model/pet/DeletePet.ts';
 
 function getDeletePetUrl({ petId }: { petId: DeletePetPathParams['petId'] }) {
-  return `/pet/${petId}` as const;
+  const res = { method: 'DELETE', url: `/pet/${petId}` as const };
+  return res;
 }
 
 /**
@@ -24,9 +25,9 @@ function getDeletePetUrl({ petId }: { petId: DeletePetPathParams['petId'] }) {
 export async function deletePet(
   { petId }: { petId: DeletePetPathParams['petId'] },
   headers?: DeletePetHeaderParams,
-  config: Partial<RequestConfig> & { client?: typeof client } = {},
+  config: Partial<RequestConfig> & { client?: typeof fetch } = {},
 ) {
-  const { client: request = client, ...requestConfig } = config;
+  const { client: request = fetch, ...requestConfig } = config;
 
   const res = await request<
     DeletePetMutationResponse,
@@ -34,7 +35,7 @@ export async function deletePet(
     unknown
   >({
     method: 'DELETE',
-    url: getDeletePetUrl({ petId }).toString(),
+    url: getDeletePetUrl({ petId }).url.toString(),
     ...requestConfig,
     headers: { ...headers, ...requestConfig.headers },
   });

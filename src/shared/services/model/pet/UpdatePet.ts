@@ -25,7 +25,7 @@ export type UpdatePet405 = unknown;
  */
 export type UpdatePetMutationRequest = Pet;
 
-export type UpdatePetMutationResponse = unknown;
+export type UpdatePetMutationResponse = any;
 
 export type UpdatePetMutation = {
   Response: any;

@@ -3,24 +3,25 @@
  * Do not edit manually.
  */
 
-import client from '@/shared/lib/client';
+import fetch from '@/shared/lib/client';
 import type { RequestConfig, ResponseErrorConfig } from '@/shared/lib/client';
 import type { LogoutUserQueryResponse } from '../../model/user/LogoutUser.ts';
 
 function getLogoutUserUrl() {
-  return '/user/logout' as const;
+  const res = { method: 'GET', url: '/user/logout' as const };
+  return res;
 }
 
 /**
  * @summary Logs out current logged in user session
  * {@link /user/logout}
  */
-export async function logoutUser(config: Partial<RequestConfig> & { client?: typeof client } = {}) {
-  const { client: request = client, ...requestConfig } = config;
+export async function logoutUser(config: Partial<RequestConfig> & { client?: typeof fetch } = {}) {
+  const { client: request = fetch, ...requestConfig } = config;
 
   const res = await request<LogoutUserQueryResponse, ResponseErrorConfig<Error>, unknown>({
     method: 'GET',
-    url: getLogoutUserUrl().toString(),
+    url: getLogoutUserUrl().url.toString(),
     ...requestConfig,
   });
   return res.data;

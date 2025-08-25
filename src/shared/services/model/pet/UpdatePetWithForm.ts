@@ -29,7 +29,7 @@ export type UpdatePetWithFormMutationRequest = {
   status?: string;
 };
 
-export type UpdatePetWithFormMutationResponse = unknown;
+export type UpdatePetWithFormMutationResponse = any;
 
 export type UpdatePetWithFormMutation = {
   Response: any;

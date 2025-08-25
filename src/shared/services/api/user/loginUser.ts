@@ -3,7 +3,7 @@
  * Do not edit manually.
  */
 
-import client from '@/shared/lib/client';
+import fetch from '@/shared/lib/client';
 import type { RequestConfig, ResponseErrorConfig } from '@/shared/lib/client';
 import type {
   LoginUser400,
@@ -12,7 +12,8 @@ import type {
 } from '../../model/user/LoginUser.ts';
 
 function getLoginUserUrl() {
-  return '/user/login' as const;
+  const res = { method: 'GET', url: '/user/login' as const };
+  return res;
 }
 
 /**
@@ -21,13 +22,13 @@ function getLoginUserUrl() {
  */
 export async function loginUser(
   params: LoginUserQueryParams,
-  config: Partial<RequestConfig> & { client?: typeof client } = {},
+  config: Partial<RequestConfig> & { client?: typeof fetch } = {},
 ) {
-  const { client: request = client, ...requestConfig } = config;
+  const { client: request = fetch, ...requestConfig } = config;
 
   const res = await request<LoginUserQueryResponse, ResponseErrorConfig<LoginUser400>, unknown>({
     method: 'GET',
-    url: getLoginUserUrl().toString(),
+    url: getLoginUserUrl().url.toString(),
     params,
     ...requestConfig,
   });

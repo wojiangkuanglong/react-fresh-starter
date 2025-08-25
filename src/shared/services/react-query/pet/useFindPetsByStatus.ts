@@ -3,7 +3,7 @@
  * Do not edit manually.
  */
 
-import type client from '@kubb/plugin-client/clients/axios';
+import type fetch from '@kubb/plugin-client/clients/axios';
 import type { RequestConfig, ResponseErrorConfig } from '@kubb/plugin-client/clients/axios';
 import type {
   QueryClient,
@@ -26,7 +26,7 @@ export type FindPetsByStatusQueryKey = ReturnType<typeof findPetsByStatusQueryKe
 
 export function findPetsByStatusQueryOptions(
   params: FindPetsByStatusQueryParams,
-  config: Partial<RequestConfig> & { client?: typeof client } = {},
+  config: Partial<RequestConfig> & { client?: typeof fetch } = {},
 ) {
   const queryKey = findPetsByStatusQueryKey(params);
   return queryOptions<
@@ -67,21 +67,19 @@ export function useFindPetsByStatus<
     > & {
       client?: QueryClient;
     };
-    client?: Partial<RequestConfig> & { client?: typeof client };
+    client?: Partial<RequestConfig> & { client?: typeof fetch };
   } = {},
 ) {
-  const {
-    query: { client: queryClient, ...queryOptions } = {},
-    client: config = {},
-  } = options ?? {};
+  const { query: queryConfig = {}, client: config = {} } = options ?? {};
+  const { client: queryClient, ...queryOptions } = queryConfig;
   const queryKey = queryOptions?.queryKey ?? findPetsByStatusQueryKey(params);
 
   const query = useQuery(
     {
-      ...(findPetsByStatusQueryOptions(params, config) as unknown as QueryObserverOptions),
+      ...findPetsByStatusQueryOptions(params, config),
       queryKey,
-      ...(queryOptions as unknown as Omit<QueryObserverOptions, 'queryKey'>),
-    },
+      ...queryOptions,
+    } as unknown as QueryObserverOptions,
     queryClient,
   ) as UseQueryResult<TData, ResponseErrorConfig<FindPetsByStatus400>> & { queryKey: TQueryKey };
 

@@ -3,7 +3,7 @@
  * Do not edit manually.
  */
 
-import client from '@/shared/lib/client';
+import fetch from '@/shared/lib/client';
 import type { RequestConfig, ResponseErrorConfig } from '@/shared/lib/client';
 import type {
   UpdatePetWithForm405,
@@ -13,7 +13,8 @@ import type {
 } from '../../model/pet/UpdatePetWithForm.ts';
 
 function getUpdatePetWithFormUrl({ petId }: { petId: UpdatePetWithFormPathParams['petId'] }) {
-  return `/pet/${petId}` as const;
+  const res = { method: 'POST', url: `/pet/${petId}` as const };
+  return res;
 }
 
 /**
@@ -23,20 +24,19 @@ function getUpdatePetWithFormUrl({ petId }: { petId: UpdatePetWithFormPathParams
 export async function updatePetWithForm(
   { petId }: { petId: UpdatePetWithFormPathParams['petId'] },
   data?: UpdatePetWithFormMutationRequest,
-  config: Partial<RequestConfig<UpdatePetWithFormMutationRequest>> & {
-    client?: typeof client;
-  } = {},
+  config: Partial<RequestConfig<UpdatePetWithFormMutationRequest>> & { client?: typeof fetch } = {},
 ) {
-  const { client: request = client, ...requestConfig } = config;
+  const { client: request = fetch, ...requestConfig } = config;
 
+  const requestData = data;
   const res = await request<
     UpdatePetWithFormMutationResponse,
     ResponseErrorConfig<UpdatePetWithForm405>,
     UpdatePetWithFormMutationRequest
   >({
     method: 'POST',
-    url: getUpdatePetWithFormUrl({ petId }).toString(),
-    data,
+    url: getUpdatePetWithFormUrl({ petId }).url.toString(),
+    data: requestData,
     ...requestConfig,
     headers: { 'Content-Type': 'application/x-www-form-urlencoded', ...requestConfig.headers },
   });

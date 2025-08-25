@@ -3,7 +3,7 @@
  * Do not edit manually.
  */
 
-import client from '@/shared/lib/client';
+import fetch from '@/shared/lib/client';
 import type { RequestConfig, ResponseErrorConfig } from '@/shared/lib/client';
 import type {
   PlaceOrder400,
@@ -12,7 +12,8 @@ import type {
 } from '../../model/store/PlaceOrder.ts';
 
 function getPlaceOrderUrl() {
-  return '/store/order' as const;
+  const res = { method: 'POST', url: '/store/order' as const };
+  return res;
 }
 
 /**
@@ -21,18 +22,19 @@ function getPlaceOrderUrl() {
  */
 export async function placeOrder(
   data?: PlaceOrderMutationRequest,
-  config: Partial<RequestConfig<PlaceOrderMutationRequest>> & { client?: typeof client } = {},
+  config: Partial<RequestConfig<PlaceOrderMutationRequest>> & { client?: typeof fetch } = {},
 ) {
-  const { client: request = client, ...requestConfig } = config;
+  const { client: request = fetch, ...requestConfig } = config;
 
+  const requestData = data;
   const res = await request<
     PlaceOrderMutationResponse,
     ResponseErrorConfig<PlaceOrder400>,
     PlaceOrderMutationRequest
   >({
     method: 'POST',
-    url: getPlaceOrderUrl().toString(),
-    data,
+    url: getPlaceOrderUrl().url.toString(),
+    data: requestData,
     ...requestConfig,
   });
   return res.data;

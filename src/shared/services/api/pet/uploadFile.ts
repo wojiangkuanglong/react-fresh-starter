@@ -3,7 +3,7 @@
  * Do not edit manually.
  */
 
-import client from '@/shared/lib/client';
+import fetch from '@/shared/lib/client';
 import type { RequestConfig, ResponseErrorConfig } from '@/shared/lib/client';
 import type {
   UploadFileMutationRequest,
@@ -12,7 +12,8 @@ import type {
 } from '../../model/pet/UploadFile.ts';
 
 function getUploadFileUrl({ petId }: { petId: UploadFilePathParams['petId'] }) {
-  return `/pet/${petId}/uploadImage` as const;
+  const res = { method: 'POST', url: `/pet/${petId}/uploadImage` as const };
+  return res;
 }
 
 /**
@@ -22,19 +23,17 @@ function getUploadFileUrl({ petId }: { petId: UploadFilePathParams['petId'] }) {
 export async function uploadFile(
   { petId }: { petId: UploadFilePathParams['petId'] },
   data?: UploadFileMutationRequest,
-  config: Partial<RequestConfig<UploadFileMutationRequest>> & { client?: typeof client } = {},
+  config: Partial<RequestConfig<UploadFileMutationRequest>> & { client?: typeof fetch } = {},
 ) {
-  const { client: request = client, ...requestConfig } = config;
+  const { client: request = fetch, ...requestConfig } = config;
 
+  const requestData = data;
   const formData = new FormData();
-  if (data) {
-    Object.keys(data).forEach((key) => {
-      const value = data[key as keyof typeof data];
-      if (
-        typeof key === 'string' &&
-        (typeof value === 'string' || (value as Blob) instanceof Blob)
-      ) {
-        formData.append(key, value as unknown as string);
+  if (requestData) {
+    Object.keys(requestData).forEach((key) => {
+      const value = requestData[key as keyof typeof requestData];
+      if (typeof value === 'string' || (value as unknown) instanceof Blob) {
+        formData.append(key, value as unknown as string | Blob);
       }
     });
   }
@@ -44,7 +43,7 @@ export async function uploadFile(
     UploadFileMutationRequest
   >({
     method: 'POST',
-    url: getUploadFileUrl({ petId }).toString(),
+    url: getUploadFileUrl({ petId }).url.toString(),
     data: formData,
     ...requestConfig,
     headers: { 'Content-Type': 'multipart/form-data', ...requestConfig.headers },

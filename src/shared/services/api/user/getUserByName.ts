@@ -3,7 +3,7 @@
  * Do not edit manually.
  */
 
-import client from '@/shared/lib/client';
+import fetch from '@/shared/lib/client';
 import type { RequestConfig, ResponseErrorConfig } from '@/shared/lib/client';
 import type {
   GetUserByName400,
@@ -13,7 +13,8 @@ import type {
 } from '../../model/user/GetUserByName.ts';
 
 function getGetUserByNameUrl({ username }: { username: GetUserByNamePathParams['username'] }) {
-  return `/user/${username}` as const;
+  const res = { method: 'GET', url: `/user/${username}` as const };
+  return res;
 }
 
 /**
@@ -22,9 +23,9 @@ function getGetUserByNameUrl({ username }: { username: GetUserByNamePathParams['
  */
 export async function getUserByName(
   { username }: { username: GetUserByNamePathParams['username'] },
-  config: Partial<RequestConfig> & { client?: typeof client } = {},
+  config: Partial<RequestConfig> & { client?: typeof fetch } = {},
 ) {
-  const { client: request = client, ...requestConfig } = config;
+  const { client: request = fetch, ...requestConfig } = config;
 
   const res = await request<
     GetUserByNameQueryResponse,
@@ -32,7 +33,7 @@ export async function getUserByName(
     unknown
   >({
     method: 'GET',
-    url: getGetUserByNameUrl({ username }).toString(),
+    url: getGetUserByNameUrl({ username }).url.toString(),
     ...requestConfig,
   });
   return res.data;

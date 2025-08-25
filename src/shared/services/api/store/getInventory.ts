@@ -3,12 +3,13 @@
  * Do not edit manually.
  */
 
-import client from '@/shared/lib/client';
+import fetch from '@/shared/lib/client';
 import type { RequestConfig, ResponseErrorConfig } from '@/shared/lib/client';
 import type { GetInventoryQueryResponse } from '../../model/store/GetInventory.ts';
 
 function getGetInventoryUrl() {
-  return '/store/inventory' as const;
+  const res = { method: 'GET', url: '/store/inventory' as const };
+  return res;
 }
 
 /**
@@ -17,13 +18,13 @@ function getGetInventoryUrl() {
  * {@link /store/inventory}
  */
 export async function getInventory(
-  config: Partial<RequestConfig> & { client?: typeof client } = {},
+  config: Partial<RequestConfig> & { client?: typeof fetch } = {},
 ) {
-  const { client: request = client, ...requestConfig } = config;
+  const { client: request = fetch, ...requestConfig } = config;
 
   const res = await request<GetInventoryQueryResponse, ResponseErrorConfig<Error>, unknown>({
     method: 'GET',
-    url: getGetInventoryUrl().toString(),
+    url: getGetInventoryUrl().url.toString(),
     ...requestConfig,
   });
   return res.data;

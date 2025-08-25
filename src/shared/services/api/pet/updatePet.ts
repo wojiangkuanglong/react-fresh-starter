@@ -3,7 +3,7 @@
  * Do not edit manually.
  */
 
-import client from '@/shared/lib/client';
+import fetch from '@/shared/lib/client';
 import type { RequestConfig, ResponseErrorConfig } from '@/shared/lib/client';
 import type {
   UpdatePet400,
@@ -14,7 +14,8 @@ import type {
 } from '../../model/pet/UpdatePet.ts';
 
 function getUpdatePetUrl() {
-  return '/pet' as const;
+  const res = { method: 'PUT', url: '/pet' as const };
+  return res;
 }
 
 /**
@@ -23,18 +24,19 @@ function getUpdatePetUrl() {
  */
 export async function updatePet(
   data: UpdatePetMutationRequest,
-  config: Partial<RequestConfig<UpdatePetMutationRequest>> & { client?: typeof client } = {},
+  config: Partial<RequestConfig<UpdatePetMutationRequest>> & { client?: typeof fetch } = {},
 ) {
-  const { client: request = client, ...requestConfig } = config;
+  const { client: request = fetch, ...requestConfig } = config;
 
+  const requestData = data;
   const res = await request<
     UpdatePetMutationResponse,
     ResponseErrorConfig<UpdatePet400 | UpdatePet404 | UpdatePet405>,
     UpdatePetMutationRequest
   >({
     method: 'PUT',
-    url: getUpdatePetUrl().toString(),
-    data,
+    url: getUpdatePetUrl().url.toString(),
+    data: requestData,
     ...requestConfig,
   });
   return res.data;

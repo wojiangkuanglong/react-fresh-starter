@@ -22,7 +22,7 @@ export type DeleteOrder400 = unknown;
  */
 export type DeleteOrder404 = unknown;
 
-export type DeleteOrderMutationResponse = unknown;
+export type DeleteOrderMutationResponse = any;
 
 export type DeleteOrderMutation = {
   Response: any;

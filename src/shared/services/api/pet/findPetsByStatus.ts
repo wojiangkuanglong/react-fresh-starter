@@ -3,7 +3,7 @@
  * Do not edit manually.
  */
 
-import client from '@/shared/lib/client';
+import fetch from '@/shared/lib/client';
 import type { RequestConfig, ResponseErrorConfig } from '@/shared/lib/client';
 import type {
   FindPetsByStatus400,
@@ -12,7 +12,8 @@ import type {
 } from '../../model/pet/FindPetsByStatus.ts';
 
 function getFindPetsByStatusUrl() {
-  return '/pet/findByStatus' as const;
+  const res = { method: 'GET', url: '/pet/findByStatus' as const };
+  return res;
 }
 
 /**
@@ -22,9 +23,9 @@ function getFindPetsByStatusUrl() {
  */
 export async function findPetsByStatus(
   params: FindPetsByStatusQueryParams,
-  config: Partial<RequestConfig> & { client?: typeof client } = {},
+  config: Partial<RequestConfig> & { client?: typeof fetch } = {},
 ) {
-  const { client: request = client, ...requestConfig } = config;
+  const { client: request = fetch, ...requestConfig } = config;
 
   const res = await request<
     FindPetsByStatusQueryResponse,
@@ -32,7 +33,7 @@ export async function findPetsByStatus(
     unknown
   >({
     method: 'GET',
-    url: getFindPetsByStatusUrl().toString(),
+    url: getFindPetsByStatusUrl().url.toString(),
     params,
     ...requestConfig,
   });

@@ -21,7 +21,7 @@ export type DeleteUser400 = unknown;
  */
 export type DeleteUser404 = unknown;
 
-export type DeleteUserMutationResponse = unknown;
+export type DeleteUserMutationResponse = any;
 
 export type DeleteUserMutation = {
   Response: any;

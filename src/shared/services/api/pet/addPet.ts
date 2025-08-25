@@ -3,7 +3,7 @@
  * Do not edit manually.
  */
 
-import client from '@/shared/lib/client';
+import fetch from '@/shared/lib/client';
 import type { RequestConfig, ResponseErrorConfig } from '@/shared/lib/client';
 import type {
   AddPet405,
@@ -12,7 +12,8 @@ import type {
 } from '../../model/pet/AddPet.ts';
 
 function getAddPetUrl() {
-  return '/pet' as const;
+  const res = { method: 'POST', url: '/pet' as const };
+  return res;
 }
 
 /**
@@ -21,18 +22,19 @@ function getAddPetUrl() {
  */
 export async function addPet(
   data: AddPetMutationRequest,
-  config: Partial<RequestConfig<AddPetMutationRequest>> & { client?: typeof client } = {},
+  config: Partial<RequestConfig<AddPetMutationRequest>> & { client?: typeof fetch } = {},
 ) {
-  const { client: request = client, ...requestConfig } = config;
+  const { client: request = fetch, ...requestConfig } = config;
 
+  const requestData = data;
   const res = await request<
     AddPetMutationResponse,
     ResponseErrorConfig<AddPet405>,
     AddPetMutationRequest
   >({
     method: 'POST',
-    url: getAddPetUrl().toString(),
-    data,
+    url: getAddPetUrl().url.toString(),
+    data: requestData,
     ...requestConfig,
   });
   return res.data;

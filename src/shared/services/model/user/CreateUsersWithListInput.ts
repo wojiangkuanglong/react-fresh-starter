@@ -15,7 +15,7 @@ export type CreateUsersWithListInputError = unknown;
  */
 export type CreateUsersWithListInputMutationRequest = User[];
 
-export type CreateUsersWithListInputMutationResponse = unknown;
+export type CreateUsersWithListInputMutationResponse = any;
 
 export type CreateUsersWithListInputMutation = {
   Response: any;

@@ -28,7 +28,7 @@ export type DeletePet400 = unknown;
  */
 export type DeletePet404 = unknown;
 
-export type DeletePetMutationResponse = unknown;
+export type DeletePetMutationResponse = any;
 
 export type DeletePetMutation = {
   Response: any;

@@ -3,7 +3,7 @@
  * Do not edit manually.
  */
 
-import type client from '@kubb/plugin-client/clients/axios';
+import type fetch from '@kubb/plugin-client/clients/axios';
 import type { RequestConfig, ResponseErrorConfig } from '@kubb/plugin-client/clients/axios';
 import type { QueryClient, UseMutationOptions } from '@tanstack/react-query';
 import { useMutation } from '@tanstack/react-query';
@@ -33,7 +33,7 @@ export function useCreateUsersWithArrayInput<TContext>(
       TContext
     > & { client?: QueryClient };
     client?: Partial<RequestConfig<CreateUsersWithArrayInputMutationRequest>> & {
-      client?: typeof client;
+      client?: typeof fetch;
     };
   } = {},
 ) {

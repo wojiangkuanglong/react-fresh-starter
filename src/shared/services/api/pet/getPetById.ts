@@ -3,7 +3,7 @@
  * Do not edit manually.
  */
 
-import client from '@/shared/lib/client';
+import fetch from '@/shared/lib/client';
 import type { RequestConfig, ResponseErrorConfig } from '@/shared/lib/client';
 import type {
   GetPetById400,
@@ -13,7 +13,8 @@ import type {
 } from '../../model/pet/GetPetById.ts';
 
 function getGetPetByIdUrl({ petId }: { petId: GetPetByIdPathParams['petId'] }) {
-  return `/pet/${petId}` as const;
+  const res = { method: 'GET', url: `/pet/${petId}` as const };
+  return res;
 }
 
 /**
@@ -23,9 +24,9 @@ function getGetPetByIdUrl({ petId }: { petId: GetPetByIdPathParams['petId'] }) {
  */
 export async function getPetById(
   { petId }: { petId: GetPetByIdPathParams['petId'] },
-  config: Partial<RequestConfig> & { client?: typeof client } = {},
+  config: Partial<RequestConfig> & { client?: typeof fetch } = {},
 ) {
-  const { client: request = client, ...requestConfig } = config;
+  const { client: request = fetch, ...requestConfig } = config;
 
   const res = await request<
     GetPetByIdQueryResponse,
@@ -33,7 +34,7 @@ export async function getPetById(
     unknown
   >({
     method: 'GET',
-    url: getGetPetByIdUrl({ petId }).toString(),
+    url: getGetPetByIdUrl({ petId }).url.toString(),
     ...requestConfig,
   });
   return res.data;

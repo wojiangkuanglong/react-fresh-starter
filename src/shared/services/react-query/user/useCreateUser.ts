@@ -3,7 +3,7 @@
  * Do not edit manually.
  */
 
-import type client from '@kubb/plugin-client/clients/axios';
+import type fetch from '@kubb/plugin-client/clients/axios';
 import type { RequestConfig, ResponseErrorConfig } from '@kubb/plugin-client/clients/axios';
 import type { QueryClient, UseMutationOptions } from '@tanstack/react-query';
 import { useMutation } from '@tanstack/react-query';
@@ -32,7 +32,7 @@ export function useCreateUser<TContext>(
     > & {
       client?: QueryClient;
     };
-    client?: Partial<RequestConfig<CreateUserMutationRequest>> & { client?: typeof client };
+    client?: Partial<RequestConfig<CreateUserMutationRequest>> & { client?: typeof fetch };
   } = {},
 ) {
   const { mutation = {}, client: config = {} } = options ?? {};

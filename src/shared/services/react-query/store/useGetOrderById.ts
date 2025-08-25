@@ -3,7 +3,7 @@
  * Do not edit manually.
  */
 
-import type client from '@kubb/plugin-client/clients/axios';
+import type fetch from '@kubb/plugin-client/clients/axios';
 import type { RequestConfig, ResponseErrorConfig } from '@kubb/plugin-client/clients/axios';
 import type {
   QueryClient,
@@ -27,7 +27,7 @@ export type GetOrderByIdQueryKey = ReturnType<typeof getOrderByIdQueryKey>;
 
 export function getOrderByIdQueryOptions(
   { orderId }: { orderId: GetOrderByIdPathParams['orderId'] },
-  config: Partial<RequestConfig> & { client?: typeof client } = {},
+  config: Partial<RequestConfig> & { client?: typeof fetch } = {},
 ) {
   const queryKey = getOrderByIdQueryKey({ orderId });
   return queryOptions<
@@ -68,21 +68,19 @@ export function useGetOrderById<
     > & {
       client?: QueryClient;
     };
-    client?: Partial<RequestConfig> & { client?: typeof client };
+    client?: Partial<RequestConfig> & { client?: typeof fetch };
   } = {},
 ) {
-  const {
-    query: { client: queryClient, ...queryOptions } = {},
-    client: config = {},
-  } = options ?? {};
+  const { query: queryConfig = {}, client: config = {} } = options ?? {};
+  const { client: queryClient, ...queryOptions } = queryConfig;
   const queryKey = queryOptions?.queryKey ?? getOrderByIdQueryKey({ orderId });
 
   const query = useQuery(
     {
-      ...(getOrderByIdQueryOptions({ orderId }, config) as unknown as QueryObserverOptions),
+      ...getOrderByIdQueryOptions({ orderId }, config),
       queryKey,
-      ...(queryOptions as unknown as Omit<QueryObserverOptions, 'queryKey'>),
-    },
+      ...queryOptions,
+    } as unknown as QueryObserverOptions,
     queryClient,
   ) as UseQueryResult<TData, ResponseErrorConfig<GetOrderById400 | GetOrderById404>> & {
     queryKey: TQueryKey;

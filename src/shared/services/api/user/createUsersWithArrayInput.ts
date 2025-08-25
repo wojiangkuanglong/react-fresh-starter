@@ -3,7 +3,7 @@
  * Do not edit manually.
  */
 
-import client from '@/shared/lib/client';
+import fetch from '@/shared/lib/client';
 import type { RequestConfig, ResponseErrorConfig } from '@/shared/lib/client';
 import type {
   CreateUsersWithArrayInputMutationRequest,
@@ -11,7 +11,8 @@ import type {
 } from '../../model/user/CreateUsersWithArrayInput.ts';
 
 function getCreateUsersWithArrayInputUrl() {
-  return '/user/createWithArray' as const;
+  const res = { method: 'POST', url: '/user/createWithArray' as const };
+  return res;
 }
 
 /**
@@ -21,19 +22,20 @@ function getCreateUsersWithArrayInputUrl() {
 export async function createUsersWithArrayInput(
   data?: CreateUsersWithArrayInputMutationRequest,
   config: Partial<RequestConfig<CreateUsersWithArrayInputMutationRequest>> & {
-    client?: typeof client;
+    client?: typeof fetch;
   } = {},
 ) {
-  const { client: request = client, ...requestConfig } = config;
+  const { client: request = fetch, ...requestConfig } = config;
 
+  const requestData = data;
   const res = await request<
     CreateUsersWithArrayInputMutationResponse,
     ResponseErrorConfig<Error>,
     CreateUsersWithArrayInputMutationRequest
   >({
     method: 'POST',
-    url: getCreateUsersWithArrayInputUrl().toString(),
-    data,
+    url: getCreateUsersWithArrayInputUrl().url.toString(),
+    data: requestData,
     ...requestConfig,
   });
   return res.data;

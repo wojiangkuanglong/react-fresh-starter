@@ -3,7 +3,7 @@
  * Do not edit manually.
  */
 
-import type client from '@kubb/plugin-client/clients/axios';
+import type fetch from '@kubb/plugin-client/clients/axios';
 import type { RequestConfig, ResponseErrorConfig } from '@kubb/plugin-client/clients/axios';
 import type {
   QueryClient,
@@ -26,7 +26,7 @@ export type LoginUserQueryKey = ReturnType<typeof loginUserQueryKey>;
 
 export function loginUserQueryOptions(
   params: LoginUserQueryParams,
-  config: Partial<RequestConfig> & { client?: typeof client } = {},
+  config: Partial<RequestConfig> & { client?: typeof fetch } = {},
 ) {
   const queryKey = loginUserQueryKey(params);
   return queryOptions<
@@ -64,21 +64,19 @@ export function useLoginUser<
         TQueryKey
       >
     > & { client?: QueryClient };
-    client?: Partial<RequestConfig> & { client?: typeof client };
+    client?: Partial<RequestConfig> & { client?: typeof fetch };
   } = {},
 ) {
-  const {
-    query: { client: queryClient, ...queryOptions } = {},
-    client: config = {},
-  } = options ?? {};
+  const { query: queryConfig = {}, client: config = {} } = options ?? {};
+  const { client: queryClient, ...queryOptions } = queryConfig;
   const queryKey = queryOptions?.queryKey ?? loginUserQueryKey(params);
 
   const query = useQuery(
     {
-      ...(loginUserQueryOptions(params, config) as unknown as QueryObserverOptions),
+      ...loginUserQueryOptions(params, config),
       queryKey,
-      ...(queryOptions as unknown as Omit<QueryObserverOptions, 'queryKey'>),
-    },
+      ...queryOptions,
+    } as unknown as QueryObserverOptions,
     queryClient,
   ) as UseQueryResult<TData, ResponseErrorConfig<LoginUser400>> & { queryKey: TQueryKey };
 

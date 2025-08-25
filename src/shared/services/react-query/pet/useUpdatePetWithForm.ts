@@ -3,7 +3,7 @@
  * Do not edit manually.
  */
 
-import type client from '@kubb/plugin-client/clients/axios';
+import type fetch from '@kubb/plugin-client/clients/axios';
 import type { RequestConfig, ResponseErrorConfig } from '@kubb/plugin-client/clients/axios';
 import type { QueryClient, UseMutationOptions } from '@tanstack/react-query';
 import { useMutation } from '@tanstack/react-query';
@@ -15,7 +15,7 @@ import type {
   UpdatePetWithFormPathParams,
 } from '../../model/pet/UpdatePetWithForm.ts';
 
-export const updatePetWithFormMutationKey = () => [{ url: '/pet/{petId}' }] as const;
+export const updatePetWithFormMutationKey = () => [{ url: '/pet/:petId' }] as const;
 
 export type UpdatePetWithFormMutationKey = ReturnType<typeof updatePetWithFormMutationKey>;
 
@@ -31,7 +31,7 @@ export function useUpdatePetWithForm<TContext>(
       { petId: UpdatePetWithFormPathParams['petId']; data?: UpdatePetWithFormMutationRequest },
       TContext
     > & { client?: QueryClient };
-    client?: Partial<RequestConfig<UpdatePetWithFormMutationRequest>> & { client?: typeof client };
+    client?: Partial<RequestConfig<UpdatePetWithFormMutationRequest>> & { client?: typeof fetch };
   } = {},
 ) {
   const { mutation = {}, client: config = {} } = options ?? {};

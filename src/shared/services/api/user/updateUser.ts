@@ -3,7 +3,7 @@
  * Do not edit manually.
  */
 
-import client from '@/shared/lib/client';
+import fetch from '@/shared/lib/client';
 import type { RequestConfig, ResponseErrorConfig } from '@/shared/lib/client';
 import type {
   UpdateUser400,
@@ -14,7 +14,8 @@ import type {
 } from '../../model/user/UpdateUser.ts';
 
 function getUpdateUserUrl({ username }: { username: UpdateUserPathParams['username'] }) {
-  return `/user/${username}` as const;
+  const res = { method: 'PUT', url: `/user/${username}` as const };
+  return res;
 }
 
 /**
@@ -25,18 +26,19 @@ function getUpdateUserUrl({ username }: { username: UpdateUserPathParams['userna
 export async function updateUser(
   { username }: { username: UpdateUserPathParams['username'] },
   data?: UpdateUserMutationRequest,
-  config: Partial<RequestConfig<UpdateUserMutationRequest>> & { client?: typeof client } = {},
+  config: Partial<RequestConfig<UpdateUserMutationRequest>> & { client?: typeof fetch } = {},
 ) {
-  const { client: request = client, ...requestConfig } = config;
+  const { client: request = fetch, ...requestConfig } = config;
 
+  const requestData = data;
   const res = await request<
     UpdateUserMutationResponse,
     ResponseErrorConfig<UpdateUser400 | UpdateUser404>,
     UpdateUserMutationRequest
   >({
     method: 'PUT',
-    url: getUpdateUserUrl({ username }).toString(),
-    data,
+    url: getUpdateUserUrl({ username }).url.toString(),
+    data: requestData,
     ...requestConfig,
   });
   return res.data;

@@ -3,7 +3,7 @@
  * Do not edit manually.
  */
 
-import type client from '@kubb/plugin-client/clients/axios';
+import type fetch from '@kubb/plugin-client/clients/axios';
 import type { RequestConfig, ResponseErrorConfig } from '@kubb/plugin-client/clients/axios';
 import type {
   QueryClient,
@@ -20,7 +20,7 @@ export const getInventoryQueryKey = () => [{ url: '/store/inventory' }] as const
 export type GetInventoryQueryKey = ReturnType<typeof getInventoryQueryKey>;
 
 export function getInventoryQueryOptions(
-  config: Partial<RequestConfig> & { client?: typeof client } = {},
+  config: Partial<RequestConfig> & { client?: typeof fetch } = {},
 ) {
   const queryKey = getInventoryQueryKey();
   return queryOptions<
@@ -57,21 +57,19 @@ export function useGetInventory<
         TQueryKey
       >
     > & { client?: QueryClient };
-    client?: Partial<RequestConfig> & { client?: typeof client };
+    client?: Partial<RequestConfig> & { client?: typeof fetch };
   } = {},
 ) {
-  const {
-    query: { client: queryClient, ...queryOptions } = {},
-    client: config = {},
-  } = options ?? {};
+  const { query: queryConfig = {}, client: config = {} } = options ?? {};
+  const { client: queryClient, ...queryOptions } = queryConfig;
   const queryKey = queryOptions?.queryKey ?? getInventoryQueryKey();
 
   const query = useQuery(
     {
-      ...(getInventoryQueryOptions(config) as unknown as QueryObserverOptions),
+      ...getInventoryQueryOptions(config),
       queryKey,
-      ...(queryOptions as unknown as Omit<QueryObserverOptions, 'queryKey'>),
-    },
+      ...queryOptions,
+    } as unknown as QueryObserverOptions,
     queryClient,
   ) as UseQueryResult<TData, ResponseErrorConfig<Error>> & { queryKey: TQueryKey };
 

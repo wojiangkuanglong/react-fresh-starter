@@ -15,7 +15,7 @@ export type CreateUsersWithArrayInputError = unknown;
  */
 export type CreateUsersWithArrayInputMutationRequest = User[];
 
-export type CreateUsersWithArrayInputMutationResponse = unknown;
+export type CreateUsersWithArrayInputMutationResponse = any;
 
 export type CreateUsersWithArrayInputMutation = {
   Response: any;

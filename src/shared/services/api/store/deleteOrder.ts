@@ -3,7 +3,7 @@
  * Do not edit manually.
  */
 
-import client from '@/shared/lib/client';
+import fetch from '@/shared/lib/client';
 import type { RequestConfig, ResponseErrorConfig } from '@/shared/lib/client';
 import type {
   DeleteOrder400,
@@ -13,7 +13,8 @@ import type {
 } from '../../model/store/DeleteOrder.ts';
 
 function getDeleteOrderUrl({ orderId }: { orderId: DeleteOrderPathParams['orderId'] }) {
-  return `/store/order/${orderId}` as const;
+  const res = { method: 'DELETE', url: `/store/order/${orderId}` as const };
+  return res;
 }
 
 /**
@@ -23,9 +24,9 @@ function getDeleteOrderUrl({ orderId }: { orderId: DeleteOrderPathParams['orderI
  */
 export async function deleteOrder(
   { orderId }: { orderId: DeleteOrderPathParams['orderId'] },
-  config: Partial<RequestConfig> & { client?: typeof client } = {},
+  config: Partial<RequestConfig> & { client?: typeof fetch } = {},
 ) {
-  const { client: request = client, ...requestConfig } = config;
+  const { client: request = fetch, ...requestConfig } = config;
 
   const res = await request<
     DeleteOrderMutationResponse,
@@ -33,7 +34,7 @@ export async function deleteOrder(
     unknown
   >({
     method: 'DELETE',
-    url: getDeleteOrderUrl({ orderId }).toString(),
+    url: getDeleteOrderUrl({ orderId }).url.toString(),
     ...requestConfig,
   });
   return res.data;

@@ -3,7 +3,7 @@
  * Do not edit manually.
  */
 
-import client from '@/shared/lib/client';
+import fetch from '@/shared/lib/client';
 import type { RequestConfig, ResponseErrorConfig } from '@/shared/lib/client';
 import type {
   CreateUsersWithListInputMutationRequest,
@@ -11,7 +11,8 @@ import type {
 } from '../../model/user/CreateUsersWithListInput.ts';
 
 function getCreateUsersWithListInputUrl() {
-  return '/user/createWithList' as const;
+  const res = { method: 'POST', url: '/user/createWithList' as const };
+  return res;
 }
 
 /**
@@ -21,19 +22,20 @@ function getCreateUsersWithListInputUrl() {
 export async function createUsersWithListInput(
   data?: CreateUsersWithListInputMutationRequest,
   config: Partial<RequestConfig<CreateUsersWithListInputMutationRequest>> & {
-    client?: typeof client;
+    client?: typeof fetch;
   } = {},
 ) {
-  const { client: request = client, ...requestConfig } = config;
+  const { client: request = fetch, ...requestConfig } = config;
 
+  const requestData = data;
   const res = await request<
     CreateUsersWithListInputMutationResponse,
     ResponseErrorConfig<Error>,
     CreateUsersWithListInputMutationRequest
   >({
     method: 'POST',
-    url: getCreateUsersWithListInputUrl().toString(),
-    data,
+    url: getCreateUsersWithListInputUrl().url.toString(),
+    data: requestData,
     ...requestConfig,
   });
   return res.data;

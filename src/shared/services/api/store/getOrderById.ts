@@ -3,7 +3,7 @@
  * Do not edit manually.
  */
 
-import client from '@/shared/lib/client';
+import fetch from '@/shared/lib/client';
 import type { RequestConfig, ResponseErrorConfig } from '@/shared/lib/client';
 import type {
   GetOrderById400,
@@ -13,7 +13,8 @@ import type {
 } from '../../model/store/GetOrderById.ts';
 
 function getGetOrderByIdUrl({ orderId }: { orderId: GetOrderByIdPathParams['orderId'] }) {
-  return `/store/order/${orderId}` as const;
+  const res = { method: 'GET', url: `/store/order/${orderId}` as const };
+  return res;
 }
 
 /**
@@ -23,9 +24,9 @@ function getGetOrderByIdUrl({ orderId }: { orderId: GetOrderByIdPathParams['orde
  */
 export async function getOrderById(
   { orderId }: { orderId: GetOrderByIdPathParams['orderId'] },
-  config: Partial<RequestConfig> & { client?: typeof client } = {},
+  config: Partial<RequestConfig> & { client?: typeof fetch } = {},
 ) {
-  const { client: request = client, ...requestConfig } = config;
+  const { client: request = fetch, ...requestConfig } = config;
 
   const res = await request<
     GetOrderByIdQueryResponse,
@@ -33,7 +34,7 @@ export async function getOrderById(
     unknown
   >({
     method: 'GET',
-    url: getGetOrderByIdUrl({ orderId }).toString(),
+    url: getGetOrderByIdUrl({ orderId }).url.toString(),
     ...requestConfig,
   });
   return res.data;

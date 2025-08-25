@@ -3,7 +3,7 @@
  * Do not edit manually.
  */
 
-import client from '@/shared/lib/client';
+import fetch from '@/shared/lib/client';
 import type { RequestConfig, ResponseErrorConfig } from '@/shared/lib/client';
 import type {
   DeleteUser400,
@@ -13,7 +13,8 @@ import type {
 } from '../../model/user/DeleteUser.ts';
 
 function getDeleteUserUrl({ username }: { username: DeleteUserPathParams['username'] }) {
-  return `/user/${username}` as const;
+  const res = { method: 'DELETE', url: `/user/${username}` as const };
+  return res;
 }
 
 /**
@@ -23,9 +24,9 @@ function getDeleteUserUrl({ username }: { username: DeleteUserPathParams['userna
  */
 export async function deleteUser(
   { username }: { username: DeleteUserPathParams['username'] },
-  config: Partial<RequestConfig> & { client?: typeof client } = {},
+  config: Partial<RequestConfig> & { client?: typeof fetch } = {},
 ) {
-  const { client: request = client, ...requestConfig } = config;
+  const { client: request = fetch, ...requestConfig } = config;
 
   const res = await request<
     DeleteUserMutationResponse,
@@ -33,7 +34,7 @@ export async function deleteUser(
     unknown
   >({
     method: 'DELETE',
-    url: getDeleteUserUrl({ username }).toString(),
+    url: getDeleteUserUrl({ username }).url.toString(),
     ...requestConfig,
   });
   return res.data;

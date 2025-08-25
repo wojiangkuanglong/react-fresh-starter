@@ -3,7 +3,7 @@
  * Do not edit manually.
  */
 
-import type client from '@kubb/plugin-client/clients/axios';
+import type fetch from '@kubb/plugin-client/clients/axios';
 import type { RequestConfig, ResponseErrorConfig } from '@kubb/plugin-client/clients/axios';
 import type { QueryClient, UseMutationOptions } from '@tanstack/react-query';
 import { useMutation } from '@tanstack/react-query';
@@ -14,7 +14,7 @@ import type {
   UploadFilePathParams,
 } from '../../model/pet/UploadFile.ts';
 
-export const uploadFileMutationKey = () => [{ url: '/pet/{petId}/uploadImage' }] as const;
+export const uploadFileMutationKey = () => [{ url: '/pet/:petId/uploadImage' }] as const;
 
 export type UploadFileMutationKey = ReturnType<typeof uploadFileMutationKey>;
 
@@ -30,7 +30,7 @@ export function useUploadFile<TContext>(
       { petId: UploadFilePathParams['petId']; data?: UploadFileMutationRequest },
       TContext
     > & { client?: QueryClient };
-    client?: Partial<RequestConfig<UploadFileMutationRequest>> & { client?: typeof client };
+    client?: Partial<RequestConfig<UploadFileMutationRequest>> & { client?: typeof fetch };
   } = {},
 ) {
   const { mutation = {}, client: config = {} } = options ?? {};
