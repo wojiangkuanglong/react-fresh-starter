@@ -6,6 +6,7 @@ import Backend from 'i18next-http-backend';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { initReactI18next } from 'react-i18next';
+import '@ant-design/v5-patch-for-react-19';
 
 import './index.css';
 
