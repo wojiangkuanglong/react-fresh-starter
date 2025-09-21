@@ -1,6 +1,6 @@
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { RouteComponent } from '../src/routes/markdown';
+import { Markdown } from './Markdown';
 
 vi.mock('streamdown', () => ({
   Streamdown: ({ children }: { children: string }) => (
@@ -8,7 +8,7 @@ vi.mock('streamdown', () => ({
   ),
 }));
 
-describe('Markdown RouteComponent', () => {
+describe('Markdown', () => {
   beforeEach(() => {
     vi.useFakeTimers();
   });
@@ -19,7 +19,7 @@ describe('Markdown RouteComponent', () => {
 
   describe('基础渲染测试', () => {
     it('应该正确渲染组件', () => {
-      render(<RouteComponent />);
+      render(<Markdown />);
 
       expect(screen.getByText('流式渲染控制面板')).toBeInTheDocument();
       expect(screen.getByText('开始渲染')).toBeInTheDocument();
@@ -30,7 +30,7 @@ describe('Markdown RouteComponent', () => {
     });
 
     it('应该显示初始状态', () => {
-      render(<RouteComponent />);
+      render(<Markdown />);
       expect(screen.getByText('开始渲染')).toBeInTheDocument();
       expect(screen.getByText('暂停')).toBeDisabled();
       expect(screen.getByText('重置')).not.toBeDisabled();
@@ -44,7 +44,7 @@ describe('Markdown RouteComponent', () => {
     });
 
     it('应该渲染Streamdown组件', () => {
-      render(<RouteComponent />);
+      render(<Markdown />);
 
       const streamdownContent = screen.getByTestId('streamdown-content');
       expect(streamdownContent).toBeInTheDocument();
@@ -54,7 +54,7 @@ describe('Markdown RouteComponent', () => {
 
   describe('按钮交互测试', () => {
     it('点击开始渲染按钮应该开始流式渲染', () => {
-      render(<RouteComponent />);
+      render(<Markdown />);
 
       const startButton = screen.getByText('开始渲染');
       fireEvent.click(startButton);
@@ -65,7 +65,7 @@ describe('Markdown RouteComponent', () => {
     });
 
     it('点击暂停按钮应该暂停渲染', () => {
-      render(<RouteComponent />);
+      render(<Markdown />);
 
       const startButton = screen.getByText('开始渲染');
       const pauseButton = screen.getByText('暂停');
@@ -79,7 +79,7 @@ describe('Markdown RouteComponent', () => {
     });
 
     it('点击重置按钮应该重置所有状态', () => {
-      render(<RouteComponent />);
+      render(<Markdown />);
 
       const startButton = screen.getByText('开始渲染');
       const resetButton = screen.getByText('重置');
@@ -98,7 +98,7 @@ describe('Markdown RouteComponent', () => {
     });
 
     it('流式渲染应该逐步显示内容', () => {
-      render(<RouteComponent />);
+      render(<Markdown />);
 
       const startButton = screen.getByText('开始渲染');
       fireEvent.click(startButton);
@@ -122,7 +122,7 @@ describe('Markdown RouteComponent', () => {
     });
 
     it('显示全部按钮应该立即显示所有内容', () => {
-      render(<RouteComponent />);
+      render(<Markdown />);
 
       const showAllButton = screen.getByText('显示全部');
       fireEvent.click(showAllButton);
