@@ -71,7 +71,7 @@
 克隆项目
 
 ```bash
-  git clone https://github.com/wojiangkuanglong/react-fresh-starter.git
+  git clone git@git.corp.kuaishou.com:web-infra/templates/react-template.git
 ```
 
 进入项目目录
@@ -83,7 +83,7 @@
 安装依赖
 
 ```bash
-  # node ^22.x.x，pnpm ^10.x.x
+  # node ^22.x.x，pnpm ^9.x.x
   pnpm install
 ```
 
@@ -105,10 +105,9 @@
 - [项目结构规范](https://feature-sliced.github.io/documentation/)
   ![](https://w1.kskwai.com/udata/pkg/team-corp-all/metrics-platform/visual_schema-e826067f573946613dcdc76e3f585082.jpg)
 
-### 根据后端 swagger 生成前端 ts model、api、react-query 代码
-
+### 根据后端swagger生成前端ts model、api、react-query代码
 ```bash
-  pnpm api
+  pnpm generate
 ```
 
 ### :wave: 协作调试
@@ -136,3 +135,4 @@
 3. 运行 pnpm run release 自动更新 CHANGELOG 并基于提交创建标签。
 4. 执行 git push --follow-tags origin publish。
 5. 在 Gitlab 上从 'publish' 向 'master' 发起 MR。
+

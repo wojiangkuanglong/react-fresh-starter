@@ -11,8 +11,8 @@ import type {
   AddPetMutationResponse,
 } from '../../model/pet/AddPet.ts';
 
-function getAddPetUrl() {
-  const res = { method: 'POST', url: '/pet' as const };
+export function getAddPetUrl() {
+  const res = { method: 'POST', url: `/pet` as const };
   return res;
 }
 
@@ -27,15 +27,11 @@ export async function addPet(
   const { client: request = fetch, ...requestConfig } = config;
 
   const requestData = data;
+
   const res = await request<
     AddPetMutationResponse,
     ResponseErrorConfig<AddPet405>,
     AddPetMutationRequest
-  >({
-    method: 'POST',
-    url: getAddPetUrl().url.toString(),
-    data: requestData,
-    ...requestConfig,
-  });
+  >({ method: 'POST', url: getAddPetUrl().url.toString(), data: requestData, ...requestConfig });
   return res.data;
 }

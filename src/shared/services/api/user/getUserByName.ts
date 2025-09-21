@@ -12,7 +12,11 @@ import type {
   GetUserByNameQueryResponse,
 } from '../../model/user/GetUserByName.ts';
 
-function getGetUserByNameUrl({ username }: { username: GetUserByNamePathParams['username'] }) {
+export function getGetUserByNameUrl({
+  username,
+}: {
+  username: GetUserByNamePathParams['username'];
+}) {
   const res = { method: 'GET', url: `/user/${username}` as const };
   return res;
 }
@@ -31,10 +35,6 @@ export async function getUserByName(
     GetUserByNameQueryResponse,
     ResponseErrorConfig<GetUserByName400 | GetUserByName404>,
     unknown
-  >({
-    method: 'GET',
-    url: getGetUserByNameUrl({ username }).url.toString(),
-    ...requestConfig,
-  });
+  >({ method: 'GET', url: getGetUserByNameUrl({ username }).url.toString(), ...requestConfig });
   return res.data;
 }

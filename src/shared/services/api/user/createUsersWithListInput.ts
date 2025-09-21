@@ -10,8 +10,8 @@ import type {
   CreateUsersWithListInputMutationResponse,
 } from '../../model/user/CreateUsersWithListInput.ts';
 
-function getCreateUsersWithListInputUrl() {
-  const res = { method: 'POST', url: '/user/createWithList' as const };
+export function getCreateUsersWithListInputUrl() {
+  const res = { method: 'POST', url: `/user/createWithList` as const };
   return res;
 }
 
@@ -28,6 +28,7 @@ export async function createUsersWithListInput(
   const { client: request = fetch, ...requestConfig } = config;
 
   const requestData = data;
+
   const res = await request<
     CreateUsersWithListInputMutationResponse,
     ResponseErrorConfig<Error>,

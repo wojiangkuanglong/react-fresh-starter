@@ -7,8 +7,8 @@ import type { RequestConfig, ResponseErrorConfig } from '@/shared/lib/client';
 import fetch from '@/shared/lib/client';
 import type { LogoutUserQueryResponse } from '../../model/user/LogoutUser.ts';
 
-function getLogoutUserUrl() {
-  const res = { method: 'GET', url: '/user/logout' as const };
+export function getLogoutUserUrl() {
+  const res = { method: 'GET', url: `/user/logout` as const };
   return res;
 }
 

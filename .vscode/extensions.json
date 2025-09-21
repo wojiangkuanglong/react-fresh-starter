@@ -1,9 +1,11 @@
 {
   "recommendations": [
     "EditorConfig.EditorConfig",
-    "natqe.reload",
     "bradlc.vscode-tailwindcss",
     "biomejs.biome-vscode"
   ],
-  "unwantedRecommendations": []
+  "unwantedRecommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode"
+  ]
 }

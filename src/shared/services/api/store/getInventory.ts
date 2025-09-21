@@ -7,8 +7,8 @@ import type { RequestConfig, ResponseErrorConfig } from '@/shared/lib/client';
 import fetch from '@/shared/lib/client';
 import type { GetInventoryQueryResponse } from '../../model/store/GetInventory.ts';
 
-function getGetInventoryUrl() {
-  const res = { method: 'GET', url: '/store/inventory' as const };
+export function getGetInventoryUrl() {
+  const res = { method: 'GET', url: `/store/inventory` as const };
   return res;
 }
 

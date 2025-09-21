@@ -11,8 +11,8 @@ import type {
   FindPetsByTagsQueryResponse,
 } from '../../model/pet/FindPetsByTags.ts';
 
-function getFindPetsByTagsUrl() {
-  const res = { method: 'GET', url: '/pet/findByTags' as const };
+export function getFindPetsByTagsUrl() {
+  const res = { method: 'GET', url: `/pet/findByTags` as const };
   return res;
 }
 
@@ -32,11 +32,6 @@ export async function findPetsByTags(
     FindPetsByTagsQueryResponse,
     ResponseErrorConfig<FindPetsByTags400>,
     unknown
-  >({
-    method: 'GET',
-    url: getFindPetsByTagsUrl().url.toString(),
-    params,
-    ...requestConfig,
-  });
+  >({ method: 'GET', url: getFindPetsByTagsUrl().url.toString(), params, ...requestConfig });
   return res.data;
 }

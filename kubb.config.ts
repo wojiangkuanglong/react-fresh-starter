@@ -2,7 +2,7 @@ import { defineConfig } from '@kubb/core';
 import { pluginOas } from '@kubb/plugin-oas';
 import { pluginTs } from '@kubb/plugin-ts';
 import { pluginClient } from '@kubb/plugin-client';
-import { pluginReactQuery } from '@kubb/plugin-react-query';
+import { pluginRedoc } from '@kubb/plugin-redoc';
 
 export default defineConfig({
   input: {
@@ -33,6 +33,7 @@ export default defineConfig({
     pluginClient({
       output: {
         path: './api',
+        barrelType: false
       },
       importPath: '@/shared/lib/client',
       group: {
@@ -41,24 +42,13 @@ export default defineConfig({
       },
       parser: 'client',
       pathParamsType: "object",
+      urlType: 'export',
+      operations: true
     }),
-    pluginReactQuery({
+    pluginRedoc({
       output: {
-        path: './react-query',
+        path: '../../../public/docs/index.html',
       },
-      group: {
-        type: 'tag',
-        name: ({ group }) => `${group}`,
-      },
-      pathParamsType: "object",
-      mutation: {
-        methods: ['post'],
-      },
-      query: {
-        methods: ['get'],
-        importPath: "@tanstack/react-query"
-      },
-      suspense: false
     }),
   ],
   hooks: {

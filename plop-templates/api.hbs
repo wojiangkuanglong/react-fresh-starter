@@ -1,0 +1,43 @@
+import { useMutation, useQuery } from '@tanstack/react-query';
+import { queryClient } from '@/shared/lib/reactQuery';
+import {
+  getLoginUserInfoUsingGETUrl,
+  loginUserInfoUsingGET,
+} from '@/shared/services/api/user/loginUserInfoUsingGET';
+import { saveHabitsUsingPOST1 } from '@/shared/services/api/userHabits/saveHabitsUsingPOST1';
+import type { SaveHabitsUsingPOST1MutationRequest } from '@/shared/services/model/userHabits/SaveHabitsUsingPOST1';
+
+// get demo
+export const useGet = (enabled?: boolean) => {
+  const { isLoading, status, data, error } = useQuery({
+    queryKey: [`${getLoginUserInfoUsingGETUrl().method}-${getLoginUserInfoUsingGETUrl().url}`],
+    queryFn: () => loginUserInfoUsingGET(),
+    select: (data) => data.result,
+    enabled,
+  });
+  return {
+    isLoading,
+    status,
+    data,
+    error,
+  };
+};
+
+// post demo
+export const usePost = () => {
+  return useMutation({
+    mutationFn: (params: SaveHabitsUsingPOST1MutationRequest) => saveHabitsUsingPOST1(params),
+    onError: (err) => {
+      console.error(`${err}`);
+    },
+    onSuccess: (data) => {
+      if (data.code !== 0) {
+        console.error(data.message);
+      } else {
+        queryClient.invalidateQueries({
+          queryKey: [getLoginUserInfoUsingGETUrl().url],
+        });
+      }
+    },
+  });
+};

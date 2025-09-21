@@ -11,8 +11,8 @@ import type {
   FindPetsByStatusQueryResponse,
 } from '../../model/pet/FindPetsByStatus.ts';
 
-function getFindPetsByStatusUrl() {
-  const res = { method: 'GET', url: '/pet/findByStatus' as const };
+export function getFindPetsByStatusUrl() {
+  const res = { method: 'GET', url: `/pet/findByStatus` as const };
   return res;
 }
 
@@ -31,11 +31,6 @@ export async function findPetsByStatus(
     FindPetsByStatusQueryResponse,
     ResponseErrorConfig<FindPetsByStatus400>,
     unknown
-  >({
-    method: 'GET',
-    url: getFindPetsByStatusUrl().url.toString(),
-    params,
-    ...requestConfig,
-  });
+  >({ method: 'GET', url: getFindPetsByStatusUrl().url.toString(), params, ...requestConfig });
   return res.data;
 }

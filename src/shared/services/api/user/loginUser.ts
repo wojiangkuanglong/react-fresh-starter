@@ -11,8 +11,8 @@ import type {
   LoginUserQueryResponse,
 } from '../../model/user/LoginUser.ts';
 
-function getLoginUserUrl() {
-  const res = { method: 'GET', url: '/user/login' as const };
+export function getLoginUserUrl() {
+  const res = { method: 'GET', url: `/user/login` as const };
   return res;
 }
 

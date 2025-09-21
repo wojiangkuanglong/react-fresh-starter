@@ -12,7 +12,7 @@ import type {
   GetPetByIdQueryResponse,
 } from '../../model/pet/GetPetById.ts';
 
-function getGetPetByIdUrl({ petId }: { petId: GetPetByIdPathParams['petId'] }) {
+export function getGetPetByIdUrl({ petId }: { petId: GetPetByIdPathParams['petId'] }) {
   const res = { method: 'GET', url: `/pet/${petId}` as const };
   return res;
 }
@@ -32,10 +32,6 @@ export async function getPetById(
     GetPetByIdQueryResponse,
     ResponseErrorConfig<GetPetById400 | GetPetById404>,
     unknown
-  >({
-    method: 'GET',
-    url: getGetPetByIdUrl({ petId }).url.toString(),
-    ...requestConfig,
-  });
+  >({ method: 'GET', url: getGetPetByIdUrl({ petId }).url.toString(), ...requestConfig });
   return res.data;
 }

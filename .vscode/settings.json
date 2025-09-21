@@ -1,4 +1,5 @@
 {
+  "npm.packageManager": "pnpm",
   "typescript.tsdk": "node_modules/typescript/lib",
   "editor.formatOnSave": true,
   "[javascript]": {
@@ -13,38 +14,15 @@
   "[typescriptreact]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
-  "todo-tree.highlights.customHighlight": {
-    "ALERT": {
-      "icon": "alert",
-      "type": "line",
-      "foreground": "#FF0000"
-    },
-    "FIXME": {
-      "icon": "alert",
-      "type": "line",
-      "foreground": "#ff4d4f"
-    },
-    "IMP": {
-      "icon": "stop",
-      "type": "line",
-      "foreground": "#2cfa00"
-    },
-    "Q": {
-      "icon": "unverified",
-      "type": "line",
-      "foreground": "#1890ff"
-    },
-    "TODO": {
-      "icon": "check",
-      "type": "line",
-      "foreground": "#FF8C00"
-    }
+  "[handlebars]": {
+    "editor.defaultFormatter": "biomejs.biome"
   },
-  "todo-tree.regex.regex": "((//|#|<!--|;|/\\*)\\s@?($TAGS):|^\\s*- \\[ \\])",
   "editor.codeActionsOnSave": {
-    "quickfix.biome": "explicit"
+    "quickfix.biome": "explicit",
+    "source.organizeImports.biome": "explicit"
   },
-  "commentTranslate.hover.enabled": true,
-  "commentTranslate.targetLanguage": "zh-CN",
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
   "workbench.activityBar.orientation": "vertical"
 }

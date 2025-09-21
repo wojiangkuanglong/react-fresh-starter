@@ -12,7 +12,7 @@ import type {
   DeleteOrderPathParams,
 } from '../../model/store/DeleteOrder.ts';
 
-function getDeleteOrderUrl({ orderId }: { orderId: DeleteOrderPathParams['orderId'] }) {
+export function getDeleteOrderUrl({ orderId }: { orderId: DeleteOrderPathParams['orderId'] }) {
   const res = { method: 'DELETE', url: `/store/order/${orderId}` as const };
   return res;
 }
@@ -32,10 +32,6 @@ export async function deleteOrder(
     DeleteOrderMutationResponse,
     ResponseErrorConfig<DeleteOrder400 | DeleteOrder404>,
     unknown
-  >({
-    method: 'DELETE',
-    url: getDeleteOrderUrl({ orderId }).url.toString(),
-    ...requestConfig,
-  });
+  >({ method: 'DELETE', url: getDeleteOrderUrl({ orderId }).url.toString(), ...requestConfig });
   return res.data;
 }

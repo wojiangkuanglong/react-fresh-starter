@@ -10,8 +10,8 @@ import type {
   CreateUserMutationResponse,
 } from '../../model/user/CreateUser.ts';
 
-function getCreateUserUrl() {
-  const res = { method: 'POST', url: '/user' as const };
+export function getCreateUserUrl() {
+  const res = { method: 'POST', url: `/user` as const };
   return res;
 }
 
@@ -27,6 +27,7 @@ export async function createUser(
   const { client: request = fetch, ...requestConfig } = config;
 
   const requestData = data;
+
   const res = await request<
     CreateUserMutationResponse,
     ResponseErrorConfig<Error>,

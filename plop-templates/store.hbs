@@ -1,0 +1,19 @@
+import { create } from 'zustand';
+import { immer } from 'zustand/middleware/immer';
+
+type {{pascalCase name}}State = {
+}
+
+type {{pascalCase name}}Actions = {
+  reset: () => void;
+}
+
+const initialState: {{pascalCase name}}State = {
+};
+
+export const use{{pascalCase name}}Store = create(
+  immer<{{pascalCase name}}State & {{pascalCase name}}Actions>((set) => ({
+    ...initialState,
+    reset: () => set(initialState),
+  })),
+);

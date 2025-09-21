@@ -6,7 +6,8 @@ const config: KnipConfig = {
   ignore: [
     '**/*.d.ts',
     'src/shared/lib/client.ts',
-    'src/shared/services/**/*.ts'
+    'src/shared/services/**/*.ts',
+    'src/routeTree.gen.ts'
   ],
   ignoreBinaries: ['only-allow'],
   rules: {

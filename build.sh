@@ -1,5 +1,4 @@
 set -e
-rm -rf ./node_modules/.cache
-rm -rf ./node_modules/.pnpm
-npm i -g pnpm@10.x.x
+npm i -g pnpm@10.15.0
+pnpm install --registry https://npm.corp.kuaishou.com
 pnpm run build

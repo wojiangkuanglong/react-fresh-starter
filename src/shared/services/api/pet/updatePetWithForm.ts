@@ -12,7 +12,11 @@ import type {
   UpdatePetWithFormPathParams,
 } from '../../model/pet/UpdatePetWithForm.ts';
 
-function getUpdatePetWithFormUrl({ petId }: { petId: UpdatePetWithFormPathParams['petId'] }) {
+export function getUpdatePetWithFormUrl({
+  petId,
+}: {
+  petId: UpdatePetWithFormPathParams['petId'];
+}) {
   const res = { method: 'POST', url: `/pet/${petId}` as const };
   return res;
 }
@@ -29,6 +33,7 @@ export async function updatePetWithForm(
   const { client: request = fetch, ...requestConfig } = config;
 
   const requestData = data;
+
   const res = await request<
     UpdatePetWithFormMutationResponse,
     ResponseErrorConfig<UpdatePetWithForm405>,

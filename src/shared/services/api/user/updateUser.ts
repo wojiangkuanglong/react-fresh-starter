@@ -13,7 +13,7 @@ import type {
   UpdateUserPathParams,
 } from '../../model/user/UpdateUser.ts';
 
-function getUpdateUserUrl({ username }: { username: UpdateUserPathParams['username'] }) {
+export function getUpdateUserUrl({ username }: { username: UpdateUserPathParams['username'] }) {
   const res = { method: 'PUT', url: `/user/${username}` as const };
   return res;
 }
@@ -31,6 +31,7 @@ export async function updateUser(
   const { client: request = fetch, ...requestConfig } = config;
 
   const requestData = data;
+
   const res = await request<
     UpdateUserMutationResponse,
     ResponseErrorConfig<UpdateUser400 | UpdateUser404>,

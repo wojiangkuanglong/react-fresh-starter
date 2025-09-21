@@ -13,8 +13,8 @@ import type {
   UpdatePetMutationResponse,
 } from '../../model/pet/UpdatePet.ts';
 
-function getUpdatePetUrl() {
-  const res = { method: 'PUT', url: '/pet' as const };
+export function getUpdatePetUrl() {
+  const res = { method: 'PUT', url: `/pet` as const };
   return res;
 }
 
@@ -29,15 +29,11 @@ export async function updatePet(
   const { client: request = fetch, ...requestConfig } = config;
 
   const requestData = data;
+
   const res = await request<
     UpdatePetMutationResponse,
     ResponseErrorConfig<UpdatePet400 | UpdatePet404 | UpdatePet405>,
     UpdatePetMutationRequest
-  >({
-    method: 'PUT',
-    url: getUpdatePetUrl().url.toString(),
-    data: requestData,
-    ...requestConfig,
-  });
+  >({ method: 'PUT', url: getUpdatePetUrl().url.toString(), data: requestData, ...requestConfig });
   return res.data;
 }

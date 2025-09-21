@@ -1,0 +1,21 @@
+import { cn } from '@/shared/utils/tailwindcss';
+{{#if withStore}}
+import { use{{pascalCase name}}Store } from '../model/use{{pascalCase name}}Store';
+{{/if}}
+
+interface {{pascalCase name}}Props {
+  className?: string;
+}
+
+export const {{pascalCase name}} = (props: {{pascalCase name}}Props) => {
+  const { className } = props;
+  {{#if withStore}}
+  const { reset } = use{{pascalCase name}}Store();
+  {{/if}}
+
+  return (
+    <div className={cn('{{pascalCase name}}', className)}>
+      {{pascalCase name}}
+    </div>
+  );
+};

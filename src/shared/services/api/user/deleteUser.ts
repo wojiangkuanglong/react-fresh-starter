@@ -12,7 +12,7 @@ import type {
   DeleteUserPathParams,
 } from '../../model/user/DeleteUser.ts';
 
-function getDeleteUserUrl({ username }: { username: DeleteUserPathParams['username'] }) {
+export function getDeleteUserUrl({ username }: { username: DeleteUserPathParams['username'] }) {
   const res = { method: 'DELETE', url: `/user/${username}` as const };
   return res;
 }
@@ -32,10 +32,6 @@ export async function deleteUser(
     DeleteUserMutationResponse,
     ResponseErrorConfig<DeleteUser400 | DeleteUser404>,
     unknown
-  >({
-    method: 'DELETE',
-    url: getDeleteUserUrl({ username }).url.toString(),
-    ...requestConfig,
-  });
+  >({ method: 'DELETE', url: getDeleteUserUrl({ username }).url.toString(), ...requestConfig });
   return res.data;
 }

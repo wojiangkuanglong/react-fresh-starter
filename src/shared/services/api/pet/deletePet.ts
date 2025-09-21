@@ -13,7 +13,7 @@ import type {
   DeletePetPathParams,
 } from '../../model/pet/DeletePet.ts';
 
-function getDeletePetUrl({ petId }: { petId: DeletePetPathParams['petId'] }) {
+export function getDeletePetUrl({ petId }: { petId: DeletePetPathParams['petId'] }) {
   const res = { method: 'DELETE', url: `/pet/${petId}` as const };
   return res;
 }

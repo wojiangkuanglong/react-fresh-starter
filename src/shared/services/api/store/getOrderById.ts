@@ -12,7 +12,7 @@ import type {
   GetOrderByIdQueryResponse,
 } from '../../model/store/GetOrderById.ts';
 
-function getGetOrderByIdUrl({ orderId }: { orderId: GetOrderByIdPathParams['orderId'] }) {
+export function getGetOrderByIdUrl({ orderId }: { orderId: GetOrderByIdPathParams['orderId'] }) {
   const res = { method: 'GET', url: `/store/order/${orderId}` as const };
   return res;
 }
@@ -32,10 +32,6 @@ export async function getOrderById(
     GetOrderByIdQueryResponse,
     ResponseErrorConfig<GetOrderById400 | GetOrderById404>,
     unknown
-  >({
-    method: 'GET',
-    url: getGetOrderByIdUrl({ orderId }).url.toString(),
-    ...requestConfig,
-  });
+  >({ method: 'GET', url: getGetOrderByIdUrl({ orderId }).url.toString(), ...requestConfig });
   return res.data;
 }

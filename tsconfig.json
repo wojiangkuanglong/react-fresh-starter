@@ -24,8 +24,8 @@
     "noFallthroughCasesInSwitch": true,
 
     "paths": {
-      "@/*": ["./src/*"],
+      "@/*": ["./src/*"]
     },
-    "types": ["vite/client", "vite-plugin-svgr/client"],
-  },
+    "types": ["vite/client", "vite-plugin-svgr/client"]
+  }
 }

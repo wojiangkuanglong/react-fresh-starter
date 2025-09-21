@@ -10,8 +10,8 @@ import type {
   CreateUsersWithArrayInputMutationResponse,
 } from '../../model/user/CreateUsersWithArrayInput.ts';
 
-function getCreateUsersWithArrayInputUrl() {
-  const res = { method: 'POST', url: '/user/createWithArray' as const };
+export function getCreateUsersWithArrayInputUrl() {
+  const res = { method: 'POST', url: `/user/createWithArray` as const };
   return res;
 }
 
@@ -28,6 +28,7 @@ export async function createUsersWithArrayInput(
   const { client: request = fetch, ...requestConfig } = config;
 
   const requestData = data;
+
   const res = await request<
     CreateUsersWithArrayInputMutationResponse,
     ResponseErrorConfig<Error>,

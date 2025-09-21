@@ -11,8 +11,8 @@ import type {
   PlaceOrderMutationResponse,
 } from '../../model/store/PlaceOrder.ts';
 
-function getPlaceOrderUrl() {
-  const res = { method: 'POST', url: '/store/order' as const };
+export function getPlaceOrderUrl() {
+  const res = { method: 'POST', url: `/store/order` as const };
   return res;
 }
 
@@ -27,6 +27,7 @@ export async function placeOrder(
   const { client: request = fetch, ...requestConfig } = config;
 
   const requestData = data;
+
   const res = await request<
     PlaceOrderMutationResponse,
     ResponseErrorConfig<PlaceOrder400>,

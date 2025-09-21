@@ -11,7 +11,7 @@ import type {
   UploadFilePathParams,
 } from '../../model/pet/UploadFile.ts';
 
-function getUploadFileUrl({ petId }: { petId: UploadFilePathParams['petId'] }) {
+export function getUploadFileUrl({ petId }: { petId: UploadFilePathParams['petId'] }) {
   const res = { method: 'POST', url: `/pet/${petId}/uploadImage` as const };
   return res;
 }
