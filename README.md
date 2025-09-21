@@ -68,22 +68,10 @@
 
 ### :school: 本地运行
 
-克隆项目
-
-```bash
-  git clone git@git.corp.kuaishou.com:web-infra/templates/react-template.git
-```
-
-进入项目目录
-
-```bash
-  cd react-template
-```
-
 安装依赖
 
 ```bash
-  # node ^22.x.x，pnpm ^9.x.x
+  # node ^22.x.x，pnpm ^10.x.x
   pnpm install
 ```
 
@@ -105,9 +93,9 @@
 - [项目结构规范](https://feature-sliced.github.io/documentation/)
   ![](https://w1.kskwai.com/udata/pkg/team-corp-all/metrics-platform/visual_schema-e826067f573946613dcdc76e3f585082.jpg)
 
-### 根据后端swagger生成前端ts model、api、react-query代码
+### 根据后端swagger生成前端ts model、api代码
 ```bash
-  pnpm generate
+  pnpm api
 ```
 
 ### :wave: 协作调试

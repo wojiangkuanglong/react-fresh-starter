@@ -1,7 +1,7 @@
 import type { AxiosError, AxiosHeaders, AxiosRequestConfig, AxiosResponse } from 'axios';
 import axios from 'axios';
 
-const AXIOS_BASE = '/insight';
+declare const AXIOS_BASE: string;
 declare const AXIOS_HEADERS: string;
 
 export type RequestConfig<TData = unknown> = {

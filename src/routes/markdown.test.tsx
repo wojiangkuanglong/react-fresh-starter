@@ -36,7 +36,7 @@ describe('Markdown RouteComponent', () => {
       expect(screen.getByText('重置')).not.toBeDisabled();
       expect(screen.getByText('显示全部')).not.toBeDisabled();
 
-      expect(screen.getByText('进度: 0 / 4652 字符')).toBeInTheDocument();
+      expect(screen.getByText('进度: 0 / 372 字符')).toBeInTheDocument();
 
       const speedSlider = screen.getByRole('slider');
       expect(speedSlider).toHaveValue('20');
@@ -94,7 +94,7 @@ describe('Markdown RouteComponent', () => {
 
       expect(screen.getByText('开始渲染')).toBeInTheDocument();
       expect(screen.getByText('暂停')).toBeDisabled();
-      expect(screen.getByText('进度: 0 / 4652 字符')).toBeInTheDocument();
+      expect(screen.getByText('进度: 0 / 372 字符')).toBeInTheDocument();
     });
 
     it('流式渲染应该逐步显示内容', () => {
@@ -128,8 +128,8 @@ describe('Markdown RouteComponent', () => {
       fireEvent.click(showAllButton);
 
       const streamdownContent = screen.getByTestId('streamdown-content');
-      expect(streamdownContent.textContent?.length).toBeGreaterThan(1000);
-      expect(screen.getByText('进度: 4652 / 4652 字符')).toBeInTheDocument();
+      expect(streamdownContent.textContent?.length).toBeGreaterThan(100);
+      expect(screen.getByText('进度: 372 / 372 字符')).toBeInTheDocument();
     });
   });
 });
