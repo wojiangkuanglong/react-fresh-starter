@@ -1,5 +1,8 @@
-import { useCallback, useEffect, useId, useState } from 'react';
-import { Streamdown } from 'streamdown';
+import { lazy, Suspense, useCallback, useEffect, useId, useState } from 'react';
+
+const Streamdown = lazy(() =>
+  import('streamdown').then((module) => ({ default: module.Streamdown })),
+);
 
 export const Markdown = () => {
   const [displayedContent, setDisplayedContent] = useState('');
@@ -134,7 +137,9 @@ sequenceDiagram
 
       {/* 渲染区域 */}
       <div className="border rounded-lg p-4 min-h-[400px]">
-        <Streamdown>{displayedContent}</Streamdown>
+        <Suspense fallback={<div className="text-gray-500">加载中...</div>}>
+          <Streamdown>{displayedContent}</Streamdown>
+        </Suspense>
         {isStreaming && <span className="inline-block w-2 h-5 bg-blue-500 animate-pulse ml-1" />}
       </div>
     </div>

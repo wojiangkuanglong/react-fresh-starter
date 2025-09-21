@@ -8,114 +8,120 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { Route as rootRouteImport } from './routes/__root';
-import { Route as IndexRouteImport } from './routes/index';
-import { Route as MarkdownRouteImport } from './routes/markdown';
-import { Route as SettingsARouteImport } from './routes/settings/a';
-import { Route as SettingsBRouteImport } from './routes/settings/b';
-import { Route as SettingsIndexRouteImport } from './routes/settings/index';
+import { Route as rootRouteImport } from './routes/__root'
+import { Route as MarkdownRouteImport } from './routes/markdown'
+import { Route as IndexRouteImport } from './routes/index'
+import { Route as SettingsIndexRouteImport } from './routes/settings/index'
+import { Route as SettingsBRouteImport } from './routes/settings/b'
+import { Route as SettingsARouteImport } from './routes/settings/a'
 
 const MarkdownRoute = MarkdownRouteImport.update({
   id: '/markdown',
   path: '/markdown',
   getParentRoute: () => rootRouteImport,
-} as any);
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
-} as any);
+} as any)
 const SettingsIndexRoute = SettingsIndexRouteImport.update({
   id: '/settings/',
   path: '/settings/',
   getParentRoute: () => rootRouteImport,
-} as any);
+} as any)
 const SettingsBRoute = SettingsBRouteImport.update({
   id: '/settings/b',
   path: '/settings/b',
   getParentRoute: () => rootRouteImport,
-} as any);
+} as any)
 const SettingsARoute = SettingsARouteImport.update({
   id: '/settings/a',
   path: '/settings/a',
   getParentRoute: () => rootRouteImport,
-} as any);
+} as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute;
-  '/markdown': typeof MarkdownRoute;
-  '/settings/a': typeof SettingsARoute;
-  '/settings/b': typeof SettingsBRoute;
-  '/settings': typeof SettingsIndexRoute;
+  '/': typeof IndexRoute
+  '/markdown': typeof MarkdownRoute
+  '/settings/a': typeof SettingsARoute
+  '/settings/b': typeof SettingsBRoute
+  '/settings': typeof SettingsIndexRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute;
-  '/markdown': typeof MarkdownRoute;
-  '/settings/a': typeof SettingsARoute;
-  '/settings/b': typeof SettingsBRoute;
-  '/settings': typeof SettingsIndexRoute;
+  '/': typeof IndexRoute
+  '/markdown': typeof MarkdownRoute
+  '/settings/a': typeof SettingsARoute
+  '/settings/b': typeof SettingsBRoute
+  '/settings': typeof SettingsIndexRoute
 }
 export interface FileRoutesById {
-  __root__: typeof rootRouteImport;
-  '/': typeof IndexRoute;
-  '/markdown': typeof MarkdownRoute;
-  '/settings/a': typeof SettingsARoute;
-  '/settings/b': typeof SettingsBRoute;
-  '/settings/': typeof SettingsIndexRoute;
+  __root__: typeof rootRouteImport
+  '/': typeof IndexRoute
+  '/markdown': typeof MarkdownRoute
+  '/settings/a': typeof SettingsARoute
+  '/settings/b': typeof SettingsBRoute
+  '/settings/': typeof SettingsIndexRoute
 }
 export interface FileRouteTypes {
-  fileRoutesByFullPath: FileRoutesByFullPath;
-  fullPaths: '/' | '/markdown' | '/settings/a' | '/settings/b' | '/settings';
-  fileRoutesByTo: FileRoutesByTo;
-  to: '/' | '/markdown' | '/settings/a' | '/settings/b' | '/settings';
-  id: '__root__' | '/' | '/markdown' | '/settings/a' | '/settings/b' | '/settings/';
-  fileRoutesById: FileRoutesById;
+  fileRoutesByFullPath: FileRoutesByFullPath
+  fullPaths: '/' | '/markdown' | '/settings/a' | '/settings/b' | '/settings'
+  fileRoutesByTo: FileRoutesByTo
+  to: '/' | '/markdown' | '/settings/a' | '/settings/b' | '/settings'
+  id:
+    | '__root__'
+    | '/'
+    | '/markdown'
+    | '/settings/a'
+    | '/settings/b'
+    | '/settings/'
+  fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute;
-  MarkdownRoute: typeof MarkdownRoute;
-  SettingsARoute: typeof SettingsARoute;
-  SettingsBRoute: typeof SettingsBRoute;
-  SettingsIndexRoute: typeof SettingsIndexRoute;
+  IndexRoute: typeof IndexRoute
+  MarkdownRoute: typeof MarkdownRoute
+  SettingsARoute: typeof SettingsARoute
+  SettingsBRoute: typeof SettingsBRoute
+  SettingsIndexRoute: typeof SettingsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
     '/markdown': {
-      id: '/markdown';
-      path: '/markdown';
-      fullPath: '/markdown';
-      preLoaderRoute: typeof MarkdownRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
+      id: '/markdown'
+      path: '/markdown'
+      fullPath: '/markdown'
+      preLoaderRoute: typeof MarkdownRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
-      id: '/';
-      path: '/';
-      fullPath: '/';
-      preLoaderRoute: typeof IndexRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/settings/': {
-      id: '/settings/';
-      path: '/settings';
-      fullPath: '/settings';
-      preLoaderRoute: typeof SettingsIndexRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
+      id: '/settings/'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/settings/b': {
-      id: '/settings/b';
-      path: '/settings/b';
-      fullPath: '/settings/b';
-      preLoaderRoute: typeof SettingsBRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
+      id: '/settings/b'
+      path: '/settings/b'
+      fullPath: '/settings/b'
+      preLoaderRoute: typeof SettingsBRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/settings/a': {
-      id: '/settings/a';
-      path: '/settings/a';
-      fullPath: '/settings/a';
-      preLoaderRoute: typeof SettingsARouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
+      id: '/settings/a'
+      path: '/settings/a'
+      fullPath: '/settings/a'
+      preLoaderRoute: typeof SettingsARouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -125,7 +131,7 @@ const rootRouteChildren: RootRouteChildren = {
   SettingsARoute: SettingsARoute,
   SettingsBRoute: SettingsBRoute,
   SettingsIndexRoute: SettingsIndexRoute,
-};
+}
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
-  ._addFileTypes<FileRouteTypes>();
+  ._addFileTypes<FileRouteTypes>()
