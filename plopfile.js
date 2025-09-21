@@ -203,34 +203,4 @@ export default function (plop) {
       return actions;
     },
   });
-
-  plop.setGenerator('page', {
-    description: '创建一个新的 Page (页面)',
-    prompts: [
-      {
-        type: 'input',
-        name: 'name',
-        message: '请输入 Page 名称 (例如: board, profile, settings):',
-        validate: (input) => {
-          if (!input || input.trim() === '') {
-            return 'Page 名称不能为空';
-          }
-          if (!/^[a-zA-Z][a-zA-Z0-9-]*$/.test(input)) {
-            return 'Page 名称只能包含字母、数字和连字符，且必须以字母开头';
-          }
-          return true;
-        },
-      },
-    ],
-    actions: () => {
-      const actions = [
-        {
-          type: 'add',
-          path: 'src/pages/{{name}}/{{pascalCase name}}Page.tsx',
-          templateFile: 'plop-templates/general.hbs',
-        },
-      ];
-      return actions;
-    },
-  });
 }
