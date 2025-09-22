@@ -1,11 +1,13 @@
-export default function (plop) {
+import { NodePlopAPI } from "plop";
+
+export default function (plop: NodePlopAPI) {
   plop.setWelcomeMessage('欢迎使用代码生成器! 🚀');
 
   plop.setHelper('pascalCase', (text) => {
     const words = text.replace(/([A-Z])/g, ' $1').trim();
     return words
       .split(/[-_\s]+/)
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .map((word: string) => word.charAt(0).toUpperCase() + word.slice(1))
       .join('');
   });
 
@@ -42,7 +44,7 @@ export default function (plop) {
     actions: (data) => {
       const actions = [];
 
-      if (data.withStore) {
+      if (data?.withStore) {
         actions.push({
           type: 'add',
           path: 'src/entities/{{pascalCase name}}/model/use{{pascalCase name}}Store.ts',
@@ -50,7 +52,7 @@ export default function (plop) {
         });
       }
 
-      if (data.withApi) {
+      if (data?.withApi) {
         actions.push({
           type: 'add',
           path: 'src/entities/{{pascalCase name}}/api/use{{pascalCase name}}Api.ts',
@@ -106,7 +108,7 @@ export default function (plop) {
         },
       ];
 
-      if (data.withStore) {
+      if (data?.withStore) {
         actions.push({
           type: 'add',
           path: 'src/features/{{pascalCase name}}/model/use{{pascalCase name}}Store.ts',
@@ -114,7 +116,7 @@ export default function (plop) {
         });
       }
 
-      if (data.withApi) {
+      if (data?.withApi) {
         actions.push({
           type: 'add',
           path: 'src/features/{{pascalCase name}}/api/use{{pascalCase name}}Api.ts',
@@ -176,7 +178,7 @@ export default function (plop) {
         },
       ];
 
-      if (data.withStore) {
+      if (data?.withStore) {
         actions.push({
           type: 'add',
           path: 'src/widgets/{{pascalCase name}}/model/use{{pascalCase name}}Store.ts',
@@ -184,7 +186,7 @@ export default function (plop) {
         });
       }
 
-      if (data.withApi) {
+      if (data?.withApi) {
         actions.push({
           type: 'add',
           path: 'src/widgets/{{pascalCase name}}/api/use{{pascalCase name}}Api.ts',
@@ -192,7 +194,7 @@ export default function (plop) {
         });
       }
 
-      if (data.withStories) {
+      if (data?.withStories) {
         actions.push({
           type: 'add',
           path: 'src/widgets/{{pascalCase name}}/ui/{{pascalCase name}}.stories.ts',
