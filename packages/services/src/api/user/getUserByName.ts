@@ -22,7 +22,8 @@ export function getGetUserByNameUrl({
 }
 
 /**
- * @summary Get user by user name
+ * @description Get user detail based on username.
+ * @summary Get user by user name.
  * {@link /user/:username}
  */
 export async function getUserByName(

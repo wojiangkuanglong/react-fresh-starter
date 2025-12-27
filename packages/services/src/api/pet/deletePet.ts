@@ -7,7 +7,6 @@ import type { RequestConfig, ResponseErrorConfig } from '@repo/lib/client';
 import fetch from '@repo/lib/client';
 import type {
   DeletePet400,
-  DeletePet404,
   DeletePetHeaderParams,
   DeletePetMutationResponse,
   DeletePetPathParams,
@@ -19,7 +18,8 @@ export function getDeletePetUrl({ petId }: { petId: DeletePetPathParams['petId']
 }
 
 /**
- * @summary Deletes a pet
+ * @description Delete a pet.
+ * @summary Deletes a pet.
  * {@link /pet/:petId}
  */
 export async function deletePet(
@@ -29,11 +29,7 @@ export async function deletePet(
 ) {
   const { client: request = fetch, ...requestConfig } = config;
 
-  const res = await request<
-    DeletePetMutationResponse,
-    ResponseErrorConfig<DeletePet400 | DeletePet404>,
-    unknown
-  >({
+  const res = await request<DeletePetMutationResponse, ResponseErrorConfig<DeletePet400>, unknown>({
     method: 'DELETE',
     url: getDeletePetUrl({ petId }).url.toString(),
     ...requestConfig,

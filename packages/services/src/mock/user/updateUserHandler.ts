@@ -13,6 +13,12 @@ import type {
   UpdateUserMutationResponse,
 } from '../../model/user/UpdateUser.ts';
 
+export function updateUserHandlerResponse200(data?: UpdateUserMutationResponse) {
+  return new Response(JSON.stringify(data), {
+    status: 200,
+  });
+}
+
 export function updateUserHandlerResponse400(data?: UpdateUser400) {
   return new Response(JSON.stringify(data), {
     status: 400,

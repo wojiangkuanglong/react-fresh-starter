@@ -13,6 +13,12 @@ import type {
   DeleteUserMutationResponse,
 } from '../../model/user/DeleteUser.ts';
 
+export function deleteUserHandlerResponse200(data?: DeleteUserMutationResponse) {
+  return new Response(JSON.stringify(data), {
+    status: 200,
+  });
+}
+
 export function deleteUserHandlerResponse400(data?: DeleteUser400) {
   return new Response(JSON.stringify(data), {
     status: 400,

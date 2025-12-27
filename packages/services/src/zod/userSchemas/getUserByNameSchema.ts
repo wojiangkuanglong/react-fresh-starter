@@ -8,13 +8,14 @@ import type {
   GetUserByName200,
   GetUserByName400,
   GetUserByName404,
+  GetUserByNameError,
   GetUserByNamePathParams,
   GetUserByNameQueryResponse,
 } from '../../model/user/GetUserByName.ts';
 import { userSchema } from '../userSchema.ts';
 
 export const getUserByNamePathParamsSchema = z.object({
-  username: z.string().describe('The name that needs to be fetched. Use user1 for testing. '),
+  username: z.string().describe('The name that needs to be fetched. Use user1 for testing'),
 }) as unknown as z.ZodType<GetUserByNamePathParams>;
 
 /**
@@ -33,6 +34,11 @@ export const getUserByName400Schema = z.unknown() as unknown as z.ZodType<GetUse
  * @description User not found
  */
 export const getUserByName404Schema = z.unknown() as unknown as z.ZodType<GetUserByName404>;
+
+/**
+ * @description Unexpected error
+ */
+export const getUserByNameErrorSchema = z.unknown() as unknown as z.ZodType<GetUserByNameError>;
 
 export const getUserByNameQueryResponseSchema = z.lazy(
   () => getUserByName200Schema,

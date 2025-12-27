@@ -5,6 +5,7 @@
 
 import { z } from 'zod';
 import type {
+  CreateUser200,
   CreateUserError,
   CreateUserMutationRequest,
   CreateUserMutationResponse,
@@ -13,6 +14,11 @@ import { userSchema } from '../userSchema.ts';
 
 /**
  * @description successful operation
+ */
+export const createUser200Schema = z.lazy(() => userSchema) as unknown as z.ZodType<CreateUser200>;
+
+/**
+ * @description Unexpected error
  */
 export const createUserErrorSchema = z.unknown() as unknown as z.ZodType<CreateUserError>;
 
@@ -23,5 +29,6 @@ export const createUserMutationRequestSchema = z.lazy(
   () => userSchema,
 ) as unknown as z.ZodType<CreateUserMutationRequest>;
 
-export const createUserMutationResponseSchema =
-  z.unknown() as unknown as z.ZodType<CreateUserMutationResponse>;
+export const createUserMutationResponseSchema = z.lazy(
+  () => createUser200Schema,
+) as unknown as z.ZodType<CreateUserMutationResponse>;

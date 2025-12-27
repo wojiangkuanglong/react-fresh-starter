@@ -19,9 +19,11 @@ export function createFindPetsByStatusQueryParams(
   faker.seed([100]);
   return {
     ...{
-      status: faker.helpers.multiple(() =>
-        faker.helpers.arrayElement<any>(['available', 'pending', 'sold']),
-      ),
+      status: faker.helpers.arrayElement<NonNullable<FindPetsByStatusQueryParams>['status']>([
+        'available',
+        'pending',
+        'sold',
+      ]),
     },
     ...(data || {}),
   };
@@ -39,6 +41,14 @@ export function createFindPetsByStatus200(data?: FindPetsByStatus200): FindPetsB
  * @description Invalid status value
  */
 export function createFindPetsByStatus400() {
+  faker.seed([100]);
+  return undefined;
+}
+
+/**
+ * @description Unexpected error
+ */
+export function createFindPetsByStatusError() {
   faker.seed([100]);
   return undefined;
 }

@@ -5,6 +5,7 @@
 
 import { z } from 'zod';
 import type {
+  CreateUsersWithListInput200,
   CreateUsersWithListInputError,
   CreateUsersWithListInputMutationRequest,
   CreateUsersWithListInputMutationResponse,
@@ -12,17 +13,22 @@ import type {
 import { userSchema } from '../userSchema.ts';
 
 /**
- * @description successful operation
+ * @description Successful operation
+ */
+export const createUsersWithListInput200Schema = z.lazy(
+  () => userSchema,
+) as unknown as z.ZodType<CreateUsersWithListInput200>;
+
+/**
+ * @description Unexpected error
  */
 export const createUsersWithListInputErrorSchema =
   z.unknown() as unknown as z.ZodType<CreateUsersWithListInputError>;
 
-/**
- * @description List of user object
- */
 export const createUsersWithListInputMutationRequestSchema = z.array(
   z.lazy(() => userSchema),
 ) as unknown as z.ZodType<CreateUsersWithListInputMutationRequest>;
 
-export const createUsersWithListInputMutationResponseSchema =
-  z.unknown() as unknown as z.ZodType<CreateUsersWithListInputMutationResponse>;
+export const createUsersWithListInputMutationResponseSchema = z.lazy(
+  () => createUsersWithListInput200Schema,
+) as unknown as z.ZodType<CreateUsersWithListInputMutationResponse>;

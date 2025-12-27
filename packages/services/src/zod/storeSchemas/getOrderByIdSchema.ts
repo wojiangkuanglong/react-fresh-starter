@@ -8,13 +8,14 @@ import type {
   GetOrderById200,
   GetOrderById400,
   GetOrderById404,
+  GetOrderByIdError,
   GetOrderByIdPathParams,
   GetOrderByIdQueryResponse,
 } from '../../model/store/GetOrderById.ts';
 import { orderSchema } from '../orderSchema.ts';
 
 export const getOrderByIdPathParamsSchema = z.object({
-  orderId: z.coerce.number().int().min(1).max(10).describe('ID of pet that needs to be fetched'),
+  orderId: z.coerce.number().int().describe('ID of order that needs to be fetched'),
 }) as unknown as z.ZodType<GetOrderByIdPathParams>;
 
 /**
@@ -33,6 +34,11 @@ export const getOrderById400Schema = z.unknown() as unknown as z.ZodType<GetOrde
  * @description Order not found
  */
 export const getOrderById404Schema = z.unknown() as unknown as z.ZodType<GetOrderById404>;
+
+/**
+ * @description Unexpected error
+ */
+export const getOrderByIdErrorSchema = z.unknown() as unknown as z.ZodType<GetOrderByIdError>;
 
 export const getOrderByIdQueryResponseSchema = z.lazy(
   () => getOrderById200Schema,

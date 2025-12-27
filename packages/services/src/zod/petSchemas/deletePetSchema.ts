@@ -5,8 +5,9 @@
 
 import { z } from 'zod';
 import type {
+  DeletePet200,
   DeletePet400,
-  DeletePet404,
+  DeletePetError,
   DeletePetHeaderParams,
   DeletePetMutationResponse,
   DeletePetPathParams,
@@ -23,14 +24,20 @@ export const deletePetHeaderParamsSchema = z
   .optional() as unknown as z.ZodType<DeletePetHeaderParams>;
 
 /**
- * @description Invalid ID supplied
+ * @description Pet deleted
+ */
+export const deletePet200Schema = z.unknown() as unknown as z.ZodType<DeletePet200>;
+
+/**
+ * @description Invalid pet value
  */
 export const deletePet400Schema = z.unknown() as unknown as z.ZodType<DeletePet400>;
 
 /**
- * @description Pet not found
+ * @description Unexpected error
  */
-export const deletePet404Schema = z.unknown() as unknown as z.ZodType<DeletePet404>;
+export const deletePetErrorSchema = z.unknown() as unknown as z.ZodType<DeletePetError>;
 
-export const deletePetMutationResponseSchema =
-  z.unknown() as unknown as z.ZodType<DeletePetMutationResponse>;
+export const deletePetMutationResponseSchema = z.lazy(
+  () => deletePet200Schema,
+) as unknown as z.ZodType<DeletePetMutationResponse>;

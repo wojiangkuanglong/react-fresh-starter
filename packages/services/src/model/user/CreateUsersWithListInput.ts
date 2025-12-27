@@ -6,19 +6,21 @@
 import type { User } from '../User.ts';
 
 /**
- * @description successful operation
+ * @description Successful operation
+ */
+export type CreateUsersWithListInput200 = User;
+
+/**
+ * @description Unexpected error
  */
 export type CreateUsersWithListInputError = unknown;
 
-/**
- * @description List of user object
- */
 export type CreateUsersWithListInputMutationRequest = User[];
 
-export type CreateUsersWithListInputMutationResponse = any;
+export type CreateUsersWithListInputMutationResponse = CreateUsersWithListInput200;
 
 export type CreateUsersWithListInputMutation = {
-  Response: any;
+  Response: CreateUsersWithListInput200;
   Request: CreateUsersWithListInputMutationRequest;
   Errors: any;
 };

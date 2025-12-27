@@ -13,6 +13,12 @@ import type {
   DeleteOrderMutationResponse,
 } from '../../model/store/DeleteOrder.ts';
 
+export function deleteOrderHandlerResponse200(data?: DeleteOrderMutationResponse) {
+  return new Response(JSON.stringify(data), {
+    status: 200,
+  });
+}
+
 export function deleteOrderHandlerResponse400(data?: DeleteOrder400) {
   return new Response(JSON.stringify(data), {
     status: 400,

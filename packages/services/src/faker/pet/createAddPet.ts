@@ -10,15 +10,39 @@ import type { AddPetMutationResponse } from '../../model/pet/AddPet.ts';
 import { createPet } from '../createPet.ts';
 
 /**
+ * @description Successful operation
+ */
+export function createAddPet200() {
+  faker.seed([100]);
+  return createPet();
+}
+
+/**
  * @description Invalid input
  */
-export function createAddPet405() {
+export function createAddPet400() {
   faker.seed([100]);
   return undefined;
 }
 
 /**
- * @description Pet object that needs to be added to the store
+ * @description Validation exception
+ */
+export function createAddPet422() {
+  faker.seed([100]);
+  return undefined;
+}
+
+/**
+ * @description Unexpected error
+ */
+export function createAddPetError() {
+  faker.seed([100]);
+  return undefined;
+}
+
+/**
+ * @description Create a new pet in the store
  */
 export function createAddPetMutationRequest() {
   faker.seed([100]);
@@ -26,8 +50,8 @@ export function createAddPetMutationRequest() {
 }
 
 export function createAddPetMutationResponse(
-  _data?: Partial<AddPetMutationResponse>,
+  data?: Partial<AddPetMutationResponse>,
 ): AddPetMutationResponse {
   faker.seed([100]);
-  return undefined;
+  return data || faker.helpers.arrayElement<any>([createAddPet200()]);
 }

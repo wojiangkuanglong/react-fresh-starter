@@ -13,8 +13,8 @@ export function getGetInventoryUrl() {
 }
 
 /**
- * @description Returns a map of status codes to quantities
- * @summary Returns pet inventories by status
+ * @description Returns a map of status codes to quantities.
+ * @summary Returns pet inventories by status.
  * {@link /store/inventory}
  */
 export async function getInventory(

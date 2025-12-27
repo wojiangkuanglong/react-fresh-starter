@@ -23,7 +23,15 @@ export function createUpdateUserPathParams(
 }
 
 /**
- * @description Invalid user supplied
+ * @description successful operation
+ */
+export function createUpdateUser200() {
+  faker.seed([100]);
+  return undefined;
+}
+
+/**
+ * @description bad request
  */
 export function createUpdateUser400() {
   faker.seed([100]);
@@ -31,7 +39,7 @@ export function createUpdateUser400() {
 }
 
 /**
- * @description User not found
+ * @description user not found
  */
 export function createUpdateUser404() {
   faker.seed([100]);
@@ -39,7 +47,15 @@ export function createUpdateUser404() {
 }
 
 /**
- * @description Updated user object
+ * @description Unexpected error
+ */
+export function createUpdateUserError() {
+  faker.seed([100]);
+  return undefined;
+}
+
+/**
+ * @description Update an existent user in the store
  */
 export function createUpdateUserMutationRequest() {
   faker.seed([100]);
@@ -47,8 +63,8 @@ export function createUpdateUserMutationRequest() {
 }
 
 export function createUpdateUserMutationResponse(
-  _data?: Partial<UpdateUserMutationResponse>,
+  data?: Partial<UpdateUserMutationResponse>,
 ): UpdateUserMutationResponse {
   faker.seed([100]);
-  return undefined;
+  return data || faker.helpers.arrayElement<any>([createUpdateUser200()]);
 }

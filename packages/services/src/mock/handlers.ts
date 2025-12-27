@@ -18,7 +18,6 @@ import { getInventoryHandler } from './store/getInventoryHandler.ts';
 import { getOrderByIdHandler } from './store/getOrderByIdHandler.ts';
 import { placeOrderHandler } from './store/placeOrderHandler.ts';
 import { createUserHandler } from './user/createUserHandler.ts';
-import { createUsersWithArrayInputHandler } from './user/createUsersWithArrayInputHandler.ts';
 import { createUsersWithListInputHandler } from './user/createUsersWithListInputHandler.ts';
 import { deleteUserHandler } from './user/deleteUserHandler.ts';
 import { getUserByNameHandler } from './user/getUserByNameHandler.ts';
@@ -27,24 +26,23 @@ import { logoutUserHandler } from './user/logoutUserHandler.ts';
 import { updateUserHandler } from './user/updateUserHandler.ts';
 
 export const handlers = [
-  uploadFileHandler(),
-  addPetHandler(),
   updatePetHandler(),
+  addPetHandler(),
   findPetsByStatusHandler(),
   findPetsByTagsHandler(),
   getPetByIdHandler(),
   updatePetWithFormHandler(),
   deletePetHandler(),
+  uploadFileHandler(),
   getInventoryHandler(),
   placeOrderHandler(),
   getOrderByIdHandler(),
   deleteOrderHandler(),
+  createUserHandler(),
   createUsersWithListInputHandler(),
+  loginUserHandler(),
+  logoutUserHandler(),
   getUserByNameHandler(),
   updateUserHandler(),
   deleteUserHandler(),
-  loginUserHandler(),
-  logoutUserHandler(),
-  createUsersWithArrayInputHandler(),
-  createUserHandler(),
 ] as const;

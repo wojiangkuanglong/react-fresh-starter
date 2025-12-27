@@ -28,6 +28,11 @@ export type GetPetById400 = unknown;
  */
 export type GetPetById404 = unknown;
 
+/**
+ * @description Unexpected error
+ */
+export type GetPetByIdError = unknown;
+
 export type GetPetByIdQueryResponse = GetPetById200;
 
 export type GetPetByIdQuery = {

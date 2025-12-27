@@ -14,13 +14,13 @@ import { uploadFile } from './uploadFile.ts';
 
 export function pet() {
   return {
-    uploadFile,
-    addPet,
     updatePet,
+    addPet,
     findPetsByStatus,
     findPetsByTags,
     getPetById,
     updatePetWithForm,
     deletePet,
+    uploadFile,
   };
 }

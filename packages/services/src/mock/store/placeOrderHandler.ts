@@ -7,7 +7,11 @@
 
 import { http } from 'msw';
 import { createPlaceOrderMutationResponse } from '../../faker/store/createPlaceOrder.ts';
-import type { PlaceOrder400, PlaceOrderMutationResponse } from '../../model/store/PlaceOrder.ts';
+import type {
+  PlaceOrder400,
+  PlaceOrder422,
+  PlaceOrderMutationResponse,
+} from '../../model/store/PlaceOrder.ts';
 
 export function placeOrderHandlerResponse200(data: PlaceOrderMutationResponse) {
   return new Response(JSON.stringify(data), {
@@ -21,6 +25,12 @@ export function placeOrderHandlerResponse200(data: PlaceOrderMutationResponse) {
 export function placeOrderHandlerResponse400(data?: PlaceOrder400) {
   return new Response(JSON.stringify(data), {
     status: 400,
+  });
+}
+
+export function placeOrderHandlerResponse422(data?: PlaceOrder422) {
+  return new Response(JSON.stringify(data), {
+    status: 422,
   });
 }
 

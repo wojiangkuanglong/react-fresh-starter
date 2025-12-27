@@ -4,12 +4,22 @@
  */
 
 import { z } from 'zod';
-import type { LogoutUserError, LogoutUserQueryResponse } from '../../model/user/LogoutUser.ts';
+import type {
+  LogoutUser200,
+  LogoutUserError,
+  LogoutUserQueryResponse,
+} from '../../model/user/LogoutUser.ts';
 
 /**
  * @description successful operation
  */
+export const logoutUser200Schema = z.unknown() as unknown as z.ZodType<LogoutUser200>;
+
+/**
+ * @description Unexpected error
+ */
 export const logoutUserErrorSchema = z.unknown() as unknown as z.ZodType<LogoutUserError>;
 
-export const logoutUserQueryResponseSchema =
-  z.unknown() as unknown as z.ZodType<LogoutUserQueryResponse>;
+export const logoutUserQueryResponseSchema = z.lazy(
+  () => logoutUser200Schema,
+) as unknown as z.ZodType<LogoutUserQueryResponse>;

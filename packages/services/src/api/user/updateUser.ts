@@ -20,7 +20,7 @@ export function getUpdateUserUrl({ username }: { username: UpdateUserPathParams[
 
 /**
  * @description This can only be done by the logged in user.
- * @summary Updated user
+ * @summary Update user resource.
  * {@link /user/:username}
  */
 export async function updateUser(

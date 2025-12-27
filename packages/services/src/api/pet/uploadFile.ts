@@ -5,11 +5,13 @@
 
 import type { RequestConfig, ResponseErrorConfig } from '@repo/lib/client';
 import fetch from '@repo/lib/client';
-import { buildFormData } from '../../.kubb/config.ts';
 import type {
+  UploadFile400,
+  UploadFile404,
   UploadFileMutationRequest,
   UploadFileMutationResponse,
   UploadFilePathParams,
+  UploadFileQueryParams,
 } from '../../model/pet/UploadFile.ts';
 
 export function getUploadFileUrl({ petId }: { petId: UploadFilePathParams['petId'] }) {
@@ -18,27 +20,31 @@ export function getUploadFileUrl({ petId }: { petId: UploadFilePathParams['petId
 }
 
 /**
- * @summary uploads an image
+ * @description Upload image of the pet.
+ * @summary Uploads an image.
  * {@link /pet/:petId/uploadImage}
  */
 export async function uploadFile(
   { petId }: { petId: UploadFilePathParams['petId'] },
   data?: UploadFileMutationRequest,
+  params?: UploadFileQueryParams,
   config: Partial<RequestConfig<UploadFileMutationRequest>> & { client?: typeof fetch } = {},
 ) {
   const { client: request = fetch, ...requestConfig } = config;
 
   const requestData = data;
-  const formData = buildFormData(requestData);
+
   const res = await request<
     UploadFileMutationResponse,
-    ResponseErrorConfig<Error>,
+    ResponseErrorConfig<UploadFile400 | UploadFile404>,
     UploadFileMutationRequest
   >({
     method: 'POST',
     url: getUploadFileUrl({ petId }).url.toString(),
-    data: formData as FormData,
+    params,
+    data: requestData,
     ...requestConfig,
+    headers: { 'Content-Type': 'application/octet-stream', ...requestConfig.headers },
   });
   return res.data;
 }

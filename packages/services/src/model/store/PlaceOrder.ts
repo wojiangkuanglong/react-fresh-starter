@@ -11,13 +11,20 @@ import type { Order } from '../Order.ts';
 export type PlaceOrder200 = Order;
 
 /**
- * @description Invalid Order
+ * @description Invalid input
  */
 export type PlaceOrder400 = unknown;
 
 /**
- * @description order placed for purchasing the pet
+ * @description Validation exception
  */
+export type PlaceOrder422 = unknown;
+
+/**
+ * @description Unexpected error
+ */
+export type PlaceOrderError = unknown;
+
 export type PlaceOrderMutationRequest = Order;
 
 export type PlaceOrderMutationResponse = PlaceOrder200;
@@ -25,5 +32,5 @@ export type PlaceOrderMutationResponse = PlaceOrder200;
 export type PlaceOrderMutation = {
   Response: PlaceOrder200;
   Request: PlaceOrderMutationRequest;
-  Errors: PlaceOrder400;
+  Errors: PlaceOrder400 | PlaceOrder422;
 };

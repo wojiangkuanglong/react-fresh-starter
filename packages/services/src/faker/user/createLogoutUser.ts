@@ -11,14 +11,22 @@ import type { LogoutUserQueryResponse } from '../../model/user/LogoutUser.ts';
 /**
  * @description successful operation
  */
+export function createLogoutUser200() {
+  faker.seed([100]);
+  return undefined;
+}
+
+/**
+ * @description Unexpected error
+ */
 export function createLogoutUserError() {
   faker.seed([100]);
   return undefined;
 }
 
 export function createLogoutUserQueryResponse(
-  _data?: Partial<LogoutUserQueryResponse>,
+  data?: Partial<LogoutUserQueryResponse>,
 ): LogoutUserQueryResponse {
   faker.seed([100]);
-  return undefined;
+  return data || faker.helpers.arrayElement<any>([createLogoutUser200()]);
 }

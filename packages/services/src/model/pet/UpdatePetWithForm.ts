@@ -3,6 +3,8 @@
  * Do not edit manually.
  */
 
+import type { Pet } from '../Pet.ts';
+
 export type UpdatePetWithFormPathParams = {
   /**
    * @description ID of pet that needs to be updated
@@ -11,29 +13,39 @@ export type UpdatePetWithFormPathParams = {
   petId: number;
 };
 
-/**
- * @description Invalid input
- */
-export type UpdatePetWithForm405 = unknown;
-
-export type UpdatePetWithFormMutationRequest = {
+export type UpdatePetWithFormQueryParams = {
   /**
-   * @description Updated name of the pet
+   * @description Name of pet that needs to be updated
    * @type string | undefined
    */
   name?: string;
   /**
-   * @description Updated status of the pet
+   * @description Status of pet that needs to be updated
    * @type string | undefined
    */
   status?: string;
 };
 
-export type UpdatePetWithFormMutationResponse = any;
+/**
+ * @description successful operation
+ */
+export type UpdatePetWithForm200 = Pet;
+
+/**
+ * @description Invalid input
+ */
+export type UpdatePetWithForm400 = unknown;
+
+/**
+ * @description Unexpected error
+ */
+export type UpdatePetWithFormError = unknown;
+
+export type UpdatePetWithFormMutationResponse = UpdatePetWithForm200;
 
 export type UpdatePetWithFormMutation = {
-  Response: any;
-  Request: UpdatePetWithFormMutationRequest;
+  Response: UpdatePetWithForm200;
   PathParams: UpdatePetWithFormPathParams;
-  Errors: UpdatePetWithForm405;
+  QueryParams: UpdatePetWithFormQueryParams;
+  Errors: UpdatePetWithForm400;
 };

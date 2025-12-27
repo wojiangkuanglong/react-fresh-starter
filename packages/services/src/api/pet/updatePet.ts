@@ -8,7 +8,7 @@ import fetch from '@repo/lib/client';
 import type {
   UpdatePet400,
   UpdatePet404,
-  UpdatePet405,
+  UpdatePet422,
   UpdatePetMutationRequest,
   UpdatePetMutationResponse,
 } from '../../model/pet/UpdatePet.ts';
@@ -19,7 +19,8 @@ export function getUpdatePetUrl() {
 }
 
 /**
- * @summary Update an existing pet
+ * @description Update an existing pet by Id.
+ * @summary Update an existing pet.
  * {@link /pet}
  */
 export async function updatePet(
@@ -32,7 +33,7 @@ export async function updatePet(
 
   const res = await request<
     UpdatePetMutationResponse,
-    ResponseErrorConfig<UpdatePet400 | UpdatePet404 | UpdatePet405>,
+    ResponseErrorConfig<UpdatePet400 | UpdatePet404 | UpdatePet422>,
     UpdatePetMutationRequest
   >({ method: 'PUT', url: getUpdatePetUrl().url.toString(), data: requestData, ...requestConfig });
   return res.data;

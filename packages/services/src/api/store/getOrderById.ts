@@ -18,8 +18,8 @@ export function getGetOrderByIdUrl({ orderId }: { orderId: GetOrderByIdPathParam
 }
 
 /**
- * @description For valid response try integer IDs with value >= 1 and <= 10. Other values will generated exceptions
- * @summary Find purchase order by ID
+ * @description For valid response try integer IDs with value <= 5 or > 10. Other values will generate exceptions.
+ * @summary Find purchase order by ID.
  * {@link /store/order/:orderId}
  */
 export async function getOrderById(

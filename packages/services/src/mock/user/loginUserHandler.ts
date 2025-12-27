@@ -13,7 +13,7 @@ export function loginUserHandlerResponse200(data: LoginUserQueryResponse) {
   return new Response(JSON.stringify(data), {
     status: 200,
     headers: {
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/xml',
     },
   });
 }
@@ -35,7 +35,7 @@ export function loginUserHandler(
     return new Response(JSON.stringify(data || createLoginUserQueryResponse(data)), {
       status: 200,
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/xml',
       },
     });
   });

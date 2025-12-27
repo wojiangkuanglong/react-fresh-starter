@@ -22,6 +22,14 @@ export function createDeleteUserPathParams(
 }
 
 /**
+ * @description User deleted
+ */
+export function createDeleteUser200() {
+  faker.seed([100]);
+  return undefined;
+}
+
+/**
  * @description Invalid username supplied
  */
 export function createDeleteUser400() {
@@ -37,9 +45,17 @@ export function createDeleteUser404() {
   return undefined;
 }
 
-export function createDeleteUserMutationResponse(
-  _data?: Partial<DeleteUserMutationResponse>,
-): DeleteUserMutationResponse {
+/**
+ * @description Unexpected error
+ */
+export function createDeleteUserError() {
   faker.seed([100]);
   return undefined;
+}
+
+export function createDeleteUserMutationResponse(
+  data?: Partial<DeleteUserMutationResponse>,
+): DeleteUserMutationResponse {
+  faker.seed([100]);
+  return data || faker.helpers.arrayElement<any>([createDeleteUser200()]);
 }

@@ -5,25 +5,44 @@
 
 import { z } from 'zod';
 import type {
-  UpdatePetWithForm405,
-  UpdatePetWithFormMutationRequest,
+  UpdatePetWithForm200,
+  UpdatePetWithForm400,
+  UpdatePetWithFormError,
   UpdatePetWithFormMutationResponse,
   UpdatePetWithFormPathParams,
+  UpdatePetWithFormQueryParams,
 } from '../../model/pet/UpdatePetWithForm.ts';
+import { petSchema } from '../petSchema.ts';
 
 export const updatePetWithFormPathParamsSchema = z.object({
   petId: z.coerce.number().int().describe('ID of pet that needs to be updated'),
 }) as unknown as z.ZodType<UpdatePetWithFormPathParams>;
 
+export const updatePetWithFormQueryParamsSchema = z
+  .object({
+    name: z.optional(z.string().describe('Name of pet that needs to be updated')),
+    status: z.optional(z.string().describe('Status of pet that needs to be updated')),
+  })
+  .optional() as unknown as z.ZodType<UpdatePetWithFormQueryParams>;
+
+/**
+ * @description successful operation
+ */
+export const updatePetWithForm200Schema = z.lazy(
+  () => petSchema,
+) as unknown as z.ZodType<UpdatePetWithForm200>;
+
 /**
  * @description Invalid input
  */
-export const updatePetWithForm405Schema = z.unknown() as unknown as z.ZodType<UpdatePetWithForm405>;
+export const updatePetWithForm400Schema = z.unknown() as unknown as z.ZodType<UpdatePetWithForm400>;
 
-export const updatePetWithFormMutationRequestSchema = z.object({
-  name: z.optional(z.string().describe('Updated name of the pet')),
-  status: z.optional(z.string().describe('Updated status of the pet')),
-}) as unknown as z.ZodType<UpdatePetWithFormMutationRequest>;
+/**
+ * @description Unexpected error
+ */
+export const updatePetWithFormErrorSchema =
+  z.unknown() as unknown as z.ZodType<UpdatePetWithFormError>;
 
-export const updatePetWithFormMutationResponseSchema =
-  z.unknown() as unknown as z.ZodType<UpdatePetWithFormMutationResponse>;
+export const updatePetWithFormMutationResponseSchema = z.lazy(
+  () => updatePetWithForm200Schema,
+) as unknown as z.ZodType<UpdatePetWithFormMutationResponse>;

@@ -8,6 +8,7 @@ import type {
   GetPetById200,
   GetPetById400,
   GetPetById404,
+  GetPetByIdError,
   GetPetByIdPathParams,
   GetPetByIdQueryResponse,
 } from '../../model/pet/GetPetById.ts';
@@ -31,6 +32,11 @@ export const getPetById400Schema = z.unknown() as unknown as z.ZodType<GetPetByI
  * @description Pet not found
  */
 export const getPetById404Schema = z.unknown() as unknown as z.ZodType<GetPetById404>;
+
+/**
+ * @description Unexpected error
+ */
+export const getPetByIdErrorSchema = z.unknown() as unknown as z.ZodType<GetPetByIdError>;
 
 export const getPetByIdQueryResponseSchema = z.lazy(
   () => getPetById200Schema,

@@ -7,6 +7,8 @@ import { z } from 'zod';
 import type {
   PlaceOrder200,
   PlaceOrder400,
+  PlaceOrder422,
+  PlaceOrderError,
   PlaceOrderMutationRequest,
   PlaceOrderMutationResponse,
 } from '../../model/store/PlaceOrder.ts';
@@ -18,13 +20,20 @@ import { orderSchema } from '../orderSchema.ts';
 export const placeOrder200Schema = z.lazy(() => orderSchema) as unknown as z.ZodType<PlaceOrder200>;
 
 /**
- * @description Invalid Order
+ * @description Invalid input
  */
 export const placeOrder400Schema = z.unknown() as unknown as z.ZodType<PlaceOrder400>;
 
 /**
- * @description order placed for purchasing the pet
+ * @description Validation exception
  */
+export const placeOrder422Schema = z.unknown() as unknown as z.ZodType<PlaceOrder422>;
+
+/**
+ * @description Unexpected error
+ */
+export const placeOrderErrorSchema = z.unknown() as unknown as z.ZodType<PlaceOrderError>;
+
 export const placeOrderMutationRequestSchema = z.lazy(
   () => orderSchema,
 ) as unknown as z.ZodType<PlaceOrderMutationRequest>;

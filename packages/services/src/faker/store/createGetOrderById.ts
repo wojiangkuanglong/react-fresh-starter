@@ -17,7 +17,7 @@ export function createGetOrderByIdPathParams(
 ): GetOrderByIdPathParams {
   faker.seed([100]);
   return {
-    ...{ orderId: faker.number.int({ min: 1, max: 10 }) },
+    ...{ orderId: faker.number.int() },
     ...(data || {}),
   };
 }
@@ -42,6 +42,14 @@ export function createGetOrderById400() {
  * @description Order not found
  */
 export function createGetOrderById404() {
+  faker.seed([100]);
+  return undefined;
+}
+
+/**
+ * @description Unexpected error
+ */
+export function createGetOrderByIdError() {
   faker.seed([100]);
   return undefined;
 }

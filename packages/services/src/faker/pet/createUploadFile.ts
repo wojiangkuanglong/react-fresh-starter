@@ -7,9 +7,9 @@
 
 import { faker } from '@faker-js/faker';
 import type {
-  UploadFileMutationRequest,
   UploadFileMutationResponse,
   UploadFilePathParams,
+  UploadFileQueryParams,
 } from '../../model/pet/UploadFile.ts';
 import { createApiResponse } from '../createApiResponse.ts';
 
@@ -23,6 +23,16 @@ export function createUploadFilePathParams(
   };
 }
 
+export function createUploadFileQueryParams(
+  data?: Partial<UploadFileQueryParams>,
+): UploadFileQueryParams {
+  faker.seed([100]);
+  return {
+    ...{ additionalMetadata: faker.string.alpha() },
+    ...(data || {}),
+  };
+}
+
 /**
  * @description successful operation
  */
@@ -31,14 +41,33 @@ export function createUploadFile200() {
   return createApiResponse();
 }
 
-export function createUploadFileMutationRequest(
-  data?: Partial<UploadFileMutationRequest>,
-): UploadFileMutationRequest {
+/**
+ * @description No file uploaded
+ */
+export function createUploadFile400() {
   faker.seed([100]);
-  return {
-    ...{ additionalMetadata: faker.string.alpha(), file: faker.image.url() as unknown as Blob },
-    ...(data || {}),
-  };
+  return undefined;
+}
+
+/**
+ * @description Pet not found
+ */
+export function createUploadFile404() {
+  faker.seed([100]);
+  return undefined;
+}
+
+/**
+ * @description Unexpected error
+ */
+export function createUploadFileError() {
+  faker.seed([100]);
+  return undefined;
+}
+
+export function createUploadFileMutationRequest() {
+  faker.seed([100]);
+  return faker.image.url() as unknown as Blob;
 }
 
 export function createUploadFileMutationResponse(

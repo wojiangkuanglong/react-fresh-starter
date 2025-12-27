@@ -4,7 +4,11 @@
  */
 
 import { z } from 'zod';
-import type { GetInventory200, GetInventoryQueryResponse } from '../../model/store/GetInventory.ts';
+import type {
+  GetInventory200,
+  GetInventoryError,
+  GetInventoryQueryResponse,
+} from '../../model/store/GetInventory.ts';
 
 /**
  * @description successful operation
@@ -12,6 +16,11 @@ import type { GetInventory200, GetInventoryQueryResponse } from '../../model/sto
 export const getInventory200Schema = z
   .object({})
   .catchall(z.int()) as unknown as z.ZodType<GetInventory200>;
+
+/**
+ * @description Unexpected error
+ */
+export const getInventoryErrorSchema = z.unknown() as unknown as z.ZodType<GetInventoryError>;
 
 export const getInventoryQueryResponseSchema = z.lazy(
   () => getInventory200Schema,

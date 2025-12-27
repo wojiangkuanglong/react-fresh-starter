@@ -7,6 +7,7 @@ import { z } from 'zod';
 import type {
   FindPetsByTags200,
   FindPetsByTags400,
+  FindPetsByTagsError,
   FindPetsByTagsQueryParams,
   FindPetsByTagsQueryResponse,
 } from '../../model/pet/FindPetsByTags.ts';
@@ -27,6 +28,11 @@ export const findPetsByTags200Schema = z.array(
  * @description Invalid tag value
  */
 export const findPetsByTags400Schema = z.unknown() as unknown as z.ZodType<FindPetsByTags400>;
+
+/**
+ * @description Unexpected error
+ */
+export const findPetsByTagsErrorSchema = z.unknown() as unknown as z.ZodType<FindPetsByTagsError>;
 
 export const findPetsByTagsQueryResponseSchema = z.lazy(
   () => findPetsByTags200Schema,

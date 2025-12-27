@@ -6,11 +6,16 @@
 /**
  * @description successful operation
  */
+export type LogoutUser200 = unknown;
+
+/**
+ * @description Unexpected error
+ */
 export type LogoutUserError = unknown;
 
-export type LogoutUserQueryResponse = any;
+export type LogoutUserQueryResponse = LogoutUser200;
 
 export type LogoutUserQuery = {
-  Response: any;
+  Response: LogoutUser200;
   Errors: any;
 };

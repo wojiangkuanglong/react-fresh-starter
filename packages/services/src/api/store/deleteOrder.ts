@@ -18,8 +18,8 @@ export function getDeleteOrderUrl({ orderId }: { orderId: DeleteOrderPathParams[
 }
 
 /**
- * @description For valid response try integer IDs with positive integer value. Negative or non-integer values will generate API errors
- * @summary Delete purchase order by ID
+ * @description For valid response try integer IDs with value < 1000. Anything above 1000 or non-integers will generate API errors.
+ * @summary Delete purchase order by identifier.
  * {@link /store/order/:orderId}
  */
 export async function deleteOrder(

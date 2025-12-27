@@ -13,23 +13,35 @@ export type UploadFilePathParams = {
   petId: number;
 };
 
+export type UploadFileQueryParams = {
+  /**
+   * @description Additional Metadata
+   * @type string | undefined
+   */
+  additionalMetadata?: string;
+};
+
 /**
  * @description successful operation
  */
 export type UploadFile200 = ApiResponse;
 
-export type UploadFileMutationRequest = {
-  /**
-   * @description Additional data to pass to server
-   * @type string | undefined
-   */
-  additionalMetadata?: string;
-  /**
-   * @description file to upload
-   * @type string | undefined, binary
-   */
-  file?: Blob;
-};
+/**
+ * @description No file uploaded
+ */
+export type UploadFile400 = unknown;
+
+/**
+ * @description Pet not found
+ */
+export type UploadFile404 = unknown;
+
+/**
+ * @description Unexpected error
+ */
+export type UploadFileError = unknown;
+
+export type UploadFileMutationRequest = Blob;
 
 export type UploadFileMutationResponse = UploadFile200;
 
@@ -37,5 +49,6 @@ export type UploadFileMutation = {
   Response: UploadFile200;
   Request: UploadFileMutationRequest;
   PathParams: UploadFilePathParams;
-  Errors: any;
+  QueryParams: UploadFileQueryParams;
+  Errors: UploadFile400 | UploadFile404;
 };

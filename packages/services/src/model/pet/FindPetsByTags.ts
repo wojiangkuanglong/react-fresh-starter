@@ -23,6 +23,11 @@ export type FindPetsByTags200 = Pet[];
  */
 export type FindPetsByTags400 = unknown;
 
+/**
+ * @description Unexpected error
+ */
+export type FindPetsByTagsError = unknown;
+
 export type FindPetsByTagsQueryResponse = FindPetsByTags200;
 
 export type FindPetsByTagsQuery = {

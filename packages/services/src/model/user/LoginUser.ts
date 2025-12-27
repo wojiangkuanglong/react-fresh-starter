@@ -6,14 +6,14 @@
 export type LoginUserQueryParams = {
   /**
    * @description The user name for login
-   * @type string
+   * @type string | undefined
    */
-  username: string;
+  username?: string;
   /**
    * @description The password for login in clear text
-   * @type string
+   * @type string | undefined
    */
-  password: string;
+  password?: string;
 };
 
 /**
@@ -25,6 +25,11 @@ export type LoginUser200 = string;
  * @description Invalid username/password supplied
  */
 export type LoginUser400 = unknown;
+
+/**
+ * @description Unexpected error
+ */
+export type LoginUserError = unknown;
 
 export type LoginUserQueryResponse = LoginUser200;
 

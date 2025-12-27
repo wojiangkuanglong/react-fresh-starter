@@ -7,7 +7,7 @@ import type { User } from '../User.ts';
 
 export type GetUserByNamePathParams = {
   /**
-   * @description The name that needs to be fetched. Use user1 for testing.
+   * @description The name that needs to be fetched. Use user1 for testing
    * @type string
    */
   username: string;
@@ -27,6 +27,11 @@ export type GetUserByName400 = unknown;
  * @description User not found
  */
 export type GetUserByName404 = unknown;
+
+/**
+ * @description Unexpected error
+ */
+export type GetUserByNameError = unknown;
 
 export type GetUserByNameQueryResponse = GetUserByName200;
 

@@ -6,19 +6,34 @@
 import type { Pet } from '../Pet.ts';
 
 /**
- * @description Invalid input
+ * @description Successful operation
  */
-export type AddPet405 = unknown;
+export type AddPet200 = Pet;
 
 /**
- * @description Pet object that needs to be added to the store
+ * @description Invalid input
+ */
+export type AddPet400 = unknown;
+
+/**
+ * @description Validation exception
+ */
+export type AddPet422 = unknown;
+
+/**
+ * @description Unexpected error
+ */
+export type AddPetError = unknown;
+
+/**
+ * @description Create a new pet in the store
  */
 export type AddPetMutationRequest = Pet;
 
-export type AddPetMutationResponse = any;
+export type AddPetMutationResponse = AddPet200;
 
 export type AddPetMutation = {
-  Response: any;
+  Response: AddPet200;
   Request: AddPetMutationRequest;
-  Errors: AddPet405;
+  Errors: AddPet400 | AddPet422;
 };

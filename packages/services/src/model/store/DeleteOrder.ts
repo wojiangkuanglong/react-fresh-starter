@@ -6,11 +6,15 @@
 export type DeleteOrderPathParams = {
   /**
    * @description ID of the order that needs to be deleted
-   * @minLength 1
    * @type integer, int64
    */
   orderId: number;
 };
+
+/**
+ * @description order deleted
+ */
+export type DeleteOrder200 = unknown;
 
 /**
  * @description Invalid ID supplied
@@ -22,10 +26,15 @@ export type DeleteOrder400 = unknown;
  */
 export type DeleteOrder404 = unknown;
 
-export type DeleteOrderMutationResponse = any;
+/**
+ * @description Unexpected error
+ */
+export type DeleteOrderError = unknown;
+
+export type DeleteOrderMutationResponse = DeleteOrder200;
 
 export type DeleteOrderMutation = {
-  Response: any;
+  Response: DeleteOrder200;
   PathParams: DeleteOrderPathParams;
   Errors: DeleteOrder400 | DeleteOrder404;
 };

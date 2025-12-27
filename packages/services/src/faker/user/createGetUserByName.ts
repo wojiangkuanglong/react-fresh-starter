@@ -46,6 +46,14 @@ export function createGetUserByName404() {
   return undefined;
 }
 
+/**
+ * @description Unexpected error
+ */
+export function createGetUserByNameError() {
+  faker.seed([100]);
+  return undefined;
+}
+
 export function createGetUserByNameQueryResponse(
   data?: Partial<GetUserByNameQueryResponse>,
 ): GetUserByNameQueryResponse {

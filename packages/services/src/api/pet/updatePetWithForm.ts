@@ -6,10 +6,10 @@
 import type { RequestConfig, ResponseErrorConfig } from '@repo/lib/client';
 import fetch from '@repo/lib/client';
 import type {
-  UpdatePetWithForm405,
-  UpdatePetWithFormMutationRequest,
+  UpdatePetWithForm400,
   UpdatePetWithFormMutationResponse,
   UpdatePetWithFormPathParams,
+  UpdatePetWithFormQueryParams,
 } from '../../model/pet/UpdatePetWithForm.ts';
 
 export function getUpdatePetWithFormUrl({
@@ -22,28 +22,26 @@ export function getUpdatePetWithFormUrl({
 }
 
 /**
- * @summary Updates a pet in the store with form data
+ * @description Updates a pet resource based on the form data.
+ * @summary Updates a pet in the store with form data.
  * {@link /pet/:petId}
  */
 export async function updatePetWithForm(
   { petId }: { petId: UpdatePetWithFormPathParams['petId'] },
-  data?: UpdatePetWithFormMutationRequest,
-  config: Partial<RequestConfig<UpdatePetWithFormMutationRequest>> & { client?: typeof fetch } = {},
+  params?: UpdatePetWithFormQueryParams,
+  config: Partial<RequestConfig> & { client?: typeof fetch } = {},
 ) {
   const { client: request = fetch, ...requestConfig } = config;
 
-  const requestData = data;
-
   const res = await request<
     UpdatePetWithFormMutationResponse,
-    ResponseErrorConfig<UpdatePetWithForm405>,
-    UpdatePetWithFormMutationRequest
+    ResponseErrorConfig<UpdatePetWithForm400>,
+    unknown
   >({
     method: 'POST',
     url: getUpdatePetWithFormUrl({ petId }).url.toString(),
-    data: requestData,
+    params,
     ...requestConfig,
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded', ...requestConfig.headers },
   });
   return res.data;
 }

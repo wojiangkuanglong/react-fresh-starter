@@ -6,15 +6,25 @@
 import { z } from 'zod';
 import type {
   UploadFile200,
+  UploadFile400,
+  UploadFile404,
+  UploadFileError,
   UploadFileMutationRequest,
   UploadFileMutationResponse,
   UploadFilePathParams,
+  UploadFileQueryParams,
 } from '../../model/pet/UploadFile.ts';
 import { apiResponseSchema } from '../apiResponseSchema.ts';
 
 export const uploadFilePathParamsSchema = z.object({
   petId: z.coerce.number().int().describe('ID of pet to update'),
 }) as unknown as z.ZodType<UploadFilePathParams>;
+
+export const uploadFileQueryParamsSchema = z
+  .object({
+    additionalMetadata: z.optional(z.string().describe('Additional Metadata')),
+  })
+  .optional() as unknown as z.ZodType<UploadFileQueryParams>;
 
 /**
  * @description successful operation
@@ -23,10 +33,24 @@ export const uploadFile200Schema = z.lazy(
   () => apiResponseSchema,
 ) as unknown as z.ZodType<UploadFile200>;
 
-export const uploadFileMutationRequestSchema = z.object({
-  additionalMetadata: z.optional(z.string().describe('Additional data to pass to server')),
-  file: z.optional(z.instanceof(File).describe('file to upload')),
-}) as unknown as z.ZodType<UploadFileMutationRequest>;
+/**
+ * @description No file uploaded
+ */
+export const uploadFile400Schema = z.unknown() as unknown as z.ZodType<UploadFile400>;
+
+/**
+ * @description Pet not found
+ */
+export const uploadFile404Schema = z.unknown() as unknown as z.ZodType<UploadFile404>;
+
+/**
+ * @description Unexpected error
+ */
+export const uploadFileErrorSchema = z.unknown() as unknown as z.ZodType<UploadFileError>;
+
+export const uploadFileMutationRequestSchema = z.instanceof(
+  File,
+) as unknown as z.ZodType<UploadFileMutationRequest>;
 
 export const uploadFileMutationResponseSchema = z.lazy(
   () => uploadFile200Schema,

@@ -13,7 +13,8 @@ export function getLogoutUserUrl() {
 }
 
 /**
- * @summary Logs out current logged in user session
+ * @description Log user out of the system.
+ * @summary Logs out current logged in user session.
  * {@link /user/logout}
  */
 export async function logoutUser(config: Partial<RequestConfig> & { client?: typeof fetch } = {}) {

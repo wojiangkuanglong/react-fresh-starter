@@ -8,6 +8,11 @@ import type { User } from '../User.ts';
 /**
  * @description successful operation
  */
+export type CreateUser200 = User;
+
+/**
+ * @description Unexpected error
+ */
 export type CreateUserError = unknown;
 
 /**
@@ -15,10 +20,10 @@ export type CreateUserError = unknown;
  */
 export type CreateUserMutationRequest = User;
 
-export type CreateUserMutationResponse = any;
+export type CreateUserMutationResponse = CreateUser200;
 
 export type CreateUserMutation = {
-  Response: any;
+  Response: CreateUser200;
   Request: CreateUserMutationRequest;
   Errors: any;
 };

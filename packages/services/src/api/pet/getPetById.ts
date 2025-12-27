@@ -18,8 +18,8 @@ export function getGetPetByIdUrl({ petId }: { petId: GetPetByIdPathParams['petId
 }
 
 /**
- * @description Returns a single pet
- * @summary Find pet by ID
+ * @description Returns a single pet.
+ * @summary Find pet by ID.
  * {@link /pet/:petId}
  */
 export async function getPetById(

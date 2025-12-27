@@ -9,6 +9,12 @@ import { http } from 'msw';
 import { createLogoutUserQueryResponse } from '../../faker/user/createLogoutUser.ts';
 import type { LogoutUserQueryResponse } from '../../model/user/LogoutUser.ts';
 
+export function logoutUserHandlerResponse200(data?: LogoutUserQueryResponse) {
+  return new Response(JSON.stringify(data), {
+    status: 200,
+  });
+}
+
 export function logoutUserHandler(
   data?:
     | LogoutUserQueryResponse

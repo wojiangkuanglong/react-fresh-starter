@@ -7,7 +7,11 @@
 
 import { http } from 'msw';
 import { createUploadFileMutationResponse } from '../../faker/pet/createUploadFile.ts';
-import type { UploadFileMutationResponse } from '../../model/pet/UploadFile.ts';
+import type {
+  UploadFile400,
+  UploadFile404,
+  UploadFileMutationResponse,
+} from '../../model/pet/UploadFile.ts';
 
 export function uploadFileHandlerResponse200(data: UploadFileMutationResponse) {
   return new Response(JSON.stringify(data), {
@@ -15,6 +19,18 @@ export function uploadFileHandlerResponse200(data: UploadFileMutationResponse) {
     headers: {
       'Content-Type': 'application/json',
     },
+  });
+}
+
+export function uploadFileHandlerResponse400(data?: UploadFile400) {
+  return new Response(JSON.stringify(data), {
+    status: 400,
+  });
+}
+
+export function uploadFileHandlerResponse404(data?: UploadFile404) {
+  return new Response(JSON.stringify(data), {
+    status: 404,
   });
 }
 

@@ -5,8 +5,10 @@
 
 import { z } from 'zod';
 import type {
+  DeleteUser200,
   DeleteUser400,
   DeleteUser404,
+  DeleteUserError,
   DeleteUserMutationResponse,
   DeleteUserPathParams,
 } from '../../model/user/DeleteUser.ts';
@@ -14,6 +16,11 @@ import type {
 export const deleteUserPathParamsSchema = z.object({
   username: z.string().describe('The name that needs to be deleted'),
 }) as unknown as z.ZodType<DeleteUserPathParams>;
+
+/**
+ * @description User deleted
+ */
+export const deleteUser200Schema = z.unknown() as unknown as z.ZodType<DeleteUser200>;
 
 /**
  * @description Invalid username supplied
@@ -25,5 +32,11 @@ export const deleteUser400Schema = z.unknown() as unknown as z.ZodType<DeleteUse
  */
 export const deleteUser404Schema = z.unknown() as unknown as z.ZodType<DeleteUser404>;
 
-export const deleteUserMutationResponseSchema =
-  z.unknown() as unknown as z.ZodType<DeleteUserMutationResponse>;
+/**
+ * @description Unexpected error
+ */
+export const deleteUserErrorSchema = z.unknown() as unknown as z.ZodType<DeleteUserError>;
+
+export const deleteUserMutationResponseSchema = z.lazy(
+  () => deleteUser200Schema,
+) as unknown as z.ZodType<DeleteUserMutationResponse>;

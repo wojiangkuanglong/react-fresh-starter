@@ -33,7 +33,15 @@ export function createDeletePetHeaderParams(
 }
 
 /**
- * @description Invalid ID supplied
+ * @description Pet deleted
+ */
+export function createDeletePet200() {
+  faker.seed([100]);
+  return undefined;
+}
+
+/**
+ * @description Invalid pet value
  */
 export function createDeletePet400() {
   faker.seed([100]);
@@ -41,16 +49,16 @@ export function createDeletePet400() {
 }
 
 /**
- * @description Pet not found
+ * @description Unexpected error
  */
-export function createDeletePet404() {
+export function createDeletePetError() {
   faker.seed([100]);
   return undefined;
 }
 
 export function createDeletePetMutationResponse(
-  _data?: Partial<DeletePetMutationResponse>,
+  data?: Partial<DeletePetMutationResponse>,
 ): DeletePetMutationResponse {
   faker.seed([100]);
-  return undefined;
+  return data || faker.helpers.arrayElement<any>([createDeletePet200()]);
 }

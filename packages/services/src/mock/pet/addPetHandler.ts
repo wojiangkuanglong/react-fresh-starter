@@ -7,11 +7,26 @@
 
 import { http } from 'msw';
 import { createAddPetMutationResponse } from '../../faker/pet/createAddPet.ts';
-import type { AddPet405, AddPetMutationResponse } from '../../model/pet/AddPet.ts';
+import type { AddPet400, AddPet422, AddPetMutationResponse } from '../../model/pet/AddPet.ts';
 
-export function addPetHandlerResponse405(data?: AddPet405) {
+export function addPetHandlerResponse200(data: AddPetMutationResponse) {
   return new Response(JSON.stringify(data), {
-    status: 405,
+    status: 200,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+}
+
+export function addPetHandlerResponse400(data?: AddPet400) {
+  return new Response(JSON.stringify(data), {
+    status: 400,
+  });
+}
+
+export function addPetHandlerResponse422(data?: AddPet422) {
+  return new Response(JSON.stringify(data), {
+    status: 422,
   });
 }
 
@@ -25,6 +40,9 @@ export function addPetHandler(
 
     return new Response(JSON.stringify(data || createAddPetMutationResponse(data)), {
       status: 200,
+      headers: {
+        'Content-Type': 'application/json',
+      },
     });
   });
 }

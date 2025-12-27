@@ -5,13 +5,20 @@
 
 import { z } from 'zod';
 import type {
+  UpdatePet200,
   UpdatePet400,
   UpdatePet404,
-  UpdatePet405,
+  UpdatePet422,
+  UpdatePetError,
   UpdatePetMutationRequest,
   UpdatePetMutationResponse,
 } from '../../model/pet/UpdatePet.ts';
 import { petSchema } from '../petSchema.ts';
+
+/**
+ * @description Successful operation
+ */
+export const updatePet200Schema = z.lazy(() => petSchema) as unknown as z.ZodType<UpdatePet200>;
 
 /**
  * @description Invalid ID supplied
@@ -26,14 +33,20 @@ export const updatePet404Schema = z.unknown() as unknown as z.ZodType<UpdatePet4
 /**
  * @description Validation exception
  */
-export const updatePet405Schema = z.unknown() as unknown as z.ZodType<UpdatePet405>;
+export const updatePet422Schema = z.unknown() as unknown as z.ZodType<UpdatePet422>;
 
 /**
- * @description Pet object that needs to be added to the store
+ * @description Unexpected error
+ */
+export const updatePetErrorSchema = z.unknown() as unknown as z.ZodType<UpdatePetError>;
+
+/**
+ * @description Update an existent pet in the store
  */
 export const updatePetMutationRequestSchema = z.lazy(
   () => petSchema,
 ) as unknown as z.ZodType<UpdatePetMutationRequest>;
 
-export const updatePetMutationResponseSchema =
-  z.unknown() as unknown as z.ZodType<UpdatePetMutationResponse>;
+export const updatePetMutationResponseSchema = z.lazy(
+  () => updatePet200Schema,
+) as unknown as z.ZodType<UpdatePetMutationResponse>;

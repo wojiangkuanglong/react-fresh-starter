@@ -16,9 +16,17 @@ export function createDeleteOrderPathParams(
 ): DeleteOrderPathParams {
   faker.seed([100]);
   return {
-    ...{ orderId: faker.number.int({ min: 1 }) },
+    ...{ orderId: faker.number.int() },
     ...(data || {}),
   };
+}
+
+/**
+ * @description order deleted
+ */
+export function createDeleteOrder200() {
+  faker.seed([100]);
+  return undefined;
 }
 
 /**
@@ -37,9 +45,17 @@ export function createDeleteOrder404() {
   return undefined;
 }
 
-export function createDeleteOrderMutationResponse(
-  _data?: Partial<DeleteOrderMutationResponse>,
-): DeleteOrderMutationResponse {
+/**
+ * @description Unexpected error
+ */
+export function createDeleteOrderError() {
   faker.seed([100]);
   return undefined;
+}
+
+export function createDeleteOrderMutationResponse(
+  data?: Partial<DeleteOrderMutationResponse>,
+): DeleteOrderMutationResponse {
+  faker.seed([100]);
+  return data || faker.helpers.arrayElement<any>([createDeleteOrder200()]);
 }

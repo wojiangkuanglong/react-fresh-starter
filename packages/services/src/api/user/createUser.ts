@@ -17,7 +17,7 @@ export function getCreateUserUrl() {
 
 /**
  * @description This can only be done by the logged in user.
- * @summary Create user
+ * @summary Create user.
  * {@link /user}
  */
 export async function createUser(

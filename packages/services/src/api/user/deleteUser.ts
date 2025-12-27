@@ -19,7 +19,7 @@ export function getDeleteUserUrl({ username }: { username: DeleteUserPathParams[
 
 /**
  * @description This can only be done by the logged in user.
- * @summary Delete user
+ * @summary Delete user resource.
  * {@link /user/:username}
  */
 export async function deleteUser(

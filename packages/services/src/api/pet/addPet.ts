@@ -6,7 +6,8 @@
 import type { RequestConfig, ResponseErrorConfig } from '@repo/lib/client';
 import fetch from '@repo/lib/client';
 import type {
-  AddPet405,
+  AddPet400,
+  AddPet422,
   AddPetMutationRequest,
   AddPetMutationResponse,
 } from '../../model/pet/AddPet.ts';
@@ -17,7 +18,8 @@ export function getAddPetUrl() {
 }
 
 /**
- * @summary Add a new pet to the store
+ * @description Add a new pet to the store.
+ * @summary Add a new pet to the store.
  * {@link /pet}
  */
 export async function addPet(
@@ -30,7 +32,7 @@ export async function addPet(
 
   const res = await request<
     AddPetMutationResponse,
-    ResponseErrorConfig<AddPet405>,
+    ResponseErrorConfig<AddPet400 | AddPet422>,
     AddPetMutationRequest
   >({ method: 'POST', url: getAddPetUrl().url.toString(), data: requestData, ...requestConfig });
   return res.data;

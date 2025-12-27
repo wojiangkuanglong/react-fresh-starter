@@ -17,9 +17,10 @@ export type FindPetsByStatusQueryParamsStatusEnumKey =
 export type FindPetsByStatusQueryParams = {
   /**
    * @description Status values that need to be considered for filter
-   * @type array
+   * @default "available"
+   * @type string
    */
-  status: FindPetsByStatusQueryParamsStatusEnumKey[];
+  status: FindPetsByStatusQueryParamsStatusEnumKey;
 };
 
 /**
@@ -31,6 +32,11 @@ export type FindPetsByStatus200 = Pet[];
  * @description Invalid status value
  */
 export type FindPetsByStatus400 = unknown;
+
+/**
+ * @description Unexpected error
+ */
+export type FindPetsByStatusError = unknown;
 
 export type FindPetsByStatusQueryResponse = FindPetsByStatus200;
 

@@ -4,17 +4,13 @@
  */
 
 export const operations = {
-  uploadFile: {
-    path: '/pet/:petId/uploadImage',
-    method: 'post',
+  updatePet: {
+    path: '/pet',
+    method: 'put',
   },
   addPet: {
     path: '/pet',
     method: 'post',
-  },
-  updatePet: {
-    path: '/pet',
-    method: 'put',
   },
   findPetsByStatus: {
     path: '/pet/findByStatus',
@@ -36,6 +32,10 @@ export const operations = {
     path: '/pet/:petId',
     method: 'delete',
   },
+  uploadFile: {
+    path: '/pet/:petId/uploadImage',
+    method: 'post',
+  },
   getInventory: {
     path: '/store/inventory',
     method: 'get',
@@ -52,9 +52,21 @@ export const operations = {
     path: '/store/order/:orderId',
     method: 'delete',
   },
+  createUser: {
+    path: '/user',
+    method: 'post',
+  },
   createUsersWithListInput: {
     path: '/user/createWithList',
     method: 'post',
+  },
+  loginUser: {
+    path: '/user/login',
+    method: 'get',
+  },
+  logoutUser: {
+    path: '/user/logout',
+    method: 'get',
   },
   getUserByName: {
     path: '/user/:username',
@@ -67,21 +79,5 @@ export const operations = {
   deleteUser: {
     path: '/user/:username',
     method: 'delete',
-  },
-  loginUser: {
-    path: '/user/login',
-    method: 'get',
-  },
-  logoutUser: {
-    path: '/user/logout',
-    method: 'get',
-  },
-  createUsersWithArrayInput: {
-    path: '/user/createWithArray',
-    method: 'post',
-  },
-  createUser: {
-    path: '/user',
-    method: 'post',
   },
 };

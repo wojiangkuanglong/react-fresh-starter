@@ -8,7 +8,7 @@ import { pluginZod } from '@kubb/plugin-zod';
 
 export default defineConfig({
   input: {
-    path: 'https://petstore.swagger.io/v2/swagger.json',
+    path: 'https://petstore3.swagger.io/api/v3/openapi.json',
   },
   output: {
     path: './src',

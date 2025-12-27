@@ -8,13 +8,22 @@
 import { http } from 'msw';
 import { createUpdatePetWithFormMutationResponse } from '../../faker/pet/createUpdatePetWithForm.ts';
 import type {
-  UpdatePetWithForm405,
+  UpdatePetWithForm400,
   UpdatePetWithFormMutationResponse,
 } from '../../model/pet/UpdatePetWithForm.ts';
 
-export function updatePetWithFormHandlerResponse405(data?: UpdatePetWithForm405) {
+export function updatePetWithFormHandlerResponse200(data: UpdatePetWithFormMutationResponse) {
   return new Response(JSON.stringify(data), {
-    status: 405,
+    status: 200,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+}
+
+export function updatePetWithFormHandlerResponse400(data?: UpdatePetWithForm400) {
+  return new Response(JSON.stringify(data), {
+    status: 400,
   });
 }
 
@@ -28,6 +37,9 @@ export function updatePetWithFormHandler(
 
     return new Response(JSON.stringify(data || createUpdatePetWithFormMutationResponse(data)), {
       status: 200,
+      headers: {
+        'Content-Type': 'application/json',
+      },
     });
   });
 }

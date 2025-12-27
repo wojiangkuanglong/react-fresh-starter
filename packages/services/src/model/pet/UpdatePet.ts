@@ -6,6 +6,11 @@
 import type { Pet } from '../Pet.ts';
 
 /**
+ * @description Successful operation
+ */
+export type UpdatePet200 = Pet;
+
+/**
  * @description Invalid ID supplied
  */
 export type UpdatePet400 = unknown;
@@ -18,17 +23,22 @@ export type UpdatePet404 = unknown;
 /**
  * @description Validation exception
  */
-export type UpdatePet405 = unknown;
+export type UpdatePet422 = unknown;
 
 /**
- * @description Pet object that needs to be added to the store
+ * @description Unexpected error
+ */
+export type UpdatePetError = unknown;
+
+/**
+ * @description Update an existent pet in the store
  */
 export type UpdatePetMutationRequest = Pet;
 
-export type UpdatePetMutationResponse = any;
+export type UpdatePetMutationResponse = UpdatePet200;
 
 export type UpdatePetMutation = {
-  Response: any;
+  Response: UpdatePet200;
   Request: UpdatePetMutationRequest;
-  Errors: UpdatePet400 | UpdatePet404 | UpdatePet405;
+  Errors: UpdatePet400 | UpdatePet404 | UpdatePet422;
 };

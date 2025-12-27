@@ -7,21 +7,17 @@
 
 import { http } from 'msw';
 import { createDeletePetMutationResponse } from '../../faker/pet/createDeletePet.ts';
-import type {
-  DeletePet400,
-  DeletePet404,
-  DeletePetMutationResponse,
-} from '../../model/pet/DeletePet.ts';
+import type { DeletePet400, DeletePetMutationResponse } from '../../model/pet/DeletePet.ts';
+
+export function deletePetHandlerResponse200(data?: DeletePetMutationResponse) {
+  return new Response(JSON.stringify(data), {
+    status: 200,
+  });
+}
 
 export function deletePetHandlerResponse400(data?: DeletePet400) {
   return new Response(JSON.stringify(data), {
     status: 400,
-  });
-}
-
-export function deletePetHandlerResponse404(data?: DeletePet404) {
-  return new Response(JSON.stringify(data), {
-    status: 404,
   });
 }
 

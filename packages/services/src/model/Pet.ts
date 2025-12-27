@@ -20,13 +20,13 @@ export type Pet = {
    */
   id?: number;
   /**
-   * @type object | undefined
-   */
-  category?: Category;
-  /**
    * @type string
    */
   name: string;
+  /**
+   * @type object | undefined
+   */
+  category?: Category;
   /**
    * @type array
    */

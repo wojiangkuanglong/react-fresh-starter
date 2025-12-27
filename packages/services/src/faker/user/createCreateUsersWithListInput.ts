@@ -13,16 +13,21 @@ import type {
 import { createUser } from '../createUser.ts';
 
 /**
- * @description successful operation
+ * @description Successful operation
+ */
+export function createCreateUsersWithListInput200() {
+  faker.seed([100]);
+  return createUser();
+}
+
+/**
+ * @description Unexpected error
  */
 export function createCreateUsersWithListInputError() {
   faker.seed([100]);
   return undefined;
 }
 
-/**
- * @description List of user object
- */
 export function createCreateUsersWithListInputMutationRequest(
   data?: CreateUsersWithListInputMutationRequest,
 ): CreateUsersWithListInputMutationRequest {
@@ -31,8 +36,8 @@ export function createCreateUsersWithListInputMutationRequest(
 }
 
 export function createCreateUsersWithListInputMutationResponse(
-  _data?: Partial<CreateUsersWithListInputMutationResponse>,
+  data?: Partial<CreateUsersWithListInputMutationResponse>,
 ): CreateUsersWithListInputMutationResponse {
   faker.seed([100]);
-  return undefined;
+  return data || faker.helpers.arrayElement<any>([createCreateUsersWithListInput200()]);
 }

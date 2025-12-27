@@ -12,6 +12,11 @@ export type DeleteUserPathParams = {
 };
 
 /**
+ * @description User deleted
+ */
+export type DeleteUser200 = unknown;
+
+/**
  * @description Invalid username supplied
  */
 export type DeleteUser400 = unknown;
@@ -21,10 +26,15 @@ export type DeleteUser400 = unknown;
  */
 export type DeleteUser404 = unknown;
 
-export type DeleteUserMutationResponse = any;
+/**
+ * @description Unexpected error
+ */
+export type DeleteUserError = unknown;
+
+export type DeleteUserMutationResponse = DeleteUser200;
 
 export type DeleteUserMutation = {
-  Response: any;
+  Response: DeleteUser200;
   PathParams: DeleteUserPathParams;
   Errors: DeleteUser400 | DeleteUser404;
 };

@@ -5,8 +5,10 @@
 
 import { z } from 'zod';
 import type {
+  UpdateUser200,
   UpdateUser400,
   UpdateUser404,
+  UpdateUserError,
   UpdateUserMutationRequest,
   UpdateUserMutationResponse,
   UpdateUserPathParams,
@@ -14,25 +16,36 @@ import type {
 import { userSchema } from '../userSchema.ts';
 
 export const updateUserPathParamsSchema = z.object({
-  username: z.string().describe('name that need to be updated'),
+  username: z.string().describe('name that need to be deleted'),
 }) as unknown as z.ZodType<UpdateUserPathParams>;
 
 /**
- * @description Invalid user supplied
+ * @description successful operation
+ */
+export const updateUser200Schema = z.unknown() as unknown as z.ZodType<UpdateUser200>;
+
+/**
+ * @description bad request
  */
 export const updateUser400Schema = z.unknown() as unknown as z.ZodType<UpdateUser400>;
 
 /**
- * @description User not found
+ * @description user not found
  */
 export const updateUser404Schema = z.unknown() as unknown as z.ZodType<UpdateUser404>;
 
 /**
- * @description Updated user object
+ * @description Unexpected error
+ */
+export const updateUserErrorSchema = z.unknown() as unknown as z.ZodType<UpdateUserError>;
+
+/**
+ * @description Update an existent user in the store
  */
 export const updateUserMutationRequestSchema = z.lazy(
   () => userSchema,
 ) as unknown as z.ZodType<UpdateUserMutationRequest>;
 
-export const updateUserMutationResponseSchema =
-  z.unknown() as unknown as z.ZodType<UpdateUserMutationResponse>;
+export const updateUserMutationResponseSchema = z.lazy(
+  () => updateUser200Schema,
+) as unknown as z.ZodType<UpdateUserMutationResponse>;

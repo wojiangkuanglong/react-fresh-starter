@@ -7,6 +7,7 @@ import type { RequestConfig, ResponseErrorConfig } from '@repo/lib/client';
 import fetch from '@repo/lib/client';
 import type {
   PlaceOrder400,
+  PlaceOrder422,
   PlaceOrderMutationRequest,
   PlaceOrderMutationResponse,
 } from '../../model/store/PlaceOrder.ts';
@@ -17,7 +18,8 @@ export function getPlaceOrderUrl() {
 }
 
 /**
- * @summary Place an order for a pet
+ * @description Place a new order in the store.
+ * @summary Place an order for a pet.
  * {@link /store/order}
  */
 export async function placeOrder(
@@ -30,7 +32,7 @@ export async function placeOrder(
 
   const res = await request<
     PlaceOrderMutationResponse,
-    ResponseErrorConfig<PlaceOrder400>,
+    ResponseErrorConfig<PlaceOrder400 | PlaceOrder422>,
     PlaceOrderMutationRequest
   >({
     method: 'POST',

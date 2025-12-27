@@ -18,7 +18,7 @@ export function createPlaceOrder200() {
 }
 
 /**
- * @description Invalid Order
+ * @description Invalid input
  */
 export function createPlaceOrder400() {
   faker.seed([100]);
@@ -26,8 +26,21 @@ export function createPlaceOrder400() {
 }
 
 /**
- * @description order placed for purchasing the pet
+ * @description Validation exception
  */
+export function createPlaceOrder422() {
+  faker.seed([100]);
+  return undefined;
+}
+
+/**
+ * @description Unexpected error
+ */
+export function createPlaceOrderError() {
+  faker.seed([100]);
+  return undefined;
+}
+
 export function createPlaceOrderMutationRequest() {
   faker.seed([100]);
   return createOrder();

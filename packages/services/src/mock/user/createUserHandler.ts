@@ -9,6 +9,15 @@ import { http } from 'msw';
 import { createCreateUserMutationResponse } from '../../faker/user/createCreateUser.ts';
 import type { CreateUserMutationResponse } from '../../model/user/CreateUser.ts';
 
+export function createUserHandlerResponse200(data: CreateUserMutationResponse) {
+  return new Response(JSON.stringify(data), {
+    status: 200,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+}
+
 export function createUserHandler(
   data?:
     | CreateUserMutationResponse
@@ -19,6 +28,9 @@ export function createUserHandler(
 
     return new Response(JSON.stringify(data || createCreateUserMutationResponse(data)), {
       status: 200,
+      headers: {
+        'Content-Type': 'application/json',
+      },
     });
   });
 }

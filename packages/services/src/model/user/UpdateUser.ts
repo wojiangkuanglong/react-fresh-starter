@@ -7,31 +7,41 @@ import type { User } from '../User.ts';
 
 export type UpdateUserPathParams = {
   /**
-   * @description name that need to be updated
+   * @description name that need to be deleted
    * @type string
    */
   username: string;
 };
 
 /**
- * @description Invalid user supplied
+ * @description successful operation
+ */
+export type UpdateUser200 = unknown;
+
+/**
+ * @description bad request
  */
 export type UpdateUser400 = unknown;
 
 /**
- * @description User not found
+ * @description user not found
  */
 export type UpdateUser404 = unknown;
 
 /**
- * @description Updated user object
+ * @description Unexpected error
+ */
+export type UpdateUserError = unknown;
+
+/**
+ * @description Update an existent user in the store
  */
 export type UpdateUserMutationRequest = User;
 
-export type UpdateUserMutationResponse = any;
+export type UpdateUserMutationResponse = UpdateUser200;
 
 export type UpdateUserMutation = {
-  Response: any;
+  Response: UpdateUser200;
   Request: UpdateUserMutationRequest;
   PathParams: UpdateUserPathParams;
   Errors: UpdateUser400 | UpdateUser404;

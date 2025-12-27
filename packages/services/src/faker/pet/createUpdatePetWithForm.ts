@@ -7,10 +7,11 @@
 
 import { faker } from '@faker-js/faker';
 import type {
-  UpdatePetWithFormMutationRequest,
   UpdatePetWithFormMutationResponse,
   UpdatePetWithFormPathParams,
+  UpdatePetWithFormQueryParams,
 } from '../../model/pet/UpdatePetWithForm.ts';
+import { createPet } from '../createPet.ts';
 
 export function createUpdatePetWithFormPathParams(
   data?: Partial<UpdatePetWithFormPathParams>,
@@ -22,17 +23,9 @@ export function createUpdatePetWithFormPathParams(
   };
 }
 
-/**
- * @description Invalid input
- */
-export function createUpdatePetWithForm405() {
-  faker.seed([100]);
-  return undefined;
-}
-
-export function createUpdatePetWithFormMutationRequest(
-  data?: Partial<UpdatePetWithFormMutationRequest>,
-): UpdatePetWithFormMutationRequest {
+export function createUpdatePetWithFormQueryParams(
+  data?: Partial<UpdatePetWithFormQueryParams>,
+): UpdatePetWithFormQueryParams {
   faker.seed([100]);
   return {
     ...{ name: faker.string.alpha(), status: faker.string.alpha() },
@@ -40,9 +33,33 @@ export function createUpdatePetWithFormMutationRequest(
   };
 }
 
-export function createUpdatePetWithFormMutationResponse(
-  _data?: Partial<UpdatePetWithFormMutationResponse>,
-): UpdatePetWithFormMutationResponse {
+/**
+ * @description successful operation
+ */
+export function createUpdatePetWithForm200() {
+  faker.seed([100]);
+  return createPet();
+}
+
+/**
+ * @description Invalid input
+ */
+export function createUpdatePetWithForm400() {
   faker.seed([100]);
   return undefined;
+}
+
+/**
+ * @description Unexpected error
+ */
+export function createUpdatePetWithFormError() {
+  faker.seed([100]);
+  return undefined;
+}
+
+export function createUpdatePetWithFormMutationResponse(
+  data?: Partial<UpdatePetWithFormMutationResponse>,
+): UpdatePetWithFormMutationResponse {
+  faker.seed([100]);
+  return data || faker.helpers.arrayElement<any>([createUpdatePetWithForm200()]);
 }

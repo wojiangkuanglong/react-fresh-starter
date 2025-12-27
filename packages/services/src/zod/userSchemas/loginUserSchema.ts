@@ -7,14 +7,17 @@ import { z } from 'zod';
 import type {
   LoginUser200,
   LoginUser400,
+  LoginUserError,
   LoginUserQueryParams,
   LoginUserQueryResponse,
 } from '../../model/user/LoginUser.ts';
 
-export const loginUserQueryParamsSchema = z.object({
-  username: z.string().describe('The user name for login'),
-  password: z.string().describe('The password for login in clear text'),
-}) as unknown as z.ZodType<LoginUserQueryParams>;
+export const loginUserQueryParamsSchema = z
+  .object({
+    username: z.optional(z.string().describe('The user name for login')),
+    password: z.optional(z.string().describe('The password for login in clear text')),
+  })
+  .optional() as unknown as z.ZodType<LoginUserQueryParams>;
 
 /**
  * @description successful operation
@@ -25,6 +28,11 @@ export const loginUser200Schema = z.string() as unknown as z.ZodType<LoginUser20
  * @description Invalid username/password supplied
  */
 export const loginUser400Schema = z.unknown() as unknown as z.ZodType<LoginUser400>;
+
+/**
+ * @description Unexpected error
+ */
+export const loginUserErrorSchema = z.unknown() as unknown as z.ZodType<LoginUserError>;
 
 export const loginUserQueryResponseSchema = z.lazy(
   () => loginUser200Schema,

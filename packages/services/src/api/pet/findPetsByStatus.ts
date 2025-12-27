@@ -17,8 +17,8 @@ export function getFindPetsByStatusUrl() {
 }
 
 /**
- * @description Multiple status values can be provided with comma separated strings
- * @summary Finds Pets by status
+ * @description Multiple status values can be provided with comma separated strings.
+ * @summary Finds Pets by status.
  * {@link /pet/findByStatus}
  */
 export async function findPetsByStatus(

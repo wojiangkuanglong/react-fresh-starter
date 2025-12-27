@@ -10,10 +10,10 @@ import { tagSchema } from './tagSchema.ts';
 
 export const petSchema = z.object({
   id: z.optional(z.int()),
+  name: z.string(),
   get category() {
     return categorySchema.optional();
   },
-  name: z.string(),
   photoUrls: z.array(z.string()),
   get tags() {
     return z.array(tagSchema).optional();

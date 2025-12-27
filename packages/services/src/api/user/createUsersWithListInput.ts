@@ -16,7 +16,8 @@ export function getCreateUsersWithListInputUrl() {
 }
 
 /**
- * @summary Creates list of users with given input array
+ * @description Creates list of users with given input array.
+ * @summary Creates list of users with given input array.
  * {@link /user/createWithList}
  */
 export async function createUsersWithListInput(

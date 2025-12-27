@@ -10,6 +10,11 @@ export type GetInventory200 = {
   [key: string]: number;
 };
 
+/**
+ * @description Unexpected error
+ */
+export type GetInventoryError = unknown;
+
 export type GetInventoryQueryResponse = GetInventory200;
 
 export type GetInventoryQuery = {

@@ -5,15 +5,22 @@
 
 import { z } from 'zod';
 import type {
+  DeleteOrder200,
   DeleteOrder400,
   DeleteOrder404,
+  DeleteOrderError,
   DeleteOrderMutationResponse,
   DeleteOrderPathParams,
 } from '../../model/store/DeleteOrder.ts';
 
 export const deleteOrderPathParamsSchema = z.object({
-  orderId: z.coerce.number().int().min(1).describe('ID of the order that needs to be deleted'),
+  orderId: z.coerce.number().int().describe('ID of the order that needs to be deleted'),
 }) as unknown as z.ZodType<DeleteOrderPathParams>;
+
+/**
+ * @description order deleted
+ */
+export const deleteOrder200Schema = z.unknown() as unknown as z.ZodType<DeleteOrder200>;
 
 /**
  * @description Invalid ID supplied
@@ -25,5 +32,11 @@ export const deleteOrder400Schema = z.unknown() as unknown as z.ZodType<DeleteOr
  */
 export const deleteOrder404Schema = z.unknown() as unknown as z.ZodType<DeleteOrder404>;
 
-export const deleteOrderMutationResponseSchema =
-  z.unknown() as unknown as z.ZodType<DeleteOrderMutationResponse>;
+/**
+ * @description Unexpected error
+ */
+export const deleteOrderErrorSchema = z.unknown() as unknown as z.ZodType<DeleteOrderError>;
+
+export const deleteOrderMutationResponseSchema = z.lazy(
+  () => deleteOrder200Schema,
+) as unknown as z.ZodType<DeleteOrderMutationResponse>;

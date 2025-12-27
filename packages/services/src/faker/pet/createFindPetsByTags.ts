@@ -39,6 +39,14 @@ export function createFindPetsByTags400() {
   return undefined;
 }
 
+/**
+ * @description Unexpected error
+ */
+export function createFindPetsByTagsError() {
+  faker.seed([100]);
+  return undefined;
+}
+
 export function createFindPetsByTagsQueryResponse(
   data?: Partial<FindPetsByTagsQueryResponse>,
 ): FindPetsByTagsQueryResponse {

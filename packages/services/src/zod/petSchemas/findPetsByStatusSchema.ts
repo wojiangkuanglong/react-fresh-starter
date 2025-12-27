@@ -7,6 +7,7 @@ import { z } from 'zod';
 import type {
   FindPetsByStatus200,
   FindPetsByStatus400,
+  FindPetsByStatusError,
   FindPetsByStatusQueryParams,
   FindPetsByStatusQueryResponse,
 } from '../../model/pet/FindPetsByStatus.ts';
@@ -14,7 +15,8 @@ import { petSchema } from '../petSchema.ts';
 
 export const findPetsByStatusQueryParamsSchema = z.object({
   status: z
-    .array(z.enum(['available', 'pending', 'sold']).default('available'))
+    .enum(['available', 'pending', 'sold'])
+    .default('available')
     .describe('Status values that need to be considered for filter'),
 }) as unknown as z.ZodType<FindPetsByStatusQueryParams>;
 
@@ -29,6 +31,12 @@ export const findPetsByStatus200Schema = z.array(
  * @description Invalid status value
  */
 export const findPetsByStatus400Schema = z.unknown() as unknown as z.ZodType<FindPetsByStatus400>;
+
+/**
+ * @description Unexpected error
+ */
+export const findPetsByStatusErrorSchema =
+  z.unknown() as unknown as z.ZodType<FindPetsByStatusError>;
 
 export const findPetsByStatusQueryResponseSchema = z.lazy(
   () => findPetsByStatus200Schema,

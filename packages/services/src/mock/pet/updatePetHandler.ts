@@ -10,9 +10,18 @@ import { createUpdatePetMutationResponse } from '../../faker/pet/createUpdatePet
 import type {
   UpdatePet400,
   UpdatePet404,
-  UpdatePet405,
+  UpdatePet422,
   UpdatePetMutationResponse,
 } from '../../model/pet/UpdatePet.ts';
+
+export function updatePetHandlerResponse200(data: UpdatePetMutationResponse) {
+  return new Response(JSON.stringify(data), {
+    status: 200,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+}
 
 export function updatePetHandlerResponse400(data?: UpdatePet400) {
   return new Response(JSON.stringify(data), {
@@ -26,9 +35,9 @@ export function updatePetHandlerResponse404(data?: UpdatePet404) {
   });
 }
 
-export function updatePetHandlerResponse405(data?: UpdatePet405) {
+export function updatePetHandlerResponse422(data?: UpdatePet422) {
   return new Response(JSON.stringify(data), {
-    status: 405,
+    status: 422,
   });
 }
 
@@ -42,6 +51,9 @@ export function updatePetHandler(
 
     return new Response(JSON.stringify(data || createUpdatePetMutationResponse(data)), {
       status: 200,
+      headers: {
+        'Content-Type': 'application/json',
+      },
     });
   });
 }

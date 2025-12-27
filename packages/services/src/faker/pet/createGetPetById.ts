@@ -43,6 +43,14 @@ export function createGetPetById404() {
   return undefined;
 }
 
+/**
+ * @description Unexpected error
+ */
+export function createGetPetByIdError() {
+  faker.seed([100]);
+  return undefined;
+}
+
 export function createGetPetByIdQueryResponse(
   data?: Partial<GetPetByIdQueryResponse>,
 ): GetPetByIdQueryResponse {

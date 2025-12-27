@@ -12,6 +12,14 @@ import { createUser } from '../createUser.ts';
 /**
  * @description successful operation
  */
+export function createCreateUser200() {
+  faker.seed([100]);
+  return createUser();
+}
+
+/**
+ * @description Unexpected error
+ */
 export function createCreateUserError() {
   faker.seed([100]);
   return undefined;
@@ -26,8 +34,8 @@ export function createCreateUserMutationRequest() {
 }
 
 export function createCreateUserMutationResponse(
-  _data?: Partial<CreateUserMutationResponse>,
+  data?: Partial<CreateUserMutationResponse>,
 ): CreateUserMutationResponse {
   faker.seed([100]);
-  return undefined;
+  return data || faker.helpers.arrayElement<any>([createCreateUser200()]);
 }

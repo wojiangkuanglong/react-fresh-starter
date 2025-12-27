@@ -17,11 +17,12 @@ export function getLoginUserUrl() {
 }
 
 /**
- * @summary Logs user into the system
+ * @description Log into the system.
+ * @summary Logs user into the system.
  * {@link /user/login}
  */
 export async function loginUser(
-  params: LoginUserQueryParams,
+  params?: LoginUserQueryParams,
   config: Partial<RequestConfig> & { client?: typeof fetch } = {},
 ) {
   const { client: request = fetch, ...requestConfig } = config;

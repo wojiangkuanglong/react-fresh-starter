@@ -34,6 +34,14 @@ export function createLoginUser400() {
   return undefined;
 }
 
+/**
+ * @description Unexpected error
+ */
+export function createLoginUserError() {
+  faker.seed([100]);
+  return undefined;
+}
+
 export function createLoginUserQueryResponse(
   data?: Partial<LoginUserQueryResponse>,
 ): LoginUserQueryResponse {

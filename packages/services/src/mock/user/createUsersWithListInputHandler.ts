@@ -9,6 +9,17 @@ import { http } from 'msw';
 import { createCreateUsersWithListInputMutationResponse } from '../../faker/user/createCreateUsersWithListInput.ts';
 import type { CreateUsersWithListInputMutationResponse } from '../../model/user/CreateUsersWithListInput.ts';
 
+export function createUsersWithListInputHandlerResponse200(
+  data: CreateUsersWithListInputMutationResponse,
+) {
+  return new Response(JSON.stringify(data), {
+    status: 200,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+}
+
 export function createUsersWithListInputHandler(
   data?:
     | CreateUsersWithListInputMutationResponse
@@ -21,6 +32,9 @@ export function createUsersWithListInputHandler(
       JSON.stringify(data || createCreateUsersWithListInputMutationResponse(data)),
       {
         status: 200,
+        headers: {
+          'Content-Type': 'application/json',
+        },
       },
     );
   });

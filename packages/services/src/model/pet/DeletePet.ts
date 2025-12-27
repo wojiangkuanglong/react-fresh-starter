@@ -19,20 +19,25 @@ export type DeletePetHeaderParams = {
 };
 
 /**
- * @description Invalid ID supplied
+ * @description Pet deleted
+ */
+export type DeletePet200 = unknown;
+
+/**
+ * @description Invalid pet value
  */
 export type DeletePet400 = unknown;
 
 /**
- * @description Pet not found
+ * @description Unexpected error
  */
-export type DeletePet404 = unknown;
+export type DeletePetError = unknown;
 
-export type DeletePetMutationResponse = any;
+export type DeletePetMutationResponse = DeletePet200;
 
 export type DeletePetMutation = {
-  Response: any;
+  Response: DeletePet200;
   PathParams: DeletePetPathParams;
   HeaderParams: DeletePetHeaderParams;
-  Errors: DeletePet400 | DeletePet404;
+  Errors: DeletePet400;
 };
