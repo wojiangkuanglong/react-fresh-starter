@@ -19,9 +19,7 @@
     "format-and-lint": "biome check .",
     "format-and-lint:fix": "biome check . --write",
     "clean": "turbo run clean && rimraf node_modules .turbo",
-    "taze": "pnpm dlx taze -r",
-    "replace-token:web": "node ./scripts/replace-tailwind-colors.cjs apps/web/src",
-    "replace-token:components": "node ./scripts/replace-tailwind-colors.cjs packages/components/src"
+    "taze": "pnpm dlx taze -r"
   },
   "engines": {
     "node": ">=22.12.0",
