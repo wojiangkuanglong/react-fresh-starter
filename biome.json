@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.2.4/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.3.6/schema.json",
   "vcs": {
     "enabled": true,
     "clientKind": "git",
@@ -8,13 +8,17 @@
   "files": {
     "ignoreUnknown": false,
     "includes": [
-      "**/src/**"
+      "apps/**/*.{js,jsx,ts,tsx,mjs,cts,mts,json,jsonc,css}",
+      "packages/**/*.{js,jsx,ts,tsx,mjs,cts,mts,json,jsonc,css}",
+      "*.{js,jsx,ts,tsx,json,jsonc,css}",
+      "!**/*.gen.ts"
     ]
   },
   "formatter": {
     "enabled": true,
     "indentStyle": "space",
-    "lineWidth": 100
+    "lineWidth": 100,
+    "lineEnding": "auto"
   },
   "assist": {
     "actions": {
@@ -28,35 +32,49 @@
     "rules": {
       "a11y": {
         "useKeyWithClickEvents": "off",
-        "noSvgWithoutTitle": "off"
+        "noSvgWithoutTitle": "off",
+        "noStaticElementInteractions": "off",
+        "noLabelWithoutControl": "warn"
       },
       "security": {
         "noDangerouslySetInnerHtml": "off"
       },
       "suspicious": {
         "noExplicitAny": "warn",
-        "noUnknownAtRules": "warn"
+        "noUnknownAtRules": "warn",
+        "useIterableCallbackReturn": "error",
+        "noConsole": {
+          "level": "error",
+          "options": {
+            "allow": ["assert", "error", "info", "warn"]
+          }
+        }
       },
       "correctness": {
-        "noUnusedVariables": "error",
-        "noUnusedImports": "error",
-        "useExhaustiveDependencies": "error"
+        "noUnusedVariables": "warn",
+        "noUnusedImports": "warn",
+        "useUniqueElementIds": "off"
       },
       "style": {
-        "noParameterAssign": "off"
+        "noParameterAssign": "off",
+        "noNonNullAssertion": "off"
       },
       "complexity": {
-        "noForEach": "off",
-        "noBannedTypes": "off"
-      },
-      "performance": {
-        "noDelete": "off"
+        "noImportantStyles": "off"
       }
+    },
+    "domains": {
+      "react": "recommended"
     }
   },
   "javascript": {
     "formatter": {
       "quoteStyle": "single"
+    }
+  },
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
     }
   }
 }

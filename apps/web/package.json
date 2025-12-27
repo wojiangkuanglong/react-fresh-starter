@@ -1,0 +1,79 @@
+{
+  "name": "@repo/web",
+  "description": "web",
+  "private": false,
+  "packageManager": "pnpm@10.25.0",
+  "main": "src/app/index.tsx",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "prebuild": "pnpm type-check && knip",
+    "build": "vite build",
+    "lint": "biome check .",
+    "type-check": "tsc --noEmit",
+    "clean": "rimraf dist node_modules .turbo"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "dependencies": {
+    "@ant-design/cssinjs": "^2.0.1",
+    "@repo/components": "workspace:*",
+    "@repo/lib": "workspace:*",
+    "@repo/services": "workspace:*",
+    "@repo/utils": "workspace:*",
+    "@tanstack/react-query": "catalog:",
+    "@tanstack/react-query-devtools": "^5.91.1",
+    "@tanstack/react-router": "catalog:",
+    "@tanstack/react-router-devtools": "catalog:",
+    "ahooks": "^3.9.6",
+    "antd": "catalog:",
+    "dayjs": "^1.11.19",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "react-error-boundary": "catalog:",
+    "zod": "catalog:",
+    "zustand": "^5.0.9"
+  },
+  "devDependencies": {
+    "@fvilers/disable-react-devtools": "^1.3.0",
+    "@repo/typescript-config": "workspace:*",
+    "@tailwindcss/vite": "catalog:",
+    "@tanstack/router-plugin": "^1.141.2",
+    "@total-typescript/ts-reset": "catalog:",
+    "@tsconfig/vite-react": "^7.0.2",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "@vitejs/plugin-react": "catalog:",
+    "babel-plugin-react-compiler": "^1.0.0",
+    "knip": "^5.73.4",
+    "msw": "catalog:",
+    "rimraf": "catalog:",
+    "tailwindcss": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vite-plugin-svgr": "catalog:"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
+  }
+}

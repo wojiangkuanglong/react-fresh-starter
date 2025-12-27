@@ -1,0 +1,6 @@
+{
+  "type": "object",
+  "properties": { "id": { "type": "integer", "format": "int64" }, "name": { "type": "string" } },
+  "xml": { "name": "Tag" },
+  "x-readme-ref-name": "Tag"
+}

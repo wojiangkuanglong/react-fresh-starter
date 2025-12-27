@@ -2,7 +2,8 @@
   "recommendations": [
     "EditorConfig.EditorConfig",
     "bradlc.vscode-tailwindcss",
-    "biomejs.biome-vscode"
+    "biomejs.biome-vscode",
+    "antfu.pnpm-catalog-lens"
   ],
   "unwantedRecommendations": [
     "dbaeumer.vscode-eslint",

@@ -1,0 +1,24 @@
+{
+  "name": "@repo/utils",
+  "version": "0.0.0",
+  "private": true,
+  "sideEffects": false,
+  "scripts": {
+    "lint": "biome check .",
+    "type-check": "tsc --noEmit",
+    "clean": "rimraf dist node_modules .turbo"
+  },
+  "devDependencies": {
+    "@repo/services": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "rimraf": "catalog:",
+    "typescript": "catalog:"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.4.0"
+  },
+  "exports": {
+    ".": "./src/index.ts"
+  }
+}

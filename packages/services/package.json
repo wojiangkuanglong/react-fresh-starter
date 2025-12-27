@@ -1,0 +1,40 @@
+{
+  "name": "@repo/services",
+  "version": "0.0.0",
+  "private": true,
+  "sideEffects": false,
+  "scripts": {
+    "lint": "biome check .",
+    "type-check": "tsc --noEmit",
+    "clean": "rimraf dist node_modules .turbo",
+    "api": "kubb generate",
+    "check:apiunsafe": "biome check --fix --unsafe ./src"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^10.1.0",
+    "@kubb/cli": "^4.9.4",
+    "@kubb/core": "^4.9.4",
+    "@kubb/plugin-client": "^4.9.4",
+    "@kubb/plugin-faker": "^4.9.4",
+    "@kubb/plugin-msw": "^4.9.4",
+    "@kubb/plugin-oas": "^4.9.4",
+    "@kubb/plugin-ts": "^4.9.4",
+    "@kubb/plugin-zod": "^4.9.4",
+    "@repo/typescript-config": "workspace:*",
+    "msw": "catalog:",
+    "rimraf": "catalog:",
+    "typescript": "catalog:",
+    "zod": "catalog:"
+  },
+  "dependencies": {
+    "@repo/lib": "workspace:*",
+    "axios": "catalog:"
+  },
+  "exports": {
+    "./api/*": "./src/api/*.ts",
+    "./model/*": "./src/model/*.ts",
+    "./zod/*": "./src/zod/*.ts",
+    "./mock/*": "./src/mock/*.ts",
+    "./faker/*": "./src/faker/*.ts"
+  }
+}

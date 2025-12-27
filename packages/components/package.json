@@ -1,0 +1,26 @@
+{
+  "name": "@repo/components",
+  "version": "0.0.0",
+  "private": true,
+  "sideEffects": false,
+  "scripts": {
+    "lint": "biome check .",
+    "type-check": "tsc --noEmit",
+    "clean": "rimraf dist node_modules .turbo"
+  },
+  "devDependencies": {
+    "@repo/typescript-config": "workspace:*",
+    "@repo/utils": "workspace:*",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "rimraf": "catalog:",
+    "tailwindcss": "catalog:",
+    "typescript": "catalog:"
+  },
+  "dependencies": {
+    "react": "catalog:"
+  },
+  "exports": {
+    ".": "./src/index.ts"
+  }
+}

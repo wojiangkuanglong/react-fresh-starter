@@ -1,0 +1,29 @@
+
+{
+  "folders": [
+    {
+      "name": "@repo/web",
+      "path": "apps/web",
+    },
+    {
+      "name": "@repo/typescript-config",
+      "path": "packages/typescript-config",
+    },
+    {
+      "name": "@repo/services",
+      "path": "packages/services",
+    },
+    {
+      "name": "@repo/utils",
+      "path": "packages/utils",
+    },
+    {
+      "name": "@repo/lib",
+      "path": "packages/lib",
+    },
+    {
+      "name": "@repo/components",
+      "path": "packages/components",
+    }
+  ],
+}

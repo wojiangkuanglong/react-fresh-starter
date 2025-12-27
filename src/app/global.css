@@ -1,8 +1,0 @@
-@layer theme, base, antd, components, utilities;
-@import "tailwindcss";
-@source "../../node_modules/streamdown/dist/index.js";
-
-body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
