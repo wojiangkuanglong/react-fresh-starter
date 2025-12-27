@@ -1,5 +1,6 @@
 import type { QueryClient } from '@tanstack/react-query';
 import { createRootRouteWithContext } from '@tanstack/react-router';
+import { Layout } from '@/features/Layout';
 
 export const Route = createRootRouteWithContext<{
   queryClient: QueryClient;
@@ -8,5 +9,5 @@ export const Route = createRootRouteWithContext<{
 });
 
 function RootComponent() {
-  return <div>666</div>;
+  return <Layout />;
 }
