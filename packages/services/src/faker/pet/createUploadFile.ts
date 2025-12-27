@@ -16,7 +16,6 @@ import { createApiResponse } from '../createApiResponse.ts';
 export function createUploadFilePathParams(
   data?: Partial<UploadFilePathParams>,
 ): UploadFilePathParams {
-  faker.seed([100]);
   return {
     ...{ petId: faker.number.int() },
     ...(data || {}),
@@ -26,7 +25,6 @@ export function createUploadFilePathParams(
 export function createUploadFileQueryParams(
   data?: Partial<UploadFileQueryParams>,
 ): UploadFileQueryParams {
-  faker.seed([100]);
   return {
     ...{ additionalMetadata: faker.string.alpha() },
     ...(data || {}),
@@ -37,7 +35,6 @@ export function createUploadFileQueryParams(
  * @description successful operation
  */
 export function createUploadFile200() {
-  faker.seed([100]);
   return createApiResponse();
 }
 
@@ -45,7 +42,6 @@ export function createUploadFile200() {
  * @description No file uploaded
  */
 export function createUploadFile400() {
-  faker.seed([100]);
   return undefined;
 }
 
@@ -53,7 +49,6 @@ export function createUploadFile400() {
  * @description Pet not found
  */
 export function createUploadFile404() {
-  faker.seed([100]);
   return undefined;
 }
 
@@ -61,18 +56,15 @@ export function createUploadFile404() {
  * @description Unexpected error
  */
 export function createUploadFileError() {
-  faker.seed([100]);
   return undefined;
 }
 
 export function createUploadFileMutationRequest() {
-  faker.seed([100]);
   return faker.image.url() as unknown as Blob;
 }
 
 export function createUploadFileMutationResponse(
   data?: Partial<UploadFileMutationResponse>,
 ): UploadFileMutationResponse {
-  faker.seed([100]);
   return data || faker.helpers.arrayElement<any>([createUploadFile200()]);
 }

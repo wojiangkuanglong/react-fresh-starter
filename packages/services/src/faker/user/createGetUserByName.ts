@@ -15,7 +15,6 @@ import { createUser } from '../createUser.ts';
 export function createGetUserByNamePathParams(
   data?: Partial<GetUserByNamePathParams>,
 ): GetUserByNamePathParams {
-  faker.seed([100]);
   return {
     ...{ username: faker.string.alpha() },
     ...(data || {}),
@@ -26,7 +25,6 @@ export function createGetUserByNamePathParams(
  * @description successful operation
  */
 export function createGetUserByName200() {
-  faker.seed([100]);
   return createUser();
 }
 
@@ -34,7 +32,6 @@ export function createGetUserByName200() {
  * @description Invalid username supplied
  */
 export function createGetUserByName400() {
-  faker.seed([100]);
   return undefined;
 }
 
@@ -42,7 +39,6 @@ export function createGetUserByName400() {
  * @description User not found
  */
 export function createGetUserByName404() {
-  faker.seed([100]);
   return undefined;
 }
 
@@ -50,13 +46,11 @@ export function createGetUserByName404() {
  * @description Unexpected error
  */
 export function createGetUserByNameError() {
-  faker.seed([100]);
   return undefined;
 }
 
 export function createGetUserByNameQueryResponse(
   data?: Partial<GetUserByNameQueryResponse>,
 ): GetUserByNameQueryResponse {
-  faker.seed([100]);
   return data || faker.helpers.arrayElement<any>([createGetUserByName200()]);
 }

@@ -15,7 +15,6 @@ import { createOrder } from '../createOrder.ts';
 export function createGetOrderByIdPathParams(
   data?: Partial<GetOrderByIdPathParams>,
 ): GetOrderByIdPathParams {
-  faker.seed([100]);
   return {
     ...{ orderId: faker.number.int() },
     ...(data || {}),
@@ -26,7 +25,6 @@ export function createGetOrderByIdPathParams(
  * @description successful operation
  */
 export function createGetOrderById200() {
-  faker.seed([100]);
   return createOrder();
 }
 
@@ -34,7 +32,6 @@ export function createGetOrderById200() {
  * @description Invalid ID supplied
  */
 export function createGetOrderById400() {
-  faker.seed([100]);
   return undefined;
 }
 
@@ -42,7 +39,6 @@ export function createGetOrderById400() {
  * @description Order not found
  */
 export function createGetOrderById404() {
-  faker.seed([100]);
   return undefined;
 }
 
@@ -50,13 +46,11 @@ export function createGetOrderById404() {
  * @description Unexpected error
  */
 export function createGetOrderByIdError() {
-  faker.seed([100]);
   return undefined;
 }
 
 export function createGetOrderByIdQueryResponse(
   data?: Partial<GetOrderByIdQueryResponse>,
 ): GetOrderByIdQueryResponse {
-  faker.seed([100]);
   return data || faker.helpers.arrayElement<any>([createGetOrderById200()]);
 }

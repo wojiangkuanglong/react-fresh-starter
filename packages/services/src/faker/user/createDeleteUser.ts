@@ -14,7 +14,6 @@ import type {
 export function createDeleteUserPathParams(
   data?: Partial<DeleteUserPathParams>,
 ): DeleteUserPathParams {
-  faker.seed([100]);
   return {
     ...{ username: faker.string.alpha() },
     ...(data || {}),
@@ -25,7 +24,6 @@ export function createDeleteUserPathParams(
  * @description User deleted
  */
 export function createDeleteUser200() {
-  faker.seed([100]);
   return undefined;
 }
 
@@ -33,7 +31,6 @@ export function createDeleteUser200() {
  * @description Invalid username supplied
  */
 export function createDeleteUser400() {
-  faker.seed([100]);
   return undefined;
 }
 
@@ -41,7 +38,6 @@ export function createDeleteUser400() {
  * @description User not found
  */
 export function createDeleteUser404() {
-  faker.seed([100]);
   return undefined;
 }
 
@@ -49,13 +45,11 @@ export function createDeleteUser404() {
  * @description Unexpected error
  */
 export function createDeleteUserError() {
-  faker.seed([100]);
   return undefined;
 }
 
 export function createDeleteUserMutationResponse(
   data?: Partial<DeleteUserMutationResponse>,
 ): DeleteUserMutationResponse {
-  faker.seed([100]);
   return data || faker.helpers.arrayElement<any>([createDeleteUser200()]);
 }

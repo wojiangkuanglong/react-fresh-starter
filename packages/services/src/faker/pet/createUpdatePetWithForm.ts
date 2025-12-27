@@ -16,7 +16,6 @@ import { createPet } from '../createPet.ts';
 export function createUpdatePetWithFormPathParams(
   data?: Partial<UpdatePetWithFormPathParams>,
 ): UpdatePetWithFormPathParams {
-  faker.seed([100]);
   return {
     ...{ petId: faker.number.int() },
     ...(data || {}),
@@ -26,7 +25,6 @@ export function createUpdatePetWithFormPathParams(
 export function createUpdatePetWithFormQueryParams(
   data?: Partial<UpdatePetWithFormQueryParams>,
 ): UpdatePetWithFormQueryParams {
-  faker.seed([100]);
   return {
     ...{ name: faker.string.alpha(), status: faker.string.alpha() },
     ...(data || {}),
@@ -37,7 +35,6 @@ export function createUpdatePetWithFormQueryParams(
  * @description successful operation
  */
 export function createUpdatePetWithForm200() {
-  faker.seed([100]);
   return createPet();
 }
 
@@ -45,7 +42,6 @@ export function createUpdatePetWithForm200() {
  * @description Invalid input
  */
 export function createUpdatePetWithForm400() {
-  faker.seed([100]);
   return undefined;
 }
 
@@ -53,13 +49,11 @@ export function createUpdatePetWithForm400() {
  * @description Unexpected error
  */
 export function createUpdatePetWithFormError() {
-  faker.seed([100]);
   return undefined;
 }
 
 export function createUpdatePetWithFormMutationResponse(
   data?: Partial<UpdatePetWithFormMutationResponse>,
 ): UpdatePetWithFormMutationResponse {
-  faker.seed([100]);
   return data || faker.helpers.arrayElement<any>([createUpdatePetWithForm200()]);
 }

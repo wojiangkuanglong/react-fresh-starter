@@ -12,7 +12,6 @@ import type { GetInventory200, GetInventoryQueryResponse } from '../../model/sto
  * @description successful operation
  */
 export function createGetInventory200(data?: Partial<GetInventory200>): GetInventory200 {
-  faker.seed([100]);
   return {
     ...{},
     ...(data || {}),
@@ -23,13 +22,11 @@ export function createGetInventory200(data?: Partial<GetInventory200>): GetInven
  * @description Unexpected error
  */
 export function createGetInventoryError() {
-  faker.seed([100]);
   return undefined;
 }
 
 export function createGetInventoryQueryResponse(
   data?: Partial<GetInventoryQueryResponse>,
 ): GetInventoryQueryResponse {
-  faker.seed([100]);
   return data || faker.helpers.arrayElement<any>([createGetInventory200()]);
 }

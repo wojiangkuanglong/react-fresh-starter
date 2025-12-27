@@ -11,7 +11,6 @@ import { createCategory } from './createCategory.ts';
 import { createTag } from './createTag.ts';
 
 export function createPet(data?: Partial<Pet>): Pet {
-  faker.seed([100]);
   return {
     ...{
       id: faker.number.int(),

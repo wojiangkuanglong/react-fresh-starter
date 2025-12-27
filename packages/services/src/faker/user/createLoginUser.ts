@@ -11,7 +11,6 @@ import type { LoginUserQueryParams, LoginUserQueryResponse } from '../../model/u
 export function createLoginUserQueryParams(
   data?: Partial<LoginUserQueryParams>,
 ): LoginUserQueryParams {
-  faker.seed([100]);
   return {
     ...{ username: faker.string.alpha(), password: faker.string.alpha() },
     ...(data || {}),
@@ -22,7 +21,6 @@ export function createLoginUserQueryParams(
  * @description successful operation
  */
 export function createLoginUser200() {
-  faker.seed([100]);
   return faker.string.alpha();
 }
 
@@ -30,7 +28,6 @@ export function createLoginUser200() {
  * @description Invalid username/password supplied
  */
 export function createLoginUser400() {
-  faker.seed([100]);
   return undefined;
 }
 
@@ -38,13 +35,11 @@ export function createLoginUser400() {
  * @description Unexpected error
  */
 export function createLoginUserError() {
-  faker.seed([100]);
   return undefined;
 }
 
 export function createLoginUserQueryResponse(
   data?: Partial<LoginUserQueryResponse>,
 ): LoginUserQueryResponse {
-  faker.seed([100]);
   return data || faker.helpers.arrayElement<any>([createLoginUser200()]);
 }

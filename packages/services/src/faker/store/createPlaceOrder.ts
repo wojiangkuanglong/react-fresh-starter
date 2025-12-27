@@ -13,7 +13,6 @@ import { createOrder } from '../createOrder.ts';
  * @description successful operation
  */
 export function createPlaceOrder200() {
-  faker.seed([100]);
   return createOrder();
 }
 
@@ -21,7 +20,6 @@ export function createPlaceOrder200() {
  * @description Invalid input
  */
 export function createPlaceOrder400() {
-  faker.seed([100]);
   return undefined;
 }
 
@@ -29,7 +27,6 @@ export function createPlaceOrder400() {
  * @description Validation exception
  */
 export function createPlaceOrder422() {
-  faker.seed([100]);
   return undefined;
 }
 
@@ -37,18 +34,15 @@ export function createPlaceOrder422() {
  * @description Unexpected error
  */
 export function createPlaceOrderError() {
-  faker.seed([100]);
   return undefined;
 }
 
 export function createPlaceOrderMutationRequest() {
-  faker.seed([100]);
   return createOrder();
 }
 
 export function createPlaceOrderMutationResponse(
   data?: Partial<PlaceOrderMutationResponse>,
 ): PlaceOrderMutationResponse {
-  faker.seed([100]);
   return data || faker.helpers.arrayElement<any>([createPlaceOrder200()]);
 }

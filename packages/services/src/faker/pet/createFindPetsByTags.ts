@@ -16,7 +16,6 @@ import { createPet } from '../createPet.ts';
 export function createFindPetsByTagsQueryParams(
   data?: Partial<FindPetsByTagsQueryParams>,
 ): FindPetsByTagsQueryParams {
-  faker.seed([100]);
   return {
     ...{ tags: faker.helpers.multiple(() => faker.string.alpha()) },
     ...(data || {}),
@@ -27,7 +26,6 @@ export function createFindPetsByTagsQueryParams(
  * @description successful operation
  */
 export function createFindPetsByTags200(data?: FindPetsByTags200): FindPetsByTags200 {
-  faker.seed([100]);
   return [...faker.helpers.multiple(() => createPet()), ...(data || [])];
 }
 
@@ -35,7 +33,6 @@ export function createFindPetsByTags200(data?: FindPetsByTags200): FindPetsByTag
  * @description Invalid tag value
  */
 export function createFindPetsByTags400() {
-  faker.seed([100]);
   return undefined;
 }
 
@@ -43,13 +40,11 @@ export function createFindPetsByTags400() {
  * @description Unexpected error
  */
 export function createFindPetsByTagsError() {
-  faker.seed([100]);
   return undefined;
 }
 
 export function createFindPetsByTagsQueryResponse(
   data?: Partial<FindPetsByTagsQueryResponse>,
 ): FindPetsByTagsQueryResponse {
-  faker.seed([100]);
   return data || faker.helpers.arrayElement<any>([createFindPetsByTags200()]);
 }

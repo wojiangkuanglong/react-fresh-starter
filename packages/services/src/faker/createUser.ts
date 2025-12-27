@@ -9,7 +9,6 @@ import { faker } from '@faker-js/faker';
 import type { User } from '../model/User.ts';
 
 export function createUser(data?: Partial<User>): User {
-  faker.seed([100]);
   return {
     ...{
       id: faker.number.int(),

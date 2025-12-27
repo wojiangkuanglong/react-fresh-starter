@@ -15,7 +15,6 @@ import type {
 export function createDeletePetPathParams(
   data?: Partial<DeletePetPathParams>,
 ): DeletePetPathParams {
-  faker.seed([100]);
   return {
     ...{ petId: faker.number.int() },
     ...(data || {}),
@@ -25,7 +24,6 @@ export function createDeletePetPathParams(
 export function createDeletePetHeaderParams(
   data?: Partial<DeletePetHeaderParams>,
 ): DeletePetHeaderParams {
-  faker.seed([100]);
   return {
     ...{ api_key: faker.string.alpha() },
     ...(data || {}),
@@ -36,7 +34,6 @@ export function createDeletePetHeaderParams(
  * @description Pet deleted
  */
 export function createDeletePet200() {
-  faker.seed([100]);
   return undefined;
 }
 
@@ -44,7 +41,6 @@ export function createDeletePet200() {
  * @description Invalid pet value
  */
 export function createDeletePet400() {
-  faker.seed([100]);
   return undefined;
 }
 
@@ -52,13 +48,11 @@ export function createDeletePet400() {
  * @description Unexpected error
  */
 export function createDeletePetError() {
-  faker.seed([100]);
   return undefined;
 }
 
 export function createDeletePetMutationResponse(
   data?: Partial<DeletePetMutationResponse>,
 ): DeletePetMutationResponse {
-  faker.seed([100]);
   return data || faker.helpers.arrayElement<any>([createDeletePet200()]);
 }

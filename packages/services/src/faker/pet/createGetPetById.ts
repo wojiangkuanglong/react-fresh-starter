@@ -12,7 +12,6 @@ import { createPet } from '../createPet.ts';
 export function createGetPetByIdPathParams(
   data?: Partial<GetPetByIdPathParams>,
 ): GetPetByIdPathParams {
-  faker.seed([100]);
   return {
     ...{ petId: faker.number.int() },
     ...(data || {}),
@@ -23,7 +22,6 @@ export function createGetPetByIdPathParams(
  * @description successful operation
  */
 export function createGetPetById200() {
-  faker.seed([100]);
   return createPet();
 }
 
@@ -31,7 +29,6 @@ export function createGetPetById200() {
  * @description Invalid ID supplied
  */
 export function createGetPetById400() {
-  faker.seed([100]);
   return undefined;
 }
 
@@ -39,7 +36,6 @@ export function createGetPetById400() {
  * @description Pet not found
  */
 export function createGetPetById404() {
-  faker.seed([100]);
   return undefined;
 }
 
@@ -47,13 +43,11 @@ export function createGetPetById404() {
  * @description Unexpected error
  */
 export function createGetPetByIdError() {
-  faker.seed([100]);
   return undefined;
 }
 
 export function createGetPetByIdQueryResponse(
   data?: Partial<GetPetByIdQueryResponse>,
 ): GetPetByIdQueryResponse {
-  faker.seed([100]);
   return data || faker.helpers.arrayElement<any>([createGetPetById200()]);
 }

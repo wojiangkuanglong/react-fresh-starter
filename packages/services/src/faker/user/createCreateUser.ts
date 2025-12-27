@@ -13,7 +13,6 @@ import { createUser } from '../createUser.ts';
  * @description successful operation
  */
 export function createCreateUser200() {
-  faker.seed([100]);
   return createUser();
 }
 
@@ -21,7 +20,6 @@ export function createCreateUser200() {
  * @description Unexpected error
  */
 export function createCreateUserError() {
-  faker.seed([100]);
   return undefined;
 }
 
@@ -29,13 +27,11 @@ export function createCreateUserError() {
  * @description Created user object
  */
 export function createCreateUserMutationRequest() {
-  faker.seed([100]);
   return createUser();
 }
 
 export function createCreateUserMutationResponse(
   data?: Partial<CreateUserMutationResponse>,
 ): CreateUserMutationResponse {
-  faker.seed([100]);
   return data || faker.helpers.arrayElement<any>([createCreateUser200()]);
 }

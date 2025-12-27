@@ -48,7 +48,6 @@ export default defineConfig({
       },
       dateType: 'date',
       unknownType: 'unknown',
-      seed: [100],
     }),
     pluginMsw({
       output: {

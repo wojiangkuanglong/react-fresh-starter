@@ -9,7 +9,6 @@ import { faker } from '@faker-js/faker';
 import type { Tag } from '../model/Tag.ts';
 
 export function createTag(data?: Partial<Tag>): Tag {
-  faker.seed([100]);
   return {
     ...{ id: faker.number.int(), name: faker.string.alpha() },
     ...(data || {}),

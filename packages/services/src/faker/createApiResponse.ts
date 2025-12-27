@@ -9,7 +9,6 @@ import { faker } from '@faker-js/faker';
 import type { ApiResponse } from '../model/ApiResponse.ts';
 
 export function createApiResponse(data?: Partial<ApiResponse>): ApiResponse {
-  faker.seed([100]);
   return {
     ...{ code: faker.number.int(), type: faker.string.alpha(), message: faker.string.alpha() },
     ...(data || {}),

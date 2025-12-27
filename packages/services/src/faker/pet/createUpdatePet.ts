@@ -13,7 +13,6 @@ import { createPet } from '../createPet.ts';
  * @description Successful operation
  */
 export function createUpdatePet200() {
-  faker.seed([100]);
   return createPet();
 }
 
@@ -21,7 +20,6 @@ export function createUpdatePet200() {
  * @description Invalid ID supplied
  */
 export function createUpdatePet400() {
-  faker.seed([100]);
   return undefined;
 }
 
@@ -29,7 +27,6 @@ export function createUpdatePet400() {
  * @description Pet not found
  */
 export function createUpdatePet404() {
-  faker.seed([100]);
   return undefined;
 }
 
@@ -37,7 +34,6 @@ export function createUpdatePet404() {
  * @description Validation exception
  */
 export function createUpdatePet422() {
-  faker.seed([100]);
   return undefined;
 }
 
@@ -45,7 +41,6 @@ export function createUpdatePet422() {
  * @description Unexpected error
  */
 export function createUpdatePetError() {
-  faker.seed([100]);
   return undefined;
 }
 
@@ -53,13 +48,11 @@ export function createUpdatePetError() {
  * @description Update an existent pet in the store
  */
 export function createUpdatePetMutationRequest() {
-  faker.seed([100]);
   return createPet();
 }
 
 export function createUpdatePetMutationResponse(
   data?: Partial<UpdatePetMutationResponse>,
 ): UpdatePetMutationResponse {
-  faker.seed([100]);
   return data || faker.helpers.arrayElement<any>([createUpdatePet200()]);
 }

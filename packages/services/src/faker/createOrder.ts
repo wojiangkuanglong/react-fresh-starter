@@ -9,7 +9,6 @@ import { faker } from '@faker-js/faker';
 import type { Order } from '../model/Order.ts';
 
 export function createOrder(data?: Partial<Order>): Order {
-  faker.seed([100]);
   return {
     ...{
       id: faker.number.int(),

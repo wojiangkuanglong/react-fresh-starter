@@ -15,7 +15,6 @@ import { createUser } from '../createUser.ts';
 export function createUpdateUserPathParams(
   data?: Partial<UpdateUserPathParams>,
 ): UpdateUserPathParams {
-  faker.seed([100]);
   return {
     ...{ username: faker.string.alpha() },
     ...(data || {}),
@@ -26,7 +25,6 @@ export function createUpdateUserPathParams(
  * @description successful operation
  */
 export function createUpdateUser200() {
-  faker.seed([100]);
   return undefined;
 }
 
@@ -34,7 +32,6 @@ export function createUpdateUser200() {
  * @description bad request
  */
 export function createUpdateUser400() {
-  faker.seed([100]);
   return undefined;
 }
 
@@ -42,7 +39,6 @@ export function createUpdateUser400() {
  * @description user not found
  */
 export function createUpdateUser404() {
-  faker.seed([100]);
   return undefined;
 }
 
@@ -50,7 +46,6 @@ export function createUpdateUser404() {
  * @description Unexpected error
  */
 export function createUpdateUserError() {
-  faker.seed([100]);
   return undefined;
 }
 
@@ -58,13 +53,11 @@ export function createUpdateUserError() {
  * @description Update an existent user in the store
  */
 export function createUpdateUserMutationRequest() {
-  faker.seed([100]);
   return createUser();
 }
 
 export function createUpdateUserMutationResponse(
   data?: Partial<UpdateUserMutationResponse>,
 ): UpdateUserMutationResponse {
-  faker.seed([100]);
   return data || faker.helpers.arrayElement<any>([createUpdateUser200()]);
 }

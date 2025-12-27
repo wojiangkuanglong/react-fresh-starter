@@ -14,7 +14,6 @@ import type {
 export function createDeleteOrderPathParams(
   data?: Partial<DeleteOrderPathParams>,
 ): DeleteOrderPathParams {
-  faker.seed([100]);
   return {
     ...{ orderId: faker.number.int() },
     ...(data || {}),
@@ -25,7 +24,6 @@ export function createDeleteOrderPathParams(
  * @description order deleted
  */
 export function createDeleteOrder200() {
-  faker.seed([100]);
   return undefined;
 }
 
@@ -33,7 +31,6 @@ export function createDeleteOrder200() {
  * @description Invalid ID supplied
  */
 export function createDeleteOrder400() {
-  faker.seed([100]);
   return undefined;
 }
 
@@ -41,7 +38,6 @@ export function createDeleteOrder400() {
  * @description Order not found
  */
 export function createDeleteOrder404() {
-  faker.seed([100]);
   return undefined;
 }
 
@@ -49,13 +45,11 @@ export function createDeleteOrder404() {
  * @description Unexpected error
  */
 export function createDeleteOrderError() {
-  faker.seed([100]);
   return undefined;
 }
 
 export function createDeleteOrderMutationResponse(
   data?: Partial<DeleteOrderMutationResponse>,
 ): DeleteOrderMutationResponse {
-  faker.seed([100]);
   return data || faker.helpers.arrayElement<any>([createDeleteOrder200()]);
 }

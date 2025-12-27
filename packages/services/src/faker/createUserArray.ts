@@ -10,6 +10,5 @@ import type { UserArray } from '../model/UserArray.ts';
 import { createUser } from './createUser.ts';
 
 export function createUserArray(data?: UserArray): UserArray {
-  faker.seed([100]);
   return [...faker.helpers.multiple(() => createUser()), ...(data || [])];
 }
