@@ -14,11 +14,7 @@ export type RequestConfig<TData = unknown> = {
 };
 
 export type ResponseConfig<TData = unknown> = {
-  data: {
-    result: TData;
-    code: number;
-    message: string;
-  };
+  data: TData;
   status: number;
   statusText: string;
   headers?: AxiosResponse['headers'];
