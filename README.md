@@ -69,7 +69,7 @@
 安装依赖
 
 ```bash
-  # node ^22.12.0，pnpm ^10.25.0
+  # node ^22.12.0，pnpm ^10.26.2
   pnpm install
 ```
 

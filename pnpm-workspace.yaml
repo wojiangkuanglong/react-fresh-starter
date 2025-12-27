@@ -6,21 +6,21 @@ catalog:
   react: ^19.2.3
   react-dom: ^19.2.3
   react-error-boundary: ^6.0.0
-  antd: ^6.1.0
+  antd: ^6.1.2
   tailwindcss: ^4.1.9
   '@tailwindcss/vite': ^4.1.18
   typescript: ^5.9.3
-  vite: ^7.2.7
+  vite: ^7.3.0
   '@types/react': ^19.2.7
   '@types/react-dom': '^19.2.3'
   axios: ^1.9.0
   '@tanstack/react-query': ^5.90.9
-  '@tanstack/react-router': ^1.141.2
-  '@tanstack/react-router-devtools': ^1.141.2
+  '@tanstack/react-router': ^1.143.6
+  '@tanstack/react-router-devtools': ^1.143.6
   vite-plugin-svgr: ^4.5.0
   '@total-typescript/ts-reset': ^0.6.1
   '@vitejs/plugin-react': ^5.1.2
-  msw: ^2.12.4
+  msw: ^2.12.6
   rimraf: ^6.1.2
-  zod: ^4.2.0
-  '@biomejs/biome': ^2.3.8
+  zod: ^4.2.1
+  '@biomejs/biome': ^2.3.9
