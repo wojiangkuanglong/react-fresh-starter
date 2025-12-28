@@ -1,8 +1,13 @@
-export { addPetHandler, addPetHandlerResponse405 } from './addPetHandler.ts';
+export {
+  addPetHandler,
+  addPetHandlerResponse200,
+  addPetHandlerResponse400,
+  addPetHandlerResponse422,
+} from './addPetHandler.ts';
 export {
   deletePetHandler,
+  deletePetHandlerResponse200,
   deletePetHandlerResponse400,
-  deletePetHandlerResponse404,
 } from './deletePetHandler.ts';
 export {
   findPetsByStatusHandler,
@@ -22,12 +27,19 @@ export {
 } from './getPetByIdHandler.ts';
 export {
   updatePetHandler,
+  updatePetHandlerResponse200,
   updatePetHandlerResponse400,
   updatePetHandlerResponse404,
-  updatePetHandlerResponse405,
+  updatePetHandlerResponse422,
 } from './updatePetHandler.ts';
 export {
   updatePetWithFormHandler,
-  updatePetWithFormHandlerResponse405,
+  updatePetWithFormHandlerResponse200,
+  updatePetWithFormHandlerResponse400,
 } from './updatePetWithFormHandler.ts';
-export { uploadFileHandler, uploadFileHandlerResponse200 } from './uploadFileHandler.ts';
+export {
+  uploadFileHandler,
+  uploadFileHandlerResponse200,
+  uploadFileHandlerResponse400,
+  uploadFileHandlerResponse404,
+} from './uploadFileHandler.ts';

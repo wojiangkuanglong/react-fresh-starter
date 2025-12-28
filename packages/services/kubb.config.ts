@@ -12,19 +12,18 @@ export default defineConfig({
   },
   output: {
     path: './src',
-    clean: false,
+    clean: true,
+    barrelType: false,
   },
   plugins: [
     pluginOas({
       output: {
         path: './json',
-        barrelType: false,
       },
     }),
     pluginTs({
       output: {
         path: './model',
-        barrelType: false,
       },
       group: {
         type: 'tag',
@@ -39,7 +38,6 @@ export default defineConfig({
     pluginFaker({
       output: {
         path: './faker',
-        barrelType: false,
         banner: `/* eslint-disable no-alert, no-console */\n// @ts-nocheck`,
       },
       group: {
@@ -52,7 +50,6 @@ export default defineConfig({
     pluginMsw({
       output: {
         path: './mock',
-        barrelType: false,
         banner: '/* eslint-disable no-alert, no-console */\n// @ts-nocheck',
       },
       parser: 'faker',
@@ -65,7 +62,6 @@ export default defineConfig({
     pluginClient({
       output: {
         path: './api',
-        barrelType: false,
       },
       importPath: '@repo/lib/client',
       group: {
@@ -80,7 +76,6 @@ export default defineConfig({
     pluginZod({
       output: {
         path: './zod',
-        barrelType: false,
       },
       group: { type: 'tag', name: ({ group }) => `${group}Schemas` },
       typed: true,

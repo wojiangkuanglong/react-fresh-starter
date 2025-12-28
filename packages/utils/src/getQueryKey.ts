@@ -1,4 +1,4 @@
-import { operations } from '@repo/services/api/operations';
+import { operations } from '@repo/services/api';
 
 export type OperationKey = keyof typeof operations;
 

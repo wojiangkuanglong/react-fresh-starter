@@ -1,4 +1,4 @@
-import type { FindPetsByStatusQueryParamsStatusEnumKey } from '@repo/services/model/pet/FindPetsByStatus';
+import type { FindPetsByStatusQueryParamsStatusEnumKey } from '@repo/services/model';
 import { Card, Col, Row, Spin } from 'antd';
 import { useState } from 'react';
 import { usePetFindByStatus } from '../api/usePetApi';

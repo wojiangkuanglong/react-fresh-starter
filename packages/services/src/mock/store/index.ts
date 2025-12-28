@@ -1,5 +1,6 @@
 export {
   deleteOrderHandler,
+  deleteOrderHandlerResponse200,
   deleteOrderHandlerResponse400,
   deleteOrderHandlerResponse404,
 } from './deleteOrderHandler.ts';
@@ -14,4 +15,5 @@ export {
   placeOrderHandler,
   placeOrderHandlerResponse200,
   placeOrderHandlerResponse400,
+  placeOrderHandlerResponse422,
 } from './placeOrderHandler.ts';
