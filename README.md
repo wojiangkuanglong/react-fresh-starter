@@ -20,8 +20,6 @@
 
 ### :space_invader: 技术栈
 
-![](https://free-img.400040.xyz/4/2025/12/27/694f4abd75e46.png)
-
 <details open>
   <summary>使用的技术</summary>
   <ul>
