@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "sideEffects": false,
+  "type": "module",
   "scripts": {
     "build": "tsdown",
     "dev": "tsdown --watch",
@@ -22,10 +23,16 @@
     "tailwind-merge": "^3.4.0"
   },
   "exports": {
-    ".": "./dist/index.mjs",
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs"
+    },
     "./package.json": "./package.json"
   },
-  "main": "./dist/index.mjs",
+  "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
-  "types": "./dist/index.d.mts"
+  "types": "./dist/index.d.cts",
+  "typesVersions": {
+    "*": {}
+  }
 }

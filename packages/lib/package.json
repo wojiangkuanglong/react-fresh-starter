@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "sideEffects": false,
+  "type": "module",
   "scripts": {
     "lint": "biome check .",
     "type-check": "tsc --noEmit",

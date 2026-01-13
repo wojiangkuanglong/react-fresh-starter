@@ -3,7 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "sideEffects": false,
+  "type": "module",
   "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch",
     "lint": "biome check .",
     "type-check": "tsc --noEmit",
     "clean": "rimraf dist node_modules .turbo",
@@ -23,6 +26,7 @@
     "@repo/typescript-config": "workspace:*",
     "msw": "catalog:",
     "rimraf": "catalog:",
+    "tsdown": "catalog:",
     "typescript": "catalog:",
     "zod": "catalog:"
   },
@@ -31,10 +35,45 @@
     "axios": "catalog:"
   },
   "exports": {
-    "./api": "./src/api/index.ts",
-    "./model": "./src/model/index.ts",
-    "./zod": "./src/zod/index.ts",
-    "./mock": "./src/mock/index.ts",
-    "./faker": "./src/faker/index.ts"
+    "./api": {
+      "require": "./dist/api.cjs",
+      "import": "./dist/api.mjs"
+    },
+    "./faker": {
+      "require": "./dist/faker.cjs",
+      "import": "./dist/faker.mjs"
+    },
+    "./mock": {
+      "require": "./dist/mock.cjs",
+      "import": "./dist/mock.mjs"
+    },
+    "./model": {
+      "require": "./dist/model.cjs",
+      "import": "./dist/model.mjs"
+    },
+    "./zod": {
+      "require": "./dist/zod.cjs",
+      "import": "./dist/zod.mjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "typesVersions": {
+    "*": {
+      "api": [
+        "./dist/api.d.ts"
+      ],
+      "model": [
+        "./dist/model.d.ts"
+      ],
+      "zod": [
+        "./dist/zod.d.ts"
+      ],
+      "mock": [
+        "./dist/mock.d.ts"
+      ],
+      "faker": [
+        "./dist/faker.d.ts"
+      ]
+    }
   }
 }
