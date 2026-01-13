@@ -15,10 +15,6 @@ export { getPlaceOrderUrl, placeOrder } from './store/placeOrder.ts';
 export { store } from './store/store.ts';
 export { createUser, getCreateUserUrl } from './user/createUser.ts';
 export {
-  createUsersWithArrayInput,
-  getCreateUsersWithArrayInputUrl,
-} from './user/createUsersWithArrayInput.ts';
-export {
   createUsersWithListInput,
   getCreateUsersWithListInputUrl,
 } from './user/createUsersWithListInput.ts';

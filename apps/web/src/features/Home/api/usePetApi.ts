@@ -1,5 +1,5 @@
-import { findPetsByStatus } from '@repo/services/api/pet/findPetsByStatus';
-import type { FindPetsByStatusQueryParams } from '@repo/services/model/pet/FindPetsByStatus';
+import { findPetsByStatus } from '@repo/services/api';
+import type { FindPetsByStatusQueryParams } from '@repo/services/model';
 import { getQueryKey } from '@repo/utils';
 import { useQuery } from '@tanstack/react-query';
 

@@ -1,9 +1,5 @@
 export { createUser, getCreateUserUrl } from './createUser.ts';
 export {
-  createUsersWithArrayInput,
-  getCreateUsersWithArrayInputUrl,
-} from './createUsersWithArrayInput.ts';
-export {
   createUsersWithListInput,
   getCreateUsersWithListInputUrl,
 } from './createUsersWithListInput.ts';

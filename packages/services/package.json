@@ -31,10 +31,10 @@
     "axios": "catalog:"
   },
   "exports": {
-    "./api/*": "./src/api/*.ts",
-    "./model/*": "./src/model/*.ts",
-    "./zod/*": "./src/zod/*.ts",
-    "./mock/*": "./src/mock/*.ts",
-    "./faker/*": "./src/faker/*.ts"
+    "./api": "./src/api/index.ts",
+    "./model": "./src/model/index.ts",
+    "./zod": "./src/zod/index.ts",
+    "./mock": "./src/mock/index.ts",
+    "./faker": "./src/faker/index.ts"
   }
 }
