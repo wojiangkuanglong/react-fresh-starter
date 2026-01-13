@@ -4,6 +4,8 @@
   "private": true,
   "sideEffects": false,
   "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch",
     "lint": "biome check .",
     "type-check": "tsc --noEmit",
     "clean": "rimraf dist node_modules .turbo"
@@ -12,13 +14,18 @@
     "@repo/services": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "rimraf": "catalog:",
-    "typescript": "catalog:"
+    "typescript": "catalog:",
+    "tsdown": "catalog:"
   },
   "dependencies": {
     "clsx": "^2.1.1",
     "tailwind-merge": "^3.4.0"
   },
   "exports": {
-    ".": "./src/index.ts"
-  }
+    ".": "./dist/index.mjs",
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts"
 }

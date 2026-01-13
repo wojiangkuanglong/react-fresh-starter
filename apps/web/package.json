@@ -2,7 +2,7 @@
   "name": "@repo/web",
   "description": "web",
   "private": false,
-  "packageManager": "pnpm@10.26.2",
+  "packageManager": "pnpm@10.28.0",
   "main": "src/app/index.tsx",
   "type": "module",
   "scripts": {
@@ -17,13 +17,13 @@
     "node": ">=22.12.0"
   },
   "dependencies": {
-    "@ant-design/cssinjs": "^2.0.1",
+    "@ant-design/cssinjs": "^2.0.2",
     "@repo/components": "workspace:*",
     "@repo/lib": "workspace:*",
     "@repo/services": "workspace:*",
     "@repo/utils": "workspace:*",
     "@tanstack/react-query": "catalog:",
-    "@tanstack/react-query-devtools": "^5.91.1",
+    "@tanstack/react-query-devtools": "^5.91.2",
     "@tanstack/react-router": "catalog:",
     "@tanstack/react-router-devtools": "catalog:",
     "ahooks": "^3.9.6",
@@ -33,20 +33,20 @@
     "react-dom": "catalog:",
     "react-error-boundary": "catalog:",
     "zod": "catalog:",
-    "zustand": "^5.0.9"
+    "zustand": "^5.0.10"
   },
   "devDependencies": {
     "@fvilers/disable-react-devtools": "^1.3.0",
     "@repo/typescript-config": "workspace:*",
     "@tailwindcss/vite": "catalog:",
-    "@tanstack/router-plugin": "^1.143.6",
+    "@tanstack/router-plugin": "^1.149.0",
     "@total-typescript/ts-reset": "catalog:",
     "@tsconfig/vite-react": "^7.0.2",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
     "@vitejs/plugin-react": "catalog:",
     "babel-plugin-react-compiler": "^1.0.0",
-    "knip": "^5.77.4",
+    "knip": "^5.80.2",
     "msw": "catalog:",
     "rimraf": "catalog:",
     "tailwindcss": "catalog:",
